@@ -25,11 +25,7 @@ public class Bloque1_ej4 {
 		System.out.println("La media de los números anteriormente introducidos es: " + suma/3);
 		
 	
-		
-		
-		
-		
-		
+			
 		
 
 	}
