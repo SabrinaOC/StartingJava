@@ -29,14 +29,5 @@ public class Bloque1_ej2 {
 	System.out.println("El número más largo es: " + numDob);
 			
 	
-	
-	
-	
-//	str = JOptionPane.showInputDialog("Introduzca un número flotante: ") ;
-//	numFlotante = Float.parseFloat(str);
-//	
-//	caden = JOptionPane.showInputDialog("Introduzca un número largo");
-//	numDob = Double.parseDouble(str);
-	
 	}
 }
