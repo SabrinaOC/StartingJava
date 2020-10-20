@@ -26,20 +26,19 @@ public class C2_bloque1_ej4 {
 
 		str = JOptionPane.showInputDialog("Inserte un número");
 		num5 = Integer.parseInt(str);
-		
+
 //		num1 = 3;
 //		num2 = 2;
 //		num3 = 4;
 //		num4 = 5;
 //		num5 = 1;
-		
 
 		if (num1 < num2) {
 			if (num1 < num3) {
 				if (num1 < num4) {
 					if (num1 < num5) {
 						System.out.println("El menor de los números introducidos es: " + num1);
-					} 
+					}
 				}
 			}
 
@@ -49,12 +48,12 @@ public class C2_bloque1_ej4 {
 					if (num2 < num5) {
 						System.out.println("El menor de los números introducidos es: " + num2);
 					} else {
-						if (num5<num4 && num5<num3 && num5<num2) {
+						if (num5 < num4 && num5 < num3 && num5 < num2) {
 							System.out.println("El menor de los números introducidos es: " + num5);
 						}
 					}
 				} else {
-					if (num4<num1 && num4<num3 && num4<num5) {
+					if (num4 < num1 && num4 < num3 && num4 < num5) {
 						System.out.println("El menor de los números introducidoes es: " + num4);
 					}
 				}
@@ -68,7 +67,7 @@ public class C2_bloque1_ej4 {
 
 					}
 
-				} 
+				}
 
 			}
 
