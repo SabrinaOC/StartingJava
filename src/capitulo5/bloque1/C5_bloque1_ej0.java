@@ -7,7 +7,7 @@ public class C5_bloque1_ej0 {
 		int tamanio = 150;
 		int array[] = new int [tamanio] ;
 		int suma = 0;
-		int media;
+		float media;
 		int mayor= (tamanio-(tamanio-1));
 		int menor= (tamanio+1);
 		
@@ -31,7 +31,7 @@ public class C5_bloque1_ej0 {
 			
 		System.out.println("La suma de los valores de i es " + suma);
 		
-		media = suma / tamanio;
+		media = (float)suma / tamanio;
 		System.out.println("La media de los valores del array es " + media);
 		
 		System.out.println("El mayor de los valores de i es " + mayor);
