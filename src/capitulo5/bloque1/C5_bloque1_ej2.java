@@ -4,7 +4,7 @@ public class C5_bloque1_ej2 {
 
 	public static void main(String[] args) {
 		
-		int tamanio = 15;
+		int tamanio = 150;
 		int array[] = new int[tamanio];
 		
 		for (int i = tamanio-1; i>=0; i--) {
