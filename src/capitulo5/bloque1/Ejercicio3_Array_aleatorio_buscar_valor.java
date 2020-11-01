@@ -17,26 +17,36 @@ import Utils.UtilsArrays;
 
 public class Ejercicio3_Array_aleatorio_buscar_valor {
 
+	/**
+	 * Método principal
+	 * 
+	 * @param args
+	 */
+
 	public static void main(String[] args) {
 
 		int num;
 		boolean encontrado = false;
 
-		int array[] = UtilsArrays.creaInicializaArrayEnterosAzarLimites(150, 0, 100);
+		int array[] = UtilsArrays.creaInicializaArrayEnterosAzarLimites(150, 0, 100); // Creamos e iniciamos el array
+																						// que se ha pedido
 
-		String str = JOptionPane.showInputDialog("Elige un número entre 0 y 100");
+		String str = JOptionPane.showInputDialog("Elige un número entre 0 y 100"); // Pedimos al usuario el número que
+																					// vamos a buscar
 		num = Integer.parseInt(str);
 
-		for (int i = 0; i < array.length; i++) {
+		for (int i = 0; i < array.length; i++) { // Recorremos el array para buscar el número
 
-			if (num == array[i]) {
-				System.out.println("El número " + num + " se encuentra en la posición " + i);
+			if (num == array[i]) { // Si se encunetra, se mostrará en pantalla su posición y "encontrado" pasará a
+									// ser true.
+				System.out.println("El número " + num + " se encuentra en la posición " + i +".");
 				encontrado = true;
-			
+
 			}
-		} 
-		if (encontrado == false) {
-		System.out.println("No se ha encontrado el número en ninguna posición");
+		}
+		if (encontrado == false) { // Si se encuentra el número "encontrado" sería true y esta parte no se
+									// mostraría en pantalla
+			System.out.println("No se ha encontrado el número en ninguna posición.");
 		}
 
 	}
