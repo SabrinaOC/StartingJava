@@ -87,7 +87,7 @@ public class UtilsArrays {
 	    }
 		
 		System.out.println("El mayor es " + mayor
-				+ "\nEl menos es " + menor);
+				+ "\nEl menor es " + menor);
 	}
 	
 	/** 
