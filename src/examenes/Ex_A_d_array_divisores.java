@@ -25,10 +25,11 @@ public class Ex_A_d_array_divisores {
 
 		// Recorro el array para ir pasando por cada valor y ver sus divisores
 		for (int i = 0; i < array.length; i++) {
+			System.out.println("Divisores de " + array[i]);
 			for (int j = array[i]-1; j > 0; j--) {// al entrar en cada valor lo divido entre él mismo y los menores y si
 												// dan resto 0 los muestro en pantalla
 				if (array[i] % j == 0) {
-					System.out.println(j + " es divisor de " + array[i]);
+					System.out.println("\t" + j + " es divisor de " + array[i]);
 				}
 			}
 		}

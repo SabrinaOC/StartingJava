@@ -26,11 +26,11 @@ public class Ex_A_e_array_mostrar_acaban_cifra_usuario {
 
 		int num;
 
-		String str = JOptionPane.showInputDialog("¿Qué número buscamos?");
+		String str = JOptionPane.showInputDialog("¿Qué número buscamos?"); //Pedimos número al usuario
 		num = Integer.parseInt(str);
 
 		// Creamos array de números aleatorios
-		int array[] = new int[15];
+		int array[] = new int[100];
 
 		for (int i = 0; i < array.length; i++) {
 			array[i] = Utils.obtenerNumeroAzar();

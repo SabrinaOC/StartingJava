@@ -37,25 +37,26 @@ public class Ex_A_f_array_a_array_orden_aleatorio {
 		int array2[] = new int[5];
 
 		for (int i = 0; i < array2.length; i++) {
-			array2[i] = 0;
+			array2[i] = -1;
 		}
 		// Recorro el array 1 para elegir la posición que ocupará en el array 2
 		for (int i = 0; i < array1.length; i++) {
+			
+			
+			do {
 			num = Utils.obtenerNumeroAzar(0, 4); // Creo números al azar entre para las posiciones del array
-			if (num != 0) { // Otorgamos el valor del array 1 al array 2 en la posición obtenida de forma
-							// aleatoria
-				array1[i] = array2[num];
-			} else {
+			
+			array2[num] = array1[i];
+			
+			
+			} while (array2[num] != -1);
 
-			}
-
-			System.out.print("\n " + num);
-		}
+		}		
 
 		for (int i = 0; i < array2.length; i++) { // Recorremos el array 2 para mostrar valores en pantalla
 			System.out.print("\n" + array2[i] + " ");
 		}
 
+	  
 	}
-
 }
