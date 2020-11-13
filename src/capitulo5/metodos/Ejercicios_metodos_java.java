@@ -181,9 +181,10 @@ public class Ejercicios_metodos_java {
 		// variable string que devolveremos
 		String[] unidades = new String[] { "cero", "uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho",
 				"nueve", "diez" };
-
+		if (num>=unidades.length) {
+			return "No se puede traducir";
+		}
 		String str = unidades[num];
-
 		return str;
 	}
 
