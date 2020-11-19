@@ -18,9 +18,9 @@ public class Ejercicio_10_matriz_opuesta {
 	public static void main(String[] args) {
 		
 		// Creamos matriz y damos valores
-		int matriz [][] = new int [][] { { 0, 1, 2, 10 }, 
-										 { 1, 1, 3, 12 }, 
-										 { 2, 3, 1, 14 }};
+		int matriz [][] = new int [][] { { 0, 1, -2, 10 }, 
+										 { 1, -1, 3, 12 }, 
+										 { 2, 3, 1, -14 }};
 
 		utilsMatrices.mostrarMatrizPantalla(matriz); // Mostramos matriz en pantalla a modo de comprobación
 		System.out.println();
