@@ -100,6 +100,93 @@ public class utilsMatrices {
 		return esTriangular; //Devolvemos boolean
 
 	}
+	
+	
+	/**
+	 * Matriz a array unidimensional
+	 * 
+	 * @param matriz
+	 * @return
+	 */
 
+	public static int[] matrizAArray(int matriz[][]) {
+		int cont = 0; // Creo contador para ver cuántas posiciones tiene la matriz
 
+		for (int i = 0; i < matriz.length; i++) { // Recorremos matriz para saber posiciones totales
+			for (int j = 0; j < matriz[i].length; j++) {
+				cont++; // Aumentamos contador en cada posición
+			}
+		}
+
+		int array[] = new int[cont]; // Creamos array con longitud de posiciones totales de matriz
+		int k = 0; // Creamos índice para array
+		for (int i = 0; i < matriz.length; i++) { // Recorremos matriz para dar valores a array
+			for (int j = 0; j < matriz[i].length; j++) {
+				array[k] = matriz[i][j];
+				k++; // Aumentamos índice array en cada vuelta
+
+			}
+
+		}
+
+		return array; // Devolvemos array
+	}
+
+	
+	/**
+	 * Método comprueba matriz simétrica
+	 * @param matriz
+	 * @return
+	 */
+	
+	public static boolean comprobarMatrizSimetrica (int matriz [][]) {
+		boolean esSimetrica = true; //Creamos boolean que devolveremos al main
+		
+		for (int i = 0; i < matriz.length; i ++) { //Recorremos matris
+			for (int j = 0; j < matriz[i].length; j++) {
+				if (i != j) { //Como la diagonal principal no se ha de tener en cuenta, comprobamos el resto de posiciones
+					if (matriz[i][j] != matriz[j][i]) { //Como la relación es espejo, si no se cumple esa condición
+						esSimetrica = false;			//esSimetrica es falso
+					}
+				}
+			}
+		}
+		
+		return esSimetrica; //Devolvemos boolean al main
+				
+	}
+	
+	
+	/**
+	 * Método para crear matriz traspuesta
+	 * @param matriz
+	 * @return
+	 */
+
+	public static int [][] matrizTraspuesta (int matriz[][]) {
+		int filas = 0;
+		int columnas = 0;
+		
+		for (int i = 0; i < matriz.length; i++) { //Recorremos matriz para establecer dimensiones nueva matriz (filas/columnas)
+			columnas++;
+			for (int j = 0; j <= matriz.length; j++) {
+				 
+				filas++;
+			}
+		}
+		filas = filas /columnas;
+		
+		int traspuesta [][] = new int [filas] [columnas]; //Creamos nueva matriz con las dimensiones calculadas
+		
+		for (int i = 0; i < matriz.length; i++) { //Recorremos matriz para asignar valores a traspuesta
+			for (int j = 0; j < matriz[i].length; j++) {
+				traspuesta [j][i] = matriz [i][j]; //Asignación opuesta, cambiamos filas por columnas
+				
+			}
+		}
+		
+		return traspuesta;
+	}
+
+	
 }
