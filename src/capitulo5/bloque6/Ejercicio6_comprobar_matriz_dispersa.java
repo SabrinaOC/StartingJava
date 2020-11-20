@@ -3,10 +3,12 @@ package capitulo5.bloque6;
 import Utils.utilsMatrices;
 
 /**
-	 * Realiza un programa que cree un array bidimensional, una matriz.
-	 * @author F541U
-	 *
-	 */
+ * Crea un método que compruebe si la matriz es dispersa. (Todos las filas y
+ * todas las columnas contienen al menos un elemento nulo).
+ * 
+ * @author F541U
+ *
+ */
 
 public class Ejercicio6_comprobar_matriz_dispersa {
 
@@ -17,7 +19,7 @@ public class Ejercicio6_comprobar_matriz_dispersa {
 	
 	public static void main(String[] args) {
 		//Creamos matriz y damos valores
-		int matriz [][] = new int [][] { { 1, 0, 1 }, 
+		int matriz [][] = new int [][] { { 1, 1, 1 }, 
 										 { 1, 0, 1 }, 
 										 { 2, 0, 1 }};
 
@@ -50,7 +52,7 @@ public class Ejercicio6_comprobar_matriz_dispersa {
 			}
 		}
 		
-		if (contadori > matriz.length) {
+		if (contadori > matriz.length) { //Si no se ha encontrado al menos un 0 en cada fila, devolvemos esDispersa = false
 			return esDispersa;
 		}
 

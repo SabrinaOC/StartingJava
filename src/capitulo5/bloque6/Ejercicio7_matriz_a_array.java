@@ -22,9 +22,9 @@ public class Ejercicio7_matriz_a_array {
 
 	public static void main(String[] args) {
 		// Creamos matriz y damos valores
-		int matriz[][] = new int[][] { { 0, 0, 1 }, 
-									   { 0, 1, 0 }, 
-									   { 1, 0, 1 }};
+		int matriz[][] = new int[][] { { 72, 8, 1 }, 
+									   { 90, 3, 0 }, 
+									   { 17, 2, 14 }};
 
 		utilsMatrices.mostrarMatrizPantalla(matriz); // Mostramos matriz en pantalla a modo de comprobación
 		System.out.println();

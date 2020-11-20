@@ -3,8 +3,8 @@ package capitulo5.bloque6;
 import Utils.utilsMatrices;
 
 /**
- * Realiza un programa que cree un array bidimensional, una matriz, de 5 filas x
- * 5 columnas.
+ * Crea un método que compruebe si la matriz es diagonal (Todos los elementos
+ * que no están en la diagonal principal son nulos).
  * 
  * @author F541U
  *

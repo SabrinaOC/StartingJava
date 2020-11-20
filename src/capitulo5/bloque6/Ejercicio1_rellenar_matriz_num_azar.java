@@ -1,10 +1,11 @@
 package capitulo5.bloque6;
 
 import Utils.Utils;
+import Utils.utilsMatrices;
 
 /**
- * Realiza un programa que cree un array bidimensional, una matriz, de 5 filas x
- * 5 columnas. Una vez hecho el array.
+ * Crea un método que rellena la matriz con valores creados al azar. El método
+ * recibirá la matriz y devolverá "void".
  * 
  * @author F541U
  *
@@ -23,14 +24,9 @@ public class Ejercicio1_rellenar_matriz_num_azar {
 		int matriz[][] = new int[5][5]; // Creamos matriz
 
 		rellenarMatrizAzar(matriz); // Llamamos al método para rellenar matriz
-
-		for (int i = 0; i < matriz.length; i++) { // Recorremos matriz para mostrarlo en pantalla
-			for (int j = 0; j < matriz[i].length; j++) {
-				System.out.print(matriz[i][j] + "\t");
-
-			}
-			System.out.println();
-		}
+		
+		utilsMatrices.mostrarMatrizPantalla(matriz); //Utilizamos método creado para mostrar matriz en pantalla
+		
 
 	}
 

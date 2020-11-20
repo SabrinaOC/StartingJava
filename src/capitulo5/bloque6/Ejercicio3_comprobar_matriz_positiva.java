@@ -3,6 +3,9 @@ package capitulo5.bloque6;
 import Utils.utilsMatrices;
 
 /**
+ * Crea un método que compruebe si la matriz es positiva. (Todos sus elementos
+ * mayores o iguales a cero). El método recibirá una matriz y devolver un valor
+ * "boolean", indicando si la matriz es o no es positiva.
  * 
  * @author F541U
  *

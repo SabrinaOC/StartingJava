@@ -3,10 +3,12 @@ package capitulo5.bloque6;
 import Utils.utilsMatrices;
 
 /**
-	 * Realiza un programa que cree un array bidimensional, una matriz, de 5 filas x 5 columnas
-	 * @author F541U
-	 *
-	 */
+ * Crea un método que imprima la matriz en consola. El método recibirá la matriz
+ * y devolverá "void"
+ * 
+ * @author F541U
+ *
+ */
 
 public class Ejercicio2_imprimir_matriz_pantalla {
 

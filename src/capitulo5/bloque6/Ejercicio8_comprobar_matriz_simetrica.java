@@ -22,7 +22,7 @@ public class Ejercicio8_comprobar_matriz_simetrica {
 	public static void main(String[] args) {
 		// Creamos matriz y damos valores
 	int matriz [][] = new int [][] { { 0, 1, 2 }, 
-									 { 1, 1, 3 }, 
+									 { 5, 1, 3 }, 
 									 { 2, 3, 1 }};
 
 		utilsMatrices.mostrarMatrizPantalla(matriz); // Mostramos matriz en pantalla a modo de comprobación

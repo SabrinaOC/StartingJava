@@ -3,15 +3,18 @@ package capitulo5.bloque6;
 import Utils.utilsMatrices;
 
 /**
-	 * Crea un método que realice la matriz traspuesta de la que recibe. El método recibe una matriz y devuelve otra matriz, la traspuesta
-	 * @author F541U
-	 *
-	 */
+ * Crea un método que realice la matriz traspuesta de la que recibe. El método
+ * recibe una matriz y devuelve otra matriz, la traspuesta
+ * 
+ * @author F541U
+ *
+ */
 
 public class Ejercicio9_comprobar_matriz_traspuesta {
 
 	/**
 	 * Método principal
+	 * 
 	 * @param args
 	 */
 	
@@ -35,28 +38,29 @@ public class Ejercicio9_comprobar_matriz_traspuesta {
 	 * @return
 	 */
 
-	public static int [][] matrizTraspuesta (int matriz[][]) {
+	public static int[][] matrizTraspuesta(int matriz[][]) {
 		int filas = 0;
 		int columnas = 0;
-		
-		for (int i = 0; i < matriz.length; i++) { //Recorremos matriz para establecer dimensiones nueva matriz (filas/columnas)
+
+		for (int i = 0; i < matriz.length; i++) { // Recorremos matriz para establecer dimensiones nueva matriz
+													// (filas/columnas)
 			columnas++;
 			for (int j = 0; j <= matriz.length; j++) {
-				 
+
 				filas++;
 			}
 		}
-		filas = filas /columnas;
-		
-		int traspuesta [][] = new int [filas] [columnas]; //Creamos nueva matriz con las dimensiones calculadas
-		
-		for (int i = 0; i < matriz.length; i++) { //Recorremos matriz para asignar valores a traspuesta
+		filas = filas / columnas;
+
+		int traspuesta[][] = new int[filas][columnas]; // Creamos nueva matriz con las dimensiones calculadas
+
+		for (int i = 0; i < matriz.length; i++) { // Recorremos matriz para asignar valores a traspuesta
 			for (int j = 0; j < matriz[i].length; j++) {
-				traspuesta [j][i] = matriz [i][j]; //Asignación opuesta, cambiamos filas por columnas
-				
+				traspuesta[j][i] = matriz[i][j]; // Asignación opuesta, cambiamos filas por columnas
+
 			}
 		}
-		
+
 		return traspuesta;
 	}
 

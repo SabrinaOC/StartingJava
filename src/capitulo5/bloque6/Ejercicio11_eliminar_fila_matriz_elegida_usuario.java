@@ -30,13 +30,23 @@ public class Ejercicio11_eliminar_fila_matriz_elegida_usuario {
 
 		utilsMatrices.mostrarMatrizPantalla(matriz); // Mostramos matriz en pantalla a modo de comprobación
 		System.out.println();
+		
+		String str = JOptionPane.showInputDialog("Introduzca un número entre 0 y " + (matriz.length-1)); // Pedimos número a
+		// usuario
+		int num = Integer.parseInt(str);
+		
+		do {
+		str = JOptionPane.showInputDialog("Valor no admitido. Por favor, introduzca un número entre 0 y " + (matriz.length-1)); // Pedimos número a
+		// usuario
+		num = Integer.parseInt(str);
+		} while (num < 0 || num > matriz.length-1);
 
-		int matrizMod[][] = eliminarFilaMatrizEligeUsiario(matriz);
+		int matrizMod[][] = eliminarFilaMatrizEligeUsiario(matriz, num);
 		utilsMatrices.mostrarMatrizPantalla(matrizMod);
 
 	}
 
-	public static int[][] eliminarFilaMatrizEligeUsiario(int matriz[][]) {
+	public static int[][] eliminarFilaMatrizEligeUsiario(int matriz[][], int num) {
 
 		// Creamos contador para filas y columnas de la matriz
 		int columnas = 0;
@@ -51,10 +61,6 @@ public class Ejercicio11_eliminar_fila_matriz_elegida_usuario {
 			}
 		}
 		columnas = columnas / filas;
-
-		String str = JOptionPane.showInputDialog("Introduzca un número entre 0 y " + (filas - 1)); // Pedimos número a
-																									// usuario
-		int num = Integer.parseInt(str);
 
 		int matrizMod[][] = new int[filas - 1][columnas]; // Creamos nueva matriz con las dimensiones calculadas
 		int k = 0; // Creamos variable para índice filas matriz modificada

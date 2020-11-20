@@ -3,10 +3,12 @@ package capitulo5.bloque6;
 import Utils.utilsMatrices;
 
 /**
-	 * Realiza un programa que cree un array bidimensional, una matriz, de 5 filas x 5 columnas
-	 * @author F541U
-	 *
-	 */
+ * Crea un método que compruebe si la matriz es triangular superior. (Todos los
+ * elementos que están por debajo de la diagonal principal son nulos).
+ * 
+ * @author F541U
+ *
+ */
 
 public class Ejercicio5_comprobar_matriz_triangular_superior {
 
@@ -22,7 +24,7 @@ public class Ejercicio5_comprobar_matriz_triangular_superior {
 			   							 { 0, 1, 0, 5, 0 }, 
 			   							 { 0, 0, 1, 0, 0 }, 
 			   							 { 0, 0, 0, 1, 0 },
-			   							 { 0, 0, 0, 0, 1 }};
+			   							 { 7, 0, 0, 0, 1 }};
 		
 		utilsMatrices.mostrarMatrizPantalla(matriz); //Mostramos matriz en pantalla a modo de comprobación
 		System.out.println();							

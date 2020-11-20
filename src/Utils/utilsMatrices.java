@@ -189,4 +189,39 @@ public class utilsMatrices {
 	}
 
 	
+	public static int[][] eliminarFilaMatrizEligeUsiario(int matriz[][], int num) {
+
+		// Creamos contador para filas y columnas de la matriz
+		int columnas = 0;
+		int filas = 0;
+
+		for (int i = 0; i < matriz.length; i++) { // Recorremos matriz para establecer dimensiones nueva matriz
+													// (filas/columnas)
+			filas++;
+			for (int j = 0; j <= matriz.length; j++) {
+
+				columnas++;
+			}
+		}
+		columnas = columnas / filas;
+
+		int matrizMod[][] = new int[filas - 1][columnas]; // Creamos nueva matriz con las dimensiones calculadas
+		int k = 0; // Creamos variable para índice filas matriz modificada
+		for (int i = 0; i < matriz.length; i++) { // Recorremos matriz para darle valores a la matriz modificada
+			for (int j = 0; j < matriz[i].length; j++) {
+				if (i != num) { // Si el valor de i, es decir, la fila, coincide con el número del usuario, la
+								// saltamos
+					matrizMod[k][j] = matriz[i][j];
+
+				}
+
+			}
+			if (i != num) { // Si i es distinto de num el contador j aumenta 1
+				k++;
+			}
+		}
+
+		return matrizMod;
+	}
+	
 }
