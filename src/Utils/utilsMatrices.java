@@ -1,5 +1,6 @@
 package Utils;
 
+
 public class utilsMatrices {
 
 	/**
@@ -222,6 +223,28 @@ public class utilsMatrices {
 		}
 
 		return matrizMod;
+	}
+	
+	
+	/**
+	 * 
+	 * @param filas
+	 * @param cols
+	 * @param min
+	 * @param max
+	 * @return
+	 */
+	public static int[][] generaMatriz (int filas, int cols, int min, int max) {
+		int matriz[][] = new int[filas][cols];
+		
+		// Asignación de valores al azar en las posiciones de la matriz
+		for (int i = 0; i < matriz.length; i++) { // Con la variable "i" recorro todas las filas
+			for (int j = 0; j < matriz[i].length; j++) { // Con la variable "j" recorro las columnas de cada fila
+				// Asigno número al azar
+				matriz[i][j] = Utils.obtenerNumeroAzar(min, max);
+			}
+		}
+		return matriz;
 	}
 	
 }

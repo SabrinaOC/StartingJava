@@ -48,16 +48,16 @@ public class Ejercicio5_comprobar_matriz_triangular_superior {
 	
 	public static boolean comprobarMatrizTriangularSuperior(int matriz[][]) {
 
-		boolean esTriangular = true; //Creamos boolean de comprobación, el mismo que devolveremos al main
+		
 
 		for (int i = 1; i <= matriz.length - 1; i++) { //Recorremos i desde 1 ya que la posición 0 forma parte de la trangular superior
 			for (int j = 0; j < i; j++) { //Recorremos j hasta que su valor sea igual a i - 1
 				if (matriz[i][j] != 0) { //Si en alguna de esas posiciones se encuentra un valor distinto de 0
-					esTriangular = false; //esTriangular pasa a falso
+					return false; //esTriangular pasa a falso
 				}
 			}
 		}
-		return esTriangular; //Devolvemos boolean
+		return true; //Devolvemos boolean
 
 	}
 
