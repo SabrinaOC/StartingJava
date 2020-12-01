@@ -1,4 +1,4 @@
-package examenes;
+package examen01_5-11-20;
 
 import javax.swing.JOptionPane;
 

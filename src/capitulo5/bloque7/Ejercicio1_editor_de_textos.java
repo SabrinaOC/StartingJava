@@ -223,6 +223,8 @@ public class Ejercicio1_editor_de_textos {
 		public static List<String> cortarListaEnPortapapeles (int inicioCortado, int finCortado, List<String> fichero) {
 			List<String> portapapeles = new ArrayList<String>();
 			
+			portapapeles.clear(); //limpio el cortapapeles 
+			
 			for (int i = 0; i <= fichero.size(); i++) { //recorremos desde inicio a fin
 				
 					if (i ==  inicioCortado) { //Si el inicio de borrado coincide con i, ponemos valor en nueva lista

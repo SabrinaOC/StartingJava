@@ -97,22 +97,25 @@ public class Baloncesto {
 		
 		do {
 			intercambio = false;
-		for (int i = 0; i < listaCromos.size()-1; i ++) { //Recorremos lista para comparar puntos por partido
-			//de los objetos de la lista comparamos solo los puntos
-			if (listaCromos.get(i).getPuntosMediosPorpartido()>listaCromos.get(i+1).getPuntosMediosPorpartido()) {
-				auxiliar = listaCromos.get(i+1); //guardamos todas la propiedades del objeto en la variable auxiliar
-				listaCromos.add(i+1, listaCromos.get(i)); //Añadimos el valor comparado a la lista en la posición correspondiente
-				//esto nos crea un nuevo elemento que deberemos eliminar en la posición i +2 e i ya que son las posiciones que se cambian 
-				listaCromos.remove(i+2); //y así evitamos que se creen múltiples elementos iguales
-				listaCromos.remove(i);
-				
-				listaCromos.add(i, auxiliar);
-				intercambio = true;
-								
-			} 
-		}
-		} while (intercambio); //Repetimos bucle hasta que no haya intercambios
-		
+			for (int i = 0; i < listaCromos.size() - 1; i++) { // Recorremos lista para comparar puntos por partido
+				// de los objetos de la lista comparamos solo los puntos
+				if (listaCromos.get(i).getPuntosMediosPorpartido() > listaCromos.get(i + 1).getPuntosMediosPorpartido()) {
+					auxiliar = listaCromos.get(i + 1); // guardamos todas la propiedades del objeto en la variable
+														// auxiliar
+					listaCromos.add(i + 1, listaCromos.get(i)); // Añadimos el valor comparado a la lista en la posición
+																// correspondiente
+					// esto nos crea un nuevo elemento que deberemos eliminar en la posición i +2 e
+					// i ya que son las posiciones que se cambian
+					listaCromos.remove(i + 2); // y así evitamos que se creen múltiples elementos iguales
+					listaCromos.remove(i);
+
+					listaCromos.add(i, auxiliar);
+					intercambio = true;
+
+				}
+			}
+		} while (intercambio); // Repetimos bucle hasta que no haya intercambios
+
 		for (int i = 0; i < listaCromos.size(); i++) {
 			System.out.println(listaCromos.get(i).toString()); //Imprimimos en pantalla la lista ordenada
 		}
