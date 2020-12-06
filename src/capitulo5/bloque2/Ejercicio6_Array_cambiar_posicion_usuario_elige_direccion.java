@@ -2,7 +2,7 @@ package capitulo5.bloque2;
 
 import javax.swing.JOptionPane;
 
-import Utils.UtilsArrays;
+import utils.UtilsArrays;
 
 /**
  * Capítulo 5, Bloque 2, Ejercicio 6 Realiza un ejercicio en que inicialice un

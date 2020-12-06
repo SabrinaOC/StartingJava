@@ -1,6 +1,6 @@
-package examen01_5-11-20;
+package examenes.examen01_5_11_20;
 
-import Utils.UtilsArrays;
+import utils.UtilsArrays;
 
 /**
  * Examen A, ejercicio c Crea una clase con un método “main” que cree un array

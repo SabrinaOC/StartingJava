@@ -1,7 +1,7 @@
 package capitulo5.bloque6;
 
-import Utils.Utils;
-import Utils.utilsMatrices;
+import utils.Utils;
+import utils.utilsMatrices;
 
 /**
  * Crea un método que rellena la matriz con valores creados al azar. El método

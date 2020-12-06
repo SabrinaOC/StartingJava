@@ -1,6 +1,6 @@
 package capitulo5.bloque3;
 
-import Utils.UtilsArrays;
+import utils.UtilsArrays;
 
 /**
  * Capítulo 5, bloque 3, ejercicio 2 Realiza un ejercicio que inicialice un

@@ -2,7 +2,7 @@ package capitulo5.practicaExamen;
 
 
 
-import Utils.Utils;
+import utils.Utils;
 
 public class Examen_A_bolos {
 
@@ -13,6 +13,8 @@ public class Examen_A_bolos {
 		int ronda = 1;
 		int puntos = 0;
 		int puntuacion = 10;
+		int contador0=0;
+		int probabilidad = 0;
 
 		int bolos[] = new int[10]; // creamos array para bolos
 
@@ -29,27 +31,28 @@ public class Examen_A_bolos {
 				break;
 			case 1:
 				mostrarBolosEnPantalla(bolos); // Mostramos bolos en pantalla para ver cómo están antes de la tirada
-				probabilidadCaigaBolo(bolos, ronda); // Usamos método para calcular probabilidad
-
+				//probabilidad = probabilidadCaigaBolo(bolos, ronda); // Usamos método para calcular probabilidad
+				
+				lanzarBola(bolos, ronda);
 				System.out.println("");
 				mostrarBolosEnPantalla(bolos); // Mostramos bolos tras tirada
-				puntos = verPuntuacionPorTirada(bolos, ronda, puntos, puntuacion);
+				puntos = verPuntuacionPorTirada(bolos, ronda, puntos, puntuacion, contador0);
 				ronda++;
 				puntuacion = puntuacion / 2;
-				quedanBolosEnPie = comprobarQuedanBolosEnPie(bolos); // Comprobamos si es posible seguir jugando
-
-				if (quedanBolosEnPie == false) { // Si es false salimos del juego
-					opcion = 0;
-					System.out.println("");
-					System.out.println("Fin de partida");
-				}
-
+//				quedanBolosEnPie = comprobarQuedanBolosEnPie(bolos); // Comprobamos si es posible seguir jugando
+//
+//				if (quedanBolosEnPie == false) { // Si es false salimos del juego
+//					opcion = 0;
+//					System.out.println("");
+//					System.out.println("Fin de partida");
+//				}
+//
 				break;
 			default:
 				System.out.println("Opción no válida");
 			}
 
-		} while (opcion != 0);// Establecemos condición para el bucle
+		} while (opcion != 0 && comprobarQuedanBolosEnPie(bolos));// Establecemos condición para el bucle
 		
 
 		
@@ -122,38 +125,66 @@ public class Examen_A_bolos {
 	 * @return
 	 */
 
-	public static int[] probabilidadCaigaBolo(int bolos[], int ronda) {
-
+	public static int probabilidadCaigaBolo(int bolos[], int ronda) {
+		//int cont = 0;
 		int probabilidad = 0; // Creamos variable para probabilidad
-		int probdescendiente;
+		//int probdescendiente;
 
-		for (int i = 0; i < bolos.length; i++) { // Recorremos el array
-			probabilidad = Utils.obtenerNumeroAzar(30, 75);// Creamos número al azar para probabilidad
-			probdescendiente = Utils.obtenerNumeroAzar(30, 75);
+		//for (int i = 0; i < bolos.length; i++) { // Recorremos el array
+			probabilidad = Utils.obtenerNumeroAzar(0, 100);// Creamos número al azar para probabilidad
+			//probdescendiente = Utils.obtenerNumeroAzar(30, 75);
 
-			if (probabilidad <= (probdescendiente - ronda * 15)) { // Si el número es 50 o menos, el bolo cae
-				bolos[i] = 0;
-			}
-			//System.out.println("probabilidad es " + probabilidad 
-				//		+"probabilidad descendiente es " + probdescendiente);
-		}
+//			if (probabilidad <= 50) { // Si el número es 50 o menos, el bolo cae
+//				bolos[i] = 0;
+//				cont++;
+//			}
+//			if (ronda != 1) {
+//				cont = cont-contador0;
+//			} 
+		//}
 
-		return bolos;
+		return probabilidad;
 	}
+	
+	public static int lanzarBola (int bolos[], int ronda) {
+		int bolosTirados = 0;
+		
+		for (int i = 0; i < bolos.length; i++) {
+			if (bolos[i] <= probabilidadCaigaBolo(bolos, ronda)) {
+				bolos[i] = 0;
+				bolosTirados++;
+			}
+		}
+		return bolosTirados;
+	}
+	
+	
+	
+	
 
-	public static int verPuntuacionPorTirada(int bolos[], int ronda, int puntos, int puntuacion) {
+	public static int verPuntuacionPorTirada(int bolos[], int ronda, int puntos, int puntuacion, int contador0) {
+		int cont = 0;
 		for (int i = 0; i < bolos.length; i++) {// Recorremos array para ver cuántos bolos han caído y sumarlo a
 												// puntuación
 			if (bolos[i] == 0) { // Comprobamos si el bolo se ha caído
 				if (ronda < 5) { // Dado que a partir de la 5ª ronda no sumamos puntos, solo entraremos aquí las
-									// 4 primeras veces
+					if (ronda == 1)	{		// 4 primeras veces
 					puntos += puntuacion; // Sumamos puntos
+					} else {
+						if (bolos[i] == 0) {
+							cont++; //contamos bolos caídos
+							
+						}
+					}
 				}
 			}
 		}
+		cont = cont - contador0; //restamos para ver cuántos han caído en la última tirada, teniendo contador0 como referencia
+		puntos = puntuacion * cont;
 		System.out.println("");
 		System.out.println(puntos + " puntos obtenido hasta la ronda " + ronda
-				+ "\nEl valor de puntos por bolo en esta ronda es " + puntuacion);
+				+"\nSe han caído " + cont +" bolos en la última tirada"
+				+ "\nEl valor de puntos por bolo en ronda " + ronda + " es " + puntuacion);
 		return puntos;
 	}
 

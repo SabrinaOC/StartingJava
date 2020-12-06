@@ -2,7 +2,7 @@ package capitulo5.bloque6;
 
 import javax.swing.JOptionPane;
 
-import Utils.utilsMatrices;
+import utils.utilsMatrices;
 
 /**
  * Crea un método que pida al usuario un número de fila sobre una matriz. Debes

@@ -1,6 +1,6 @@
 package capitulo5.bloque6;
 
-import Utils.utilsMatrices;
+import utils.utilsMatrices;
 
 /**
  * Crea un método que imprima la matriz en consola. El método recibirá la matriz

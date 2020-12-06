@@ -2,7 +2,7 @@ package capitulo5.bloque2;
 
 import javax.swing.JOptionPane;
 
-import Utils.UtilsArrays;
+import utils.UtilsArrays;
 
 /** Capítulo 5, Bloque 2, Ejercicio 3
  * Realiza un ejercicio que inicialice un array de 150 elementos enteros al azar entre 0 y 100. 

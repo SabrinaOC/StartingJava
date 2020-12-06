@@ -1,7 +1,7 @@
 package capitulo5.bloque6;
 
-import Utils.UtilsArrays;
-import Utils.utilsMatrices;
+import utils.UtilsArrays;
+import utils.utilsMatrices;
 
 /**
  * Ejercicio 7. Crea un método que construya un array unidimensional con todos

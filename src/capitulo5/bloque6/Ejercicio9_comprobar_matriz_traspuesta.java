@@ -1,6 +1,6 @@
 package capitulo5.bloque6;
 
-import Utils.utilsMatrices;
+import utils.utilsMatrices;
 
 /**
  * Crea un método que realice la matriz traspuesta de la que recibe. El método

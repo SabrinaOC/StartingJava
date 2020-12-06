@@ -1,8 +1,8 @@
-package examen01_5-11-20;
+package examenes.examen01_5_11_20;
 
 import javax.swing.JOptionPane;
 
-import Utils.UtilsArrays;
+import utils.UtilsArrays;
 
 /**
  * Examen A, ejercicio b. Crea una clase con un método “main” que cree un array

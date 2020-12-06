@@ -1,6 +1,6 @@
 package capitulo5.bloque2;
 
-import Utils.UtilsArrays;
+import utils.UtilsArrays;
 
 /**
  * Capítulo 5, Bloque 2, Ejercicio 2 

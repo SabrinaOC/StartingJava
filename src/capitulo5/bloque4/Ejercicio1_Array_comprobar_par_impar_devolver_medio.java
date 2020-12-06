@@ -1,6 +1,6 @@
 package capitulo5.bloque4;
 
-import Utils.Utils;
+import utils.Utils;
 
 /**
  * Capítulo 5, bloque 4, ejercicio 1 Crea un método que reciba un array de

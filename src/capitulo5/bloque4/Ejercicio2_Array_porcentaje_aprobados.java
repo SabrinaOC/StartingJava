@@ -1,6 +1,6 @@
 package capitulo5.bloque4;
 
-import Utils.UtilsArrays;
+import utils.UtilsArrays;
 
 /**
  * Capítulo 5, bloque 4, ejercicio 2 Crea un array de 20 números enteros
