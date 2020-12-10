@@ -1,10 +1,10 @@
 package capitulo5.bloque6;
 
-import utils.utilsMatrices;
+import utils.UtilsMatrices;
 
 /**
- * Crea un método que compruebe si la matriz es triangular superior. (Todos los
- * elementos que están por debajo de la diagonal principal son nulos).
+ * Crea un mï¿½todo que compruebe si la matriz es triangular superior. (Todos los
+ * elementos que estï¿½n por debajo de la diagonal principal son nulos).
  * 
  * @author F541U
  *
@@ -13,7 +13,7 @@ import utils.utilsMatrices;
 public class Ejercicio5_comprobar_matriz_triangular_superior {
 
 	/**
-	 * Método principal
+	 * Mï¿½todo principal
 	 * @param args
 	 */
 	
@@ -26,13 +26,13 @@ public class Ejercicio5_comprobar_matriz_triangular_superior {
 			   							 { 0, 0, 0, 1, 0 },
 			   							 { 7, 0, 0, 0, 1 }};
 		
-		utilsMatrices.mostrarMatrizPantalla(matriz); //Mostramos matriz en pantalla a modo de comprobación
+		UtilsMatrices.mostrarMatrizPantalla(matriz); //Mostramos matriz en pantalla a modo de comprobaciï¿½n
 		System.out.println();							
 		
 		boolean esTriangular = comprobarMatrizTriangularSuperior(matriz);
 
 		if (esTriangular) { // Definimos distintos mensajes dependiendo si esDiagonal es true o false
-			// después de recorrer la matriz
+			// despuï¿½s de recorrer la matriz
 			System.out.print("La matriz es triangular superior");
 		} else {
 			System.out.print("La matriz no es triangular superior");
@@ -41,7 +41,7 @@ public class Ejercicio5_comprobar_matriz_triangular_superior {
 	}
 
 	/**
-	 * Método para comprobar matriz triangular superior
+	 * Mï¿½todo para comprobar matriz triangular superior
 	 * @param matriz
 	 * @return
 	 */
@@ -50,7 +50,7 @@ public class Ejercicio5_comprobar_matriz_triangular_superior {
 
 		
 
-		for (int i = 1; i <= matriz.length - 1; i++) { //Recorremos i desde 1 ya que la posición 0 forma parte de la trangular superior
+		for (int i = 1; i <= matriz.length - 1; i++) { //Recorremos i desde 1 ya que la posiciï¿½n 0 forma parte de la trangular superior
 			for (int j = 0; j < i; j++) { //Recorremos j hasta que su valor sea igual a i - 1
 				if (matriz[i][j] != 0) { //Si en alguna de esas posiciones se encuentra un valor distinto de 0
 					return false; //esTriangular pasa a falso

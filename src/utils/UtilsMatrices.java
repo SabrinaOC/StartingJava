@@ -1,15 +1,15 @@
 package utils;
 
 
-public class utilsMatrices {
+public class UtilsMatrices {
 
 	/**
-	 * Método que rellena la matriz con valores creados al azar.
+	 * Mï¿½todo que rellena la matriz con valores creados al azar.
 	 * 
 	 * @param matriz
 	 */
 
-	public static void rellenarMatrizAzar(int matriz[][]) { // Creamos método vacío que recibe una matriz
+	public static void rellenarMatrizAzar(int matriz[][]) { // Creamos mï¿½todo vacï¿½o que recibe una matriz
 
 		for (int i = 0; i < matriz.length; i++) { // Recorremos las filas de la matriz
 			for (int j = 0; j < matriz[i].length; j++) { // Recorremos columnas
@@ -19,14 +19,14 @@ public class utilsMatrices {
 	}
 
 	/**
-	 * Método que rellena la matriz con valores creados al azar entre límites
+	 * Mï¿½todo que rellena la matriz con valores creados al azar entre lï¿½mites
 	 * 
 	 * @param matriz
 	 * @param min
 	 * @param max
 	 */
 
-	public static void rellenarMatrizAzarLimites(int matriz[][], int min, int max) { // Creamos método vacío que recibe
+	public static void rellenarMatrizAzarLimites(int matriz[][], int min, int max) { // Creamos mï¿½todo vacï¿½o que recibe
 																						// una matriz
 
 		for (int i = 0; i < matriz.length; i++) { // Recorremos las filas de la matriz
@@ -37,7 +37,7 @@ public class utilsMatrices {
 	}
 
 	/**
-	 * Método que imprima la matriz en pantalla.
+	 * Mï¿½todo que imprima la matriz en pantalla.
 	 * 
 	 * @param matriz
 	 */
@@ -55,23 +55,23 @@ public class utilsMatrices {
 	
 	
 	/**
-	 * Método que comprueba si la matriz es diagonal
+	 * Mï¿½todo que comprueba si la matriz es diagonal
 	 * 
 	 * @param matriz
 	 */
 
 	public static boolean comprobarMatrizDiagonal(int matriz[][]) {
 
-		boolean esDiagonal = true; // Creamos boolean a modo de bandera, partimos de que es diagonal, si en algún
+		boolean esDiagonal = true; // Creamos boolean a modo de bandera, partimos de que es diagonal, si en algï¿½n
 									// valor no lo es, pasa a false
 
 		for (int i = 0; i < matriz.length; i++) { // Recorremos matriz
 			for (int j = 0; j < matriz[i].length; j++) {
 				if (i != j) { // Las posiciones que pueden contener un valor distinto de cero, son aquellas en
 								// las que i y j conciden
-					if (matriz[i][j] != 0) { // por tanto, si en una posición fuera de estas encontramos un valor
+					if (matriz[i][j] != 0) { // por tanto, si en una posiciï¿½n fuera de estas encontramos un valor
 												// distinto de 0,
-						esDiagonal = false; // esDiagonal pasaría a falso
+						esDiagonal = false; // esDiagonal pasarï¿½a a falso
 					}
 				}
 			}
@@ -82,16 +82,16 @@ public class utilsMatrices {
 
 	
 	/**
-	 * Método para comprobar matriz triangular superior
+	 * Mï¿½todo para comprobar matriz triangular superior
 	 * @param matriz
 	 * @return
 	 */
 	
 	public static boolean comprobarMatrizTriangularSuperior(int matriz[][]) {
 
-		boolean esTriangular = true; //Creamos boolean de comprobación, el mismo que devolveremos al main
+		boolean esTriangular = true; //Creamos boolean de comprobaciï¿½n, el mismo que devolveremos al main
 
-		for (int i = 1; i <= matriz.length - 1; i++) { //Recorremos i desde 1 ya que la posición 0 forma parte de la trangular superior
+		for (int i = 1; i <= matriz.length - 1; i++) { //Recorremos i desde 1 ya que la posiciï¿½n 0 forma parte de la trangular superior
 			for (int j = 0; j < i; j++) { //Recorremos j hasta que su valor sea igual a i - 1
 				if (matriz[i][j] != 0) { //Si en alguna de esas posiciones se encuentra un valor distinto de 0
 					esTriangular = false; //esTriangular pasa a falso
@@ -111,20 +111,20 @@ public class utilsMatrices {
 	 */
 
 	public static int[] matrizAArray(int matriz[][]) {
-		int cont = 0; // Creo contador para ver cuántas posiciones tiene la matriz
+		int cont = 0; // Creo contador para ver cuï¿½ntas posiciones tiene la matriz
 
 		for (int i = 0; i < matriz.length; i++) { // Recorremos matriz para saber posiciones totales
 			for (int j = 0; j < matriz[i].length; j++) {
-				cont++; // Aumentamos contador en cada posición
+				cont++; // Aumentamos contador en cada posiciï¿½n
 			}
 		}
 
 		int array[] = new int[cont]; // Creamos array con longitud de posiciones totales de matriz
-		int k = 0; // Creamos índice para array
+		int k = 0; // Creamos ï¿½ndice para array
 		for (int i = 0; i < matriz.length; i++) { // Recorremos matriz para dar valores a array
 			for (int j = 0; j < matriz[i].length; j++) {
 				array[k] = matriz[i][j];
-				k++; // Aumentamos índice array en cada vuelta
+				k++; // Aumentamos ï¿½ndice array en cada vuelta
 
 			}
 
@@ -135,7 +135,7 @@ public class utilsMatrices {
 
 	
 	/**
-	 * Método comprueba matriz simétrica
+	 * Mï¿½todo comprueba matriz simï¿½trica
 	 * @param matriz
 	 * @return
 	 */
@@ -146,7 +146,7 @@ public class utilsMatrices {
 		for (int i = 0; i < matriz.length; i ++) { //Recorremos matris
 			for (int j = 0; j < matriz[i].length; j++) {
 				if (i != j) { //Como la diagonal principal no se ha de tener en cuenta, comprobamos el resto de posiciones
-					if (matriz[i][j] != matriz[j][i]) { //Como la relación es espejo, si no se cumple esa condición
+					if (matriz[i][j] != matriz[j][i]) { //Como la relaciï¿½n es espejo, si no se cumple esa condiciï¿½n
 						esSimetrica = false;			//esSimetrica es falso
 					}
 				}
@@ -159,7 +159,7 @@ public class utilsMatrices {
 	
 	
 	/**
-	 * Método para crear matriz traspuesta
+	 * Mï¿½todo para crear matriz traspuesta
 	 * @param matriz
 	 * @return
 	 */
@@ -181,7 +181,7 @@ public class utilsMatrices {
 		
 		for (int i = 0; i < matriz.length; i++) { //Recorremos matriz para asignar valores a traspuesta
 			for (int j = 0; j < matriz[i].length; j++) {
-				traspuesta [j][i] = matriz [i][j]; //Asignación opuesta, cambiamos filas por columnas
+				traspuesta [j][i] = matriz [i][j]; //Asignaciï¿½n opuesta, cambiamos filas por columnas
 				
 			}
 		}
@@ -207,10 +207,10 @@ public class utilsMatrices {
 		columnas = columnas / filas;
 
 		int matrizMod[][] = new int[filas - 1][columnas]; // Creamos nueva matriz con las dimensiones calculadas
-		int k = 0; // Creamos variable para índice filas matriz modificada
+		int k = 0; // Creamos variable para ï¿½ndice filas matriz modificada
 		for (int i = 0; i < matriz.length; i++) { // Recorremos matriz para darle valores a la matriz modificada
 			for (int j = 0; j < matriz[i].length; j++) {
-				if (i != num) { // Si el valor de i, es decir, la fila, coincide con el número del usuario, la
+				if (i != num) { // Si el valor de i, es decir, la fila, coincide con el nï¿½mero del usuario, la
 								// saltamos
 					matrizMod[k][j] = matriz[i][j];
 

@@ -1,9 +1,9 @@
 package capitulo5.bloque6;
 
-import utils.utilsMatrices;
+import utils.UtilsMatrices;
 
 /**
- * Crea un método que compruebe si la matriz es dispersa. (Todos las filas y
+ * Crea un mï¿½todo que compruebe si la matriz es dispersa. (Todos las filas y
  * todas las columnas contienen al menos un elemento nulo).
  * 
  * @author F541U
@@ -13,7 +13,7 @@ import utils.utilsMatrices;
 public class Ejercicio6_comprobar_matriz_dispersa {
 
 	/**
-	 * Método principal
+	 * Mï¿½todo principal
 	 * @param args
 	 */
 	
@@ -23,12 +23,12 @@ public class Ejercicio6_comprobar_matriz_dispersa {
 										 { 1, 0, 1 }, 
 										 { 2, 0, 1 }};
 
-		utilsMatrices.mostrarMatrizPantalla(matriz); // Mostramos matriz en pantalla a modo de comprobación
+		UtilsMatrices.mostrarMatrizPantalla(matriz); // Mostramos matriz en pantalla a modo de comprobaciï¿½n
 		System.out.println();
 
 		boolean esDispersa = comprobarMatrizDispersa(matriz);
 		if (esDispersa) { // Definimos distintos mensajes dependiendo si esDiagonal es true o false
-			// después de recorrer la matriz
+			// despuï¿½s de recorrer la matriz
 			System.out.print("La matriz es dispersa");
 		} else {
 			System.out.print("La matriz no es dispersa");
@@ -37,9 +37,9 @@ public class Ejercicio6_comprobar_matriz_dispersa {
 	}
 
 	public static boolean comprobarMatrizDispersa(int matriz[][]) {
-		int contadori = 0; // Creamos contador para ver cuántos 0 encontramos
-		int contadorj = 0; // Creamos contador para ver cuántos 0 encontramos
-		boolean esDispersa = false; // Creamos boolean que devolveremos al método principal
+		int contadori = 0; // Creamos contador para ver cuï¿½ntos 0 encontramos
+		int contadorj = 0; // Creamos contador para ver cuï¿½ntos 0 encontramos
+		boolean esDispersa = false; // Creamos boolean que devolveremos al mï¿½todo principal
 
 		for (int i = 0; i < matriz.length; i++) { // Recorremos matriz
 			for (int j = 0; j < matriz[i].length; j++) {
@@ -56,7 +56,7 @@ public class Ejercicio6_comprobar_matriz_dispersa {
 			return esDispersa;
 		}
 
-		for (int j = 0; j < matriz.length; j++) { // Recorremos matriz al revés para comprobar nulos columnas
+		for (int j = 0; j < matriz.length; j++) { // Recorremos matriz al revï¿½s para comprobar nulos columnas
 			for (int i = 0; i < matriz[j].length; i++) {
 				if (contadorj <= j) { // Para registrar solo un 0 por vuelta
 					if (matriz[i][j] == 0) {
@@ -69,7 +69,7 @@ public class Ejercicio6_comprobar_matriz_dispersa {
 
 		}
 
-		if (contadori == matriz.length && contadorj == matriz.length) { //Establecemos condición para devolver boolean
+		if (contadori == matriz.length && contadorj == matriz.length) { //Establecemos condiciï¿½n para devolver boolean
 			esDispersa = true;
 		}
 		return esDispersa;

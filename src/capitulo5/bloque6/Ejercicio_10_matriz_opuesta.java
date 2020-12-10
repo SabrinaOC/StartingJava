@@ -1,9 +1,9 @@
 package capitulo5.bloque6;
 
-import utils.utilsMatrices;
+import utils.UtilsMatrices;
 
 /**
-	 * Crea un método que realice la matriz opuesta de la que recibe.
+	 * Crea un mï¿½todo que realice la matriz opuesta de la que recibe.
 	 * @author F541U
 	 *
 	 */
@@ -11,7 +11,7 @@ import utils.utilsMatrices;
 public class Ejercicio_10_matriz_opuesta {
 
 	/**
-	 * Método principal
+	 * Mï¿½todo principal
 	 * @param args
 	 */
 	
@@ -22,11 +22,11 @@ public class Ejercicio_10_matriz_opuesta {
 										 { 1, -1, 3, 12 }, 
 										 { 2, 3, 1, -14 }};
 
-		utilsMatrices.mostrarMatrizPantalla(matriz); // Mostramos matriz en pantalla a modo de comprobación
+		UtilsMatrices.mostrarMatrizPantalla(matriz); // Mostramos matriz en pantalla a modo de comprobaciï¿½n
 		System.out.println();
 		
 		int opuesta [][] = matrizOpuesta(matriz);
-		utilsMatrices.mostrarMatrizPantalla(opuesta);
+		UtilsMatrices.mostrarMatrizPantalla(opuesta);
 		
 		
 

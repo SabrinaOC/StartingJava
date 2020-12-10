@@ -1,11 +1,11 @@
 package capitulo5.bloque6;
 
-import utils.utilsMatrices;
+import utils.UtilsMatrices;
 
 /**
- * Crea un método que compruebe si la matriz es simétrica. (Los elementos de la
- * matriz (i, j) y (j, i), si existen, son iguales). El método recibirá una
- * matriz y devolverá un boolean.
+ * Crea un mï¿½todo que compruebe si la matriz es simï¿½trica. (Los elementos de la
+ * matriz (i, j) y (j, i), si existen, son iguales). El mï¿½todo recibirï¿½ una
+ * matriz y devolverï¿½ un boolean.
  * 
  * @author F541U
  *
@@ -14,7 +14,7 @@ import utils.utilsMatrices;
 public class Ejercicio8_comprobar_matriz_simetrica {
 
 	/**
-	 * Método principal
+	 * Mï¿½todo principal
 	 * 
 	 * @param args
 	 */
@@ -25,21 +25,21 @@ public class Ejercicio8_comprobar_matriz_simetrica {
 									 { 5, 1, 3 }, 
 									 { 2, 3, 1 }};
 
-		utilsMatrices.mostrarMatrizPantalla(matriz); // Mostramos matriz en pantalla a modo de comprobación
+		UtilsMatrices.mostrarMatrizPantalla(matriz); // Mostramos matriz en pantalla a modo de comprobaciï¿½n
 	    System.out.println();
 
 	    boolean esSimetrica = comprobarMatrizSimetrica(matriz);
 	    if (esSimetrica) { // Definimos distintos mensajes dependiendo si esDiagonal es true o false
-					     // después de recorrer la matriz
-	    	System.out.print("La matriz es simétrica");
+					     // despuï¿½s de recorrer la matriz
+	    	System.out.print("La matriz es simï¿½trica");
 		} else {
-			System.out.print("La matriz no es simétrica");
+			System.out.print("La matriz no es simï¿½trica");
 		}
 
 	}
 	
 	/**
-	 * Método comprueba matriz simétrica
+	 * Mï¿½todo comprueba matriz simï¿½trica
 	 * @param matriz
 	 * @return
 	 */
@@ -50,7 +50,7 @@ public class Ejercicio8_comprobar_matriz_simetrica {
 		for (int i = 0; i < matriz.length; i ++) { //Recorremos matris
 			for (int j = 0; j < matriz[i].length; j++) {
 				if (i != j) { //Como la diagonal principal no se ha de tener en cuenta, comprobamos el resto de posiciones
-					if (matriz[i][j] != matriz[j][i]) { //Como la relación es espejo, si no se cumple esa condición
+					if (matriz[i][j] != matriz[j][i]) { //Como la relaciï¿½n es espejo, si no se cumple esa condiciï¿½n
 						esSimetrica = false;			//esSimetrica es falso
 					}
 				}

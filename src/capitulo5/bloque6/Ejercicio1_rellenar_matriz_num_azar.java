@@ -1,11 +1,11 @@
 package capitulo5.bloque6;
 
 import utils.Utils;
-import utils.utilsMatrices;
+import utils.UtilsMatrices;
 
 /**
- * Crea un método que rellena la matriz con valores creados al azar. El método
- * recibirá la matriz y devolverá "void".
+ * Crea un mï¿½todo que rellena la matriz con valores creados al azar. El mï¿½todo
+ * recibirï¿½ la matriz y devolverï¿½ "void".
  * 
  * @author F541U
  *
@@ -14,7 +14,7 @@ import utils.utilsMatrices;
 public class Ejercicio1_rellenar_matriz_num_azar {
 
 	/**
-	 * Método principal
+	 * Mï¿½todo principal
 	 * 
 	 * @param args
 	 */
@@ -23,20 +23,20 @@ public class Ejercicio1_rellenar_matriz_num_azar {
 
 		int matriz[][] = new int[5][5]; // Creamos matriz
 
-		rellenarMatrizAzar(matriz); // Llamamos al método para rellenar matriz
+		rellenarMatrizAzar(matriz); // Llamamos al mï¿½todo para rellenar matriz
 		
-		utilsMatrices.mostrarMatrizPantalla(matriz); //Utilizamos método creado para mostrar matriz en pantalla
+		UtilsMatrices.mostrarMatrizPantalla(matriz); //Utilizamos mï¿½todo creado para mostrar matriz en pantalla
 		
 
 	}
 
 	/**
-	 * Método que rellena la matriz con valores creados al azar.
+	 * Mï¿½todo que rellena la matriz con valores creados al azar.
 	 * 
 	 * @param matriz
 	 */
 
-	public static void rellenarMatrizAzar(int matriz[][]) { //Creamos método vacío que recibe una matriz
+	public static void rellenarMatrizAzar(int matriz[][]) { //Creamos mï¿½todo vacï¿½o que recibe una matriz
 
 		for (int i = 0; i < matriz.length; i++) { //Recorremos las filas de la matriz
 			for (int j = 0; j < matriz[i].length; j++) { //Recorremos columnas

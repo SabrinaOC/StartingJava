@@ -1,7 +1,7 @@
 package examenes.examen02_3_12_20;
 
 import utils.Utils;
-import utils.utilsMatrices;
+import utils.UtilsMatrices;
 
 public class TresEnRayaConMatrices {
 
@@ -27,13 +27,13 @@ public class TresEnRayaConMatrices {
 				System.out.print("¡Hasta la próxima!");
 				break;
 			case 1:
-				utils.utilsMatrices.mostrarMatrizPantalla(tres);
+				utils.UtilsMatrices.mostrarMatrizPantalla(tres);
 				pedirUbicacionJugador(tres, jugador1);
 				//comprobarGanador(tres);
 				//comprobarDiagonalSuperior(tres);
 				break;
 			case 2:
-				utils.utilsMatrices.mostrarMatrizPantalla(tres);
+				utils.UtilsMatrices.mostrarMatrizPantalla(tres);
 				pedirUbicacionJugador(tres, jugador2);
 				//comprobarGanador(tres);
 				break;
@@ -100,7 +100,7 @@ public class TresEnRayaConMatrices {
 							ocupado = true;
 							System.out.println("Ya hay ficha en esa ubicación, por favor, indique otra");
 							System.out.println("");
-							utilsMatrices.mostrarMatrizPantalla(tres);
+							UtilsMatrices.mostrarMatrizPantalla(tres);
 							break;
 						}
 					}

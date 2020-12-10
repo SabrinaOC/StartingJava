@@ -2,12 +2,12 @@ package capitulo5.bloque6;
 
 import javax.swing.JOptionPane;
 
-import utils.utilsMatrices;
+import utils.UtilsMatrices;
 
 /**
- * Crea un método que pida al usuario un número de fila sobre una matriz. Debes
- * crear una matriz igual a la original pero eliminando el número de fila que el
- * usuario ha especificado. El método recibirá una matriz y un valor entero, que
+ * Crea un mï¿½todo que pida al usuario un nï¿½mero de fila sobre una matriz. Debes
+ * crear una matriz igual a la original pero eliminando el nï¿½mero de fila que el
+ * usuario ha especificado. El mï¿½todo recibirï¿½ una matriz y un valor entero, que
  * representa una fila de la matriz, y devuelve una nueva matriz.
  * 
  * @author F541U
@@ -17,7 +17,7 @@ import utils.utilsMatrices;
 public class Ejercicio11_eliminar_fila_matriz_elegida_usuario {
 
 	/**
-	 * Método principal
+	 * Mï¿½todo principal
 	 * 
 	 * @param args
 	 */
@@ -28,21 +28,21 @@ public class Ejercicio11_eliminar_fila_matriz_elegida_usuario {
 										 { 1, -1, 3, 12 }, 
 										 { 2, 3, 1, -14 }};
 
-		utilsMatrices.mostrarMatrizPantalla(matriz); // Mostramos matriz en pantalla a modo de comprobación
+		UtilsMatrices.mostrarMatrizPantalla(matriz); // Mostramos matriz en pantalla a modo de comprobaciï¿½n
 		System.out.println();
 		
-		String str = JOptionPane.showInputDialog("Introduzca un número entre 0 y " + (matriz.length-1)); // Pedimos número a
+		String str = JOptionPane.showInputDialog("Introduzca un nï¿½mero entre 0 y " + (matriz.length-1)); // Pedimos nï¿½mero a
 		// usuario
 		int num = Integer.parseInt(str);
 		
 		do {
-		str = JOptionPane.showInputDialog("Valor no admitido. Por favor, introduzca un número entre 0 y " + (matriz.length-1)); // Pedimos número a
+		str = JOptionPane.showInputDialog("Valor no admitido. Por favor, introduzca un nï¿½mero entre 0 y " + (matriz.length-1)); // Pedimos nï¿½mero a
 		// usuario
 		num = Integer.parseInt(str);
 		} while (num < 0 || num > matriz.length-1);
 
 		int matrizMod[][] = eliminarFilaMatrizEligeUsiario(matriz, num);
-		utilsMatrices.mostrarMatrizPantalla(matrizMod);
+		UtilsMatrices.mostrarMatrizPantalla(matrizMod);
 
 	}
 
@@ -63,10 +63,10 @@ public class Ejercicio11_eliminar_fila_matriz_elegida_usuario {
 		columnas = columnas / filas;
 
 		int matrizMod[][] = new int[filas - 1][columnas]; // Creamos nueva matriz con las dimensiones calculadas
-		int k = 0; // Creamos variable para índice filas matriz modificada
+		int k = 0; // Creamos variable para ï¿½ndice filas matriz modificada
 		for (int i = 0; i < matriz.length; i++) { // Recorremos matriz para darle valores a la matriz modificada
 			for (int j = 0; j < matriz[i].length; j++) {
-				if (i != num) { // Si el valor de i, es decir, la fila, coincide con el número del usuario, la
+				if (i != num) { // Si el valor de i, es decir, la fila, coincide con el nï¿½mero del usuario, la
 								// saltamos
 					matrizMod[k][j] = matriz[i][j];
 

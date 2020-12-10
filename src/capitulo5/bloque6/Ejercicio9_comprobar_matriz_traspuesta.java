@@ -1,9 +1,9 @@
 package capitulo5.bloque6;
 
-import utils.utilsMatrices;
+import utils.UtilsMatrices;
 
 /**
- * Crea un método que realice la matriz traspuesta de la que recibe. El método
+ * Crea un mï¿½todo que realice la matriz traspuesta de la que recibe. El mï¿½todo
  * recibe una matriz y devuelve otra matriz, la traspuesta
  * 
  * @author F541U
@@ -13,7 +13,7 @@ import utils.utilsMatrices;
 public class Ejercicio9_comprobar_matriz_traspuesta {
 
 	/**
-	 * Método principal
+	 * Mï¿½todo principal
 	 * 
 	 * @param args
 	 */
@@ -24,16 +24,16 @@ public class Ejercicio9_comprobar_matriz_traspuesta {
 										 { 1, 1, 3, 12 }, 
 										 { 2, 3, 1, 14 }};
 
-		utilsMatrices.mostrarMatrizPantalla(matriz); // Mostramos matriz en pantalla a modo de comprobación
+		UtilsMatrices.mostrarMatrizPantalla(matriz); // Mostramos matriz en pantalla a modo de comprobaciï¿½n
 		System.out.println();
 		
-		int traspuesta [][] = matrizTraspuesta(matriz); //Creamos matriz para método
-		utilsMatrices.mostrarMatrizPantalla(traspuesta); //Mostramos matriz en pantalla
+		int traspuesta [][] = matrizTraspuesta(matriz); //Creamos matriz para mï¿½todo
+		UtilsMatrices.mostrarMatrizPantalla(traspuesta); //Mostramos matriz en pantalla
 
 	}
 	
 	/**
-	 * Método para crear matriz traspuesta
+	 * Mï¿½todo para crear matriz traspuesta
 	 * @param matriz
 	 * @return
 	 */
@@ -56,7 +56,7 @@ public class Ejercicio9_comprobar_matriz_traspuesta {
 
 		for (int i = 0; i < matriz.length; i++) { // Recorremos matriz para asignar valores a traspuesta
 			for (int j = 0; j < matriz[i].length; j++) {
-				traspuesta[j][i] = matriz[i][j]; // Asignación opuesta, cambiamos filas por columnas
+				traspuesta[j][i] = matriz[i][j]; // Asignaciï¿½n opuesta, cambiamos filas por columnas
 
 			}
 		}

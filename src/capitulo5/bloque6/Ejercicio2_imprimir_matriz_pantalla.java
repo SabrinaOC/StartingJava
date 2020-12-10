@@ -1,10 +1,10 @@
 package capitulo5.bloque6;
 
-import utils.utilsMatrices;
+import utils.UtilsMatrices;
 
 /**
- * Crea un método que imprima la matriz en consola. El método recibirá la matriz
- * y devolverá "void"
+ * Crea un mï¿½todo que imprima la matriz en consola. El mï¿½todo recibirï¿½ la matriz
+ * y devolverï¿½ "void"
  * 
  * @author F541U
  *
@@ -13,7 +13,7 @@ import utils.utilsMatrices;
 public class Ejercicio2_imprimir_matriz_pantalla {
 
 	/**
-	 * Método principal
+	 * Mï¿½todo principal
 	 * @param args
 	 */
 	
@@ -21,13 +21,13 @@ public class Ejercicio2_imprimir_matriz_pantalla {
 
 
 		int matriz [] [] = new int [5] [5]; //Creamos matriz
-		utilsMatrices.rellenarMatrizAzar(matriz); //Usamos método para rellenar matriz con números al azar
+		UtilsMatrices.rellenarMatrizAzar(matriz); //Usamos mï¿½todo para rellenar matriz con nï¿½meros al azar
 		mostrarMatrizPantalla(matriz); //Mostramos matriz en pantalla
 
 	}
 
 	/**
-	 * Método que imprima la matriz en pantalla.
+	 * Mï¿½todo que imprima la matriz en pantalla.
 	 * @param matriz
 	 */
 	

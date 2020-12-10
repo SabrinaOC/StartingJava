@@ -1,10 +1,10 @@
 package capitulo5.bloque6;
 
-import utils.utilsMatrices;
+import utils.UtilsMatrices;
 
 /**
- * Crea un método que compruebe si la matriz es diagonal (Todos los elementos
- * que no están en la diagonal principal son nulos).
+ * Crea un mï¿½todo que compruebe si la matriz es diagonal (Todos los elementos
+ * que no estï¿½n en la diagonal principal son nulos).
  * 
  * @author F541U
  *
@@ -13,7 +13,7 @@ import utils.utilsMatrices;
 public class Ejercicio4_comprueba_matriz_diagonal {
 
 	/**
-	 * Método principal
+	 * Mï¿½todo principal
 	 * 
 	 * @param args
 	 */
@@ -26,12 +26,12 @@ public class Ejercicio4_comprueba_matriz_diagonal {
 									   { 0, 0, 0, 1, 0 },
 									   { 0, 0, 0, 0, 1 } }; // Creamos matriz y le damos valores
 
-		utilsMatrices.mostrarMatrizPantalla(matriz); // Mostramos en pantalla a modo de comprobación
-		boolean esDiagonal = comprobarMatrizDiagonal(matriz); // Usamos método comprobarMatrizDiagonal y lo recogemos en
+		UtilsMatrices.mostrarMatrizPantalla(matriz); // Mostramos en pantalla a modo de comprobaciï¿½n
+		boolean esDiagonal = comprobarMatrizDiagonal(matriz); // Usamos mï¿½todo comprobarMatrizDiagonal y lo recogemos en
 																// un boolean
 
 		if (esDiagonal) { // Definimos distintos mensajes dependiendo si esDiagonal es true o false
-			// después de recorrer la matriz
+			// despuï¿½s de recorrer la matriz
 			System.out.print("La matriz es diagonal");
 		} else {
 			System.out.print("La matriz no es diagonal");
@@ -40,23 +40,23 @@ public class Ejercicio4_comprueba_matriz_diagonal {
 	}
 
 	/**
-	 * Método que comprueba si la matriz es diagonal
+	 * Mï¿½todo que comprueba si la matriz es diagonal
 	 * 
 	 * @param matriz
 	 */
 
 	public static boolean comprobarMatrizDiagonal(int matriz[][]) {
 
-		boolean esDiagonal = true; // Creamos boolean a modo de bandera, partimos de que es diagonal, si en algún
+		boolean esDiagonal = true; // Creamos boolean a modo de bandera, partimos de que es diagonal, si en algï¿½n
 									// valor no lo es, pasa a false
 
 		for (int i = 0; i < matriz.length; i++) { // Recorremos matriz
 			for (int j = 0; j < matriz[i].length; j++) {
 				if (i != j) { // Las posiciones que pueden contener un valor distinto de cero, son aquellas en
 								// las que i y j conciden
-					if (matriz[i][j] != 0) { // por tanto, si en una posición fuera de estas encontramos un valor
+					if (matriz[i][j] != 0) { // por tanto, si en una posiciï¿½n fuera de estas encontramos un valor
 												// distinto de 0,
-						esDiagonal = false; // esDiagonal pasaría a falso
+						esDiagonal = false; // esDiagonal pasarï¿½a a falso
 					}
 				}
 			}
