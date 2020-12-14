@@ -30,7 +30,7 @@ public class Carta {
 
 	@Override
 	public String toString() {
-		return "Carta [palo = " + palo + ", número = " + numero + ", ID =" + id  + "]";
+		return "\nCarta [palo = " + palo + ", número = " + numero + ", ID =" + id  + "]";
 	}
 
 
