@@ -4,21 +4,20 @@ import java.util.Arrays;
 
 public class Jugador {
 
-	private Carta mano [] = new Carta [5];
+	private Carta mano[] = new Carta[5];
 	private String nombre;
-	
-	
-	
+
 	/**
 	 * Constructor sin propiedades
 	 */
-	
+
 	public Jugador() {
 		super();
 	}
 
 	/**
 	 * Constructor con propiedades
+	 * 
 	 * @param mano
 	 * @param nombre
 	 */
@@ -28,8 +27,6 @@ public class Jugador {
 		this.mano = mano;
 		this.nombre = nombre;
 	}
-	
-	
 
 	/**
 	 * @param nombre
@@ -42,7 +39,7 @@ public class Jugador {
 	/**
 	 * @Override
 	 */
-	
+
 	public String toString() {
 		return "Jugador [mano=" + Arrays.toString(mano) + ", nombre=" + nombre + "]";
 	}
@@ -74,20 +71,37 @@ public class Jugador {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
+
 	/**
 	 * Método para comprobar parejas, trios y póker
 	 */
-	
-	public void comprobarJugadas () { 
-		int cont = 0; //contador para jugadas
-		for (int i = 0; i < mano.length; i++) {
-			
+
+	public void comprobarJugadas() {
+		int cont = 1; // contador para jugadas
+		for (int i = 0; i < mano.length; i++) {// Recorremos mano para comparar cartas
+			for (int j = i + 1; j < mano.length; j++) {
+				if (this.mano[i].getNumero() == this.mano[j].getNumero()) {
+					cont++;
+				}
+			}
+
+		}
+
+		switch (cont) { // Switch para clasificar jugadas
+		case 1:
+			System.out.println("No hay jugadas destacadas");
+			break;
+		case 2:
+			System.out.println("Se ha encontrado una pareja");
+			break;
+		case 3:
+			System.out.println("Se ha encontrado un trio");
+			break;
+		case 4:
+			System.out.println("¡Póker!");
+			break;
 		}
 	}
-	
-	
-	
-	
+
 }
 

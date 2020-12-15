@@ -3,23 +3,23 @@ package capitulo4.bloque01_PrimerosObjetos.Examen_Poker;
 public class Carta {
 	private String palo;
 	private int numero, id;
-	
-	
+
 	/**
 	 * Constructor vacío
 	 */
-	
+
 	public Carta() {
 		super();
 	}
 
 	/**
 	 * Constructor con parámetros
+	 * 
 	 * @param palo
 	 * @param numero
 	 * @param id
 	 */
-	
+
 	public Carta(String palo, int numero, int id) {
 		super();
 		this.palo = palo;
@@ -27,15 +27,14 @@ public class Carta {
 		this.id = id;
 	}
 
-
 	@Override
 	public String toString() {
-		return "\nCarta [palo = " + palo + ", número = " + numero + ", ID =" + id  + "]";
+		return "\nCarta [palo = " + palo + ", número = " + numero + ", ID =" + id + "]";
 	}
-
 
 	/**
 	 * Getters y setters
+	 * 
 	 * @return
 	 */
 	public String getPalo() {
@@ -46,7 +45,7 @@ public class Carta {
 	 * 
 	 * @param palo
 	 */
-	
+
 	public void setPalo(String palo) {
 		this.palo = palo;
 	}
@@ -55,7 +54,7 @@ public class Carta {
 	 * 
 	 * @return
 	 */
-	
+
 	public int getNumero() {
 		return numero;
 	}
@@ -73,7 +72,7 @@ public class Carta {
 	 * 
 	 * @return
 	 */
-	
+
 	public int getId() {
 		return id;
 	}
@@ -82,13 +81,9 @@ public class Carta {
 	 * 
 	 * @param id
 	 */
-	
+
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	
-	
-	
-	
+
 }
