@@ -8,7 +8,7 @@ public class Principal {
 		
 		CampoDeBatalla campo = new CampoDeBatalla(); // Creamos campoBatalla
 
-		iniciarYPonerVidaAUltimo(campo); //Método para iniciar personajes y poner vida doble
+
 
 		// Mezclamos array humanos y malvados
 		campo.desordenarHumanos();
@@ -16,39 +16,19 @@ public class Principal {
 
 		//System.out.println(campo.toString());
 
-		diparos(campo);
+		diparos(campo); //Llamamos a método disparos para ver qué bando gana
 
-		// Mostramos ganador
-		if (humanoVivo(campo.getArrayHumanos())) {
-			System.out.println("¡HAN GANADO LOS HUMANOS!" /*+ campo.toString()*/);
-
-		}
-		if (marcianoVivo(campo.getArrayMalvados())) {
-			System.out.println("¡HAN GANADO LOS MARCIANOS!" /*+ campo.toString()*/);
-
-		}
+		mostrarGanador(campo);
+		
 		
 		//Mostramos en pantalla información con personajes con más disparos y menos
 		System.out.println(" ");
 		campo.ordenarPorDisparoHum();
 		System.out.println("");
 		campo.ordenarPorDisparoMal();
+		
+		gameOver();
 
-	}
-
-	public static void iniciarYPonerVidaAUltimo (CampoDeBatalla campo) {
-		for (int i = 0; i < campo.getArrayHumanos().length; i++) { // Recorremos array humanos para crear humanos
-			campo.getArrayHumanos()[i] = new Humanos("Humano" + i); // Creamos humano
-
-			if (campo.getArrayHumanos()[i] == campo.getArrayHumanos()[campo.getArrayHumanos().length-1]) { // Duplicamos vida en última posición
-				campo.vidaDobleUltimoHumano();
-			}
-
-			campo.getArrayMalvados()[i] = new Malvado("Marciano" + i);
-			if (campo.getArrayMalvados()[i] == campo.getArrayMalvados()[campo.getArrayMalvados().length-1]) { // Duplicamos vida en última posición
-				campo.vidaDobleUltimoMarciano();
-			}
-		}
 	}
 	
 	/**
@@ -99,6 +79,11 @@ public class Principal {
 		return false;
 	}
 
+	/**
+	 * Método recreación de batalla entre humanos y marcianos
+	 * @param campo
+	 */
+	
 	public static void diparos(CampoDeBatalla campo) {
 		// Comenzamos bucle partida
 		int posH;
@@ -133,6 +118,26 @@ public class Principal {
 		// Repetimos bucle hasta que no haya marcianos o humanos vivos
 	}
 
+	/**
+	 * Método ver ganador
+	 * @param campo
+	 */
+	
+	public static void mostrarGanador (CampoDeBatalla campo) {
+		// Mostramos ganador
+				if (humanoVivo(campo.getArrayHumanos())) {
+					System.out.println("\t¡HAN GANADO LOS HUMANOS!");
+
+				}
+				if (marcianoVivo(campo.getArrayMalvados())) {
+					System.out.println("\t¡HAN GANADO LOS MARCIANOS!");
+
+				}
+	}
+	
+	/**
+	 * Método presentación juego
+	 */
 	
 	public static void intro () {
 		System.out.println("  ___\r\n"
@@ -149,5 +154,19 @@ public class Principal {
 				+ "            ____||||___\r\n"
 				+ "          (_\"\"_/ \\_\"\"_)");
 		System.out.println("");
+	}
+	
+	/**
+	 * Método muestra en pantalla fin de juego
+	 */
+	
+	public static void gameOver () {
+		System.out.print(" _____   ___  ___  ___ _____   _____  _   _ ___________ \r\n"
+				+ "|  __ \\ / _ \\ |  \\/  ||  ___| |  _  || | | |  ___| ___ \\\r\n"
+				+ "| |  \\// /_\\ \\| .  . || |__   | | | || | | | |__ | |_/ /\r\n"
+				+ "| | __ |  _  || |\\/| ||  __|  | | | || | | |  __||    / \r\n"
+				+ "| |_\\ \\| | | || |  | || |___  \\ \\_/ /\\ \\_/ / |___| |\\ \\ \r\n"
+				+ " \\____/\\_| |_/\\_|  |_/\\____/   \\___/  \\___/\\____/\\_| \\_|\r\n"
+				+ "                                                        ");
 	}
 }

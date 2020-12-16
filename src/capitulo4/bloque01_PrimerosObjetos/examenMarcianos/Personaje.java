@@ -2,7 +2,7 @@ package capitulo4.bloque01_PrimerosObjetos.examenMarcianos;
 
 public class Personaje {
 
-	private int puntosVida, disparosRecibidos; // Útil para apartado g
+	private int puntosVida, disparosRecibidos; // Útil para apartado g, mostrar más fácil/difícil de matar
 	private String nombre;
 	private boolean vivo = true;
 

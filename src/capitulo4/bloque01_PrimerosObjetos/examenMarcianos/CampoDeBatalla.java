@@ -13,6 +13,7 @@ public class CampoDeBatalla {
 	 */
 	public CampoDeBatalla() {
 		super();
+		iniciarYPonerVidaAUltimo();
 	}
 
 	/**
@@ -20,10 +21,9 @@ public class CampoDeBatalla {
 	 * @param arrayHumanos
 	 * @param nombre
 	 */
-	public CampoDeBatalla(Malvado[] arrayMalvados, Humanos[] arrayHumanos, String nombre) {
+	public CampoDeBatalla(String nombre) {
 		super();
-		this.arrayMalvados = arrayMalvados;
-		this.arrayHumanos = arrayHumanos;
+		iniciarYPonerVidaAUltimo();
 		this.nombre = nombre;
 	}
 
@@ -37,14 +37,12 @@ public class CampoDeBatalla {
 	}
 
 	/**
-	 * Método para multiplicar vida último humano
+	 * Método para duplicar vida último humano
 	 */
 
 	public void vidaDobleUltimoHumano() {
-		int auxVidaHum; // creamos variable para guardar vida último personaje
-
-		auxVidaHum = arrayHumanos[arrayHumanos.length - 1].getPuntosVida(); // Guardamos puntos vida último personaje
-		arrayHumanos[arrayHumanos.length - 1].setPuntosVida(auxVidaHum * 2); // Duplicamos su valor
+		// Duplicamos su valor
+		arrayHumanos[arrayHumanos.length - 1].setPuntosVida(arrayHumanos[arrayHumanos.length - 1].getPuntosVida() * 2); 
 
 	}
 
@@ -53,13 +51,30 @@ public class CampoDeBatalla {
 	 */
 
 	public void vidaDobleUltimoMarciano() {
-		int auxVidaMal; // creamos variable para guardar vida último personaje
-
-		auxVidaMal = arrayMalvados[arrayMalvados.length - 1].getPuntosVida(); // Guardamos puntos vida último personaje
-		arrayMalvados[arrayMalvados.length - 1].setPuntosVida(auxVidaMal * 2); // Duplicamos su valor
+		// Duplicamos su valor
+		arrayMalvados[arrayMalvados.length - 1].setPuntosVida(arrayMalvados[arrayMalvados.length - 1].getPuntosVida() * 2); 
 
 	}
+	
+	/**
+	 * Método para iniciar personajes y dar pts de vida
+	 */
+	
+	public void iniciarYPonerVidaAUltimo () {
+		for (int i = 0; i < arrayHumanos.length; i++) { // Recorremos array humanos para crear humanos
+			arrayHumanos[i] = new Humanos("Humano" + i); // Creamos humano
 
+			if (arrayHumanos[i] == arrayHumanos[arrayHumanos.length-1]) { // Duplicamos vida en última posición
+				vidaDobleUltimoHumano();
+			}
+
+			arrayMalvados[i] = new Malvado("Marciano" + i);
+			if (arrayMalvados[i] == arrayMalvados[arrayMalvados.length-1]) { // Duplicamos vida en última posición
+				vidaDobleUltimoMarciano();
+			}
+		}
+	}
+	
 	/**
 	 * Método para desordenar array humanos
 	 */
@@ -67,7 +82,7 @@ public class CampoDeBatalla {
 	public void desordenarHumanos() {
 		int primerIndice; // Creamos índices para intercambios
 		int ultimoIndice;
-		Humanos intercambio;
+		Humanos intercambio; //Variable auxiliar de tipo humano
 
 		for (int i = 0; i < arrayHumanos.length; i++) {
 			primerIndice = utils.Utils.obtenerNumeroAzar(0, arrayHumanos.length - 1); // Creamos números al azar para
@@ -117,12 +132,6 @@ public class CampoDeBatalla {
 		}
 	}
 
-	public void humanAlive() {
-		for (int i = 0; i < arrayHumanos.length; i++) {
-
-		}
-	}
-
 	/**
 	 * Método para ordenar por burbuja por disparos recibidos
 	 */
@@ -146,10 +155,26 @@ public class CampoDeBatalla {
 		} while (intercambio); // Saldremos del bucle cuando no haya intercambios
 
 		// Mostramos en pantalla la primera y última posición del array ordenado por
-		// burbuja,
-		// de esta forma mostraremos quién ha recibido más y menos disparos
-		System.out.println("El humano más fácil de matar ha sido " + this.arrayHumanos[1].toString()
-				+ "\nEl humano más difícil de matar ha sido " + this.arrayHumanos[arrayHumanos.length - 1].toString());
+		// burbuja, de esta forma mostraremos quién ha recibido más y menos disparos
+		
+		for (int i = 0; i < arrayHumanos.length; i++) {
+			if (this.arrayHumanos[i].isVivo()==false) {
+				System.out.println("El humano más fácil de matar ha sido " + this.arrayHumanos[i].toString());
+				break;
+			}
+		//Cabe la posibilidad de que el que menos disparos haya recibido esté aún vivo, por eso,
+		//volvemos a recorrer el bucle hasta que vivo sea false. Entonces mostramos valores en pantalla
+		}
+		
+		//Recorremos array al revés para comprobar si el último sigue vivo y saltarlo porque, realmente no ha muerto
+		//y por tanto no puede ser el más difícil de matar
+		for (int i = arrayHumanos.length-1; i > 0; i--) {
+			if (this.arrayHumanos[i].isVivo()==false) {
+				System.out.println("El humano más difícil de matar ha sido " + this.arrayHumanos[i].toString());
+				break;
+			}
+		
+		}
 
 	}
 
@@ -174,10 +199,25 @@ public class CampoDeBatalla {
 				}
 			}
 		} while (intercambio); // Saldremos del bucle cuando no haya intercambios
-
-		System.out.println("El marciano más fácil de matar ha sido " + this.arrayMalvados[1].toString()
-				+ "\nEl marciano más difícil de matar ha sido "
-				+ this.arrayMalvados[arrayMalvados.length - 1].toString());
+		
+		for (int i = 0; i < arrayMalvados.length; i++) {
+			if (this.arrayMalvados[i].isVivo()==false) {
+				System.out.println("El marciano más fácil de matar ha sido " + this.arrayMalvados[i].toString());
+				break;
+			}
+		//Cabe la posibilidad de que el que menos disparos haya recibido esté aún vivo, por eso,
+		//volvemos a recorrer el bucle hasta que vivo sea false. Entonces mostramos valores en pantalla
+		}
+		
+		//Recorremos array al revés para comprobar si el último sigue vivo y saltarlo porque, realmente no ha muerto
+		//y por tanto no puede ser el más difícil de matar
+		for (int i = arrayMalvados.length-1; i > 0; i--) {
+			if (this.arrayMalvados[i].isVivo()==false) {
+				System.out.println("El malvado más difícil de matar ha sido " + this.arrayMalvados[i].toString());
+				break;
+			}
+		
+		}
 
 	}
 
