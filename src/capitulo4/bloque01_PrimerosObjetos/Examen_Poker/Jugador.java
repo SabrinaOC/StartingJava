@@ -41,7 +41,8 @@ public class Jugador {
 	 */
 
 	public String toString() {
-		return "Jugador [mano=" + Arrays.toString(mano) + ", nombre=" + nombre + "]";
+		return nombre +" mano = " + Arrays.toString(mano);
+		//return "Jugador [mano=" + Arrays.toString(mano) + ", nombre=" + nombre + "]";
 	}
 
 	/**
@@ -89,16 +90,19 @@ public class Jugador {
 
 		switch (cont) { // Switch para clasificar jugadas
 		case 1:
-			System.out.println("No hay jugadas destacadas");
+			System.out.println("No hay jugadas destacadas"
+					+ "\n"); //Solo una carta igual, no hay jugada destacada
 			break;
 		case 2:
-			System.out.println("Se ha encontrado una pareja");
+			System.out.println("Se ha encontrado una pareja"
+					+ "\n"); //Dos cartas iguales, pareja
 			break;
 		case 3:
-			System.out.println("Se ha encontrado un trio");
+			System.out.println("Se ha encontrado un trío"
+					+ "\n"); //Tres, trío
 			break;
 		case 4:
-			System.out.println("¡Póker!");
+			System.out.println("¡Póker!"); //Cuatro, póker
 			break;
 		}
 	}

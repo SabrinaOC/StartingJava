@@ -29,58 +29,31 @@ public class Carta {
 
 	@Override
 	public String toString() {
-		return "\nCarta [palo = " + palo + ", número = " + numero + ", ID =" + id + "]";
+		return "\nCarta " + numero +" de " + palo + ", ID =" + id;
+		
 	}
 
-	/**
-	 * Getters y setters
-	 * 
-	 * @return
-	 */
+	// Getters y setters
+	 
 	public String getPalo() {
 		return palo;
 	}
-
-	/**
-	 * 
-	 * @param palo
-	 */
 
 	public void setPalo(String palo) {
 		this.palo = palo;
 	}
 
-	/**
-	 * 
-	 * @return
-	 */
-
 	public int getNumero() {
 		return numero;
 	}
-
-	/**
-	 * 
-	 * @param numero
-	 */
 
 	public void setNumero(int numero) {
 		this.numero = numero;
 	}
 
-	/**
-	 * 
-	 * @return
-	 */
-
 	public int getId() {
 		return id;
 	}
-
-	/**
-	 * 
-	 * @param id
-	 */
 
 	public void setId(int id) {
 		this.id = id;
