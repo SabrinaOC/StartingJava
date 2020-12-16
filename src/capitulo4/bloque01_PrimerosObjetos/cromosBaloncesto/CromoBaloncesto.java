@@ -1,4 +1,4 @@
-package capitulo4.bloque01_PrimerosObjetos;
+package capitulo4.bloque01_PrimerosObjetos.cromosBaloncesto;
 
 /**
  * crea una clase llamada "CromoBaloncesto". 
@@ -7,9 +7,9 @@ package capitulo4.bloque01_PrimerosObjetos;
  *	- Crea un constructor por defecto (sin argumentos de entrada) y un constructor 
  *	en el que recibas, por argumentos de entrada, todas las propiedades 
  *	de los objetos de esta clase
- *	- Crea un método "toString()" que devuelva una cadena de caracteres 
+ *	- Crea un mï¿½todo "toString()" que devuelva una cadena de caracteres 
  *	que contenga todos los valores de las propiedades de los objetos de esta clase.
- *	- Crea métodos getter y setter de todas las propiedades de los objetos de esta clase.
+ *	- Crea mï¿½todos getter y setter de todas las propiedades de los objetos de esta clase.
  * @author F541U
  *
  */
@@ -44,7 +44,7 @@ public class CromoBaloncesto {
 	}
 	
 	/**
-	 * Método to string
+	 * Mï¿½todo to string
 	 */
 	
 	public String toString () {

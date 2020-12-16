@@ -1,4 +1,4 @@
-package capitulo4.bloque01_PrimerosObjetos;
+package capitulo4.bloque01_PrimerosObjetos.cromosBaloncesto;
 
 import java.util.ArrayList;
 
@@ -12,16 +12,16 @@ import java.util.ArrayList;
   y float puntosMediosPorpartido.
 - Crea un constructor por defecto (sin argumentos de entrada) y un constructor en el que recibas, 
   por argumentos de entrada, todas las propiedades de los objetos de esta clase
-- Crea un método "toString()" que devuelva una cadena de caracteres que contenga todos los valores 
+- Crea un mï¿½todo "toString()" que devuelva una cadena de caracteres que contenga todos los valores 
   de las propiedades de los objetos de esta clase.
-- Crea métodos getter y setter de todas las propiedades de los objetos de esta clase.
-- Crea una clase nueva, en la que pongas un método main() que lleve a cabo las siguientes acciones:
+- Crea mï¿½todos getter y setter de todas las propiedades de los objetos de esta clase.
+- Crea una clase nueva, en la que pongas un mï¿½todo main() que lleve a cabo las siguientes acciones:
     - Crea 5 objetos de tipo CromoBaloncesto, con valores creados por ti.
     - Crea una lista cuyos elementos sean de tipo CromoBaloncesto y agrega los cinco objetos creados a esa lista.
-    - Recorre la lista, llamando al método toString() de los objetos que contiene y sacando en pantalla el resultado.
-    - Crea un método, en la clase que contiene el método main(), que reciba la lista de cromos 
-      y la ordene, con el algoritmo de la burbuja, en función de los puntosMediosPorPartido de cada jugador, 
-      en orden ascendente. En el método main comprueba el funcionamiento de ese método, 
+    - Recorre la lista, llamando al mï¿½todo toString() de los objetos que contiene y sacando en pantalla el resultado.
+    - Crea un mï¿½todo, en la clase que contiene el mï¿½todo main(), que reciba la lista de cromos 
+      y la ordene, con el algoritmo de la burbuja, en funciï¿½n de los puntosMediosPorPartido de cada jugador, 
+      en orden ascendente. En el mï¿½todo main comprueba el funcionamiento de ese mï¿½todo, 
       al que puedes llamar "ordenaJugadores(Lista<CromoBaloncesto> lista)"
  * @author F541U
  *
@@ -30,14 +30,14 @@ import java.util.ArrayList;
 public class Baloncesto {
 	
 	/**
-	 * Método principal
+	 * Mï¿½todo principal
 	 * @param args
 	 */
 
 	public static void main(String[] args) {
 
 
-		CromoBaloncesto jug01 = new CromoBaloncesto(); //Creamos un nuevo jugador llamando al método constructor
+		CromoBaloncesto jug01 = new CromoBaloncesto(); //Creamos un nuevo jugador llamando al mï¿½todo constructor
 		jug01.setNombreJugador("Facundo Campazzo"); //Damos valores usando los setters
 		jug01.setAltura(180);
 		jug01.setPesoKg(88);
@@ -54,37 +54,37 @@ public class Baloncesto {
 		//System.out.println(jug02.toString());
 		
 		
-		CromoBaloncesto jug03 = new CromoBaloncesto("Pau Gasol", 215, 113, (float)12.3); //Usamos el otro método constructor
+		CromoBaloncesto jug03 = new CromoBaloncesto("Pau Gasol", 215, 113, (float)12.3); //Usamos el otro mï¿½todo constructor
 		//System.out.println(jug03.toString());
 		
 		CromoBaloncesto jug04 = new CromoBaloncesto("Kobe Bryant", 198, 96, (float)17.6);
 		//System.out.println(jug04.toString());
 		
-		CromoBaloncesto jug05 = new CromoBaloncesto("Andrés Nocioni", 203, 102, (float)11.4);
+		CromoBaloncesto jug05 = new CromoBaloncesto("Andrï¿½s Nocioni", 203, 102, (float)11.4);
 		//System.out.println(jug05.toString());
 		
 		
 		ArrayList<CromoBaloncesto> listaCromos = new ArrayList<CromoBaloncesto>(); //Creamos lista de clase CromoBaloncesto
-		listaCromos.add(jug01); //Añadimos jugadores creados a la lista
+		listaCromos.add(jug01); //Aï¿½adimos jugadores creados a la lista
 		listaCromos.add(jug02);
 		listaCromos.add(jug03);
 		listaCromos.add(jug04);
 		listaCromos.add(jug05);
 		
 		for (int i = 0; i < listaCromos.size(); i++) { //Recorremos lista para mostrar en pantalla
-			System.out.println(listaCromos.get(i).toString()); //Usamos método toString para imprimir
+			System.out.println(listaCromos.get(i).toString()); //Usamos mï¿½todo toString para imprimir
 		}
 		
 		System.out.println("");
 		
-		ordenarListaCromosPorPuntos(listaCromos); //Llamamos método de ordenación
+		ordenarListaCromosPorPuntos(listaCromos); //Llamamos mï¿½todo de ordenaciï¿½n
 		
 
 		
 	}
 	
 	/**
-	 * Método para ordenar lista objetos por burbuja
+	 * Mï¿½todo para ordenar lista objetos por burbuja
 	 * @param listaCromos
 	 */
 	
@@ -102,11 +102,11 @@ public class Baloncesto {
 				if (listaCromos.get(i).getPuntosMediosPorpartido() > listaCromos.get(i + 1).getPuntosMediosPorpartido()) {
 					auxiliar = listaCromos.get(i + 1); // guardamos todas la propiedades del objeto en la variable
 														// auxiliar
-					listaCromos.add(i + 1, listaCromos.get(i)); // Añadimos el valor comparado a la lista en la posición
+					listaCromos.add(i + 1, listaCromos.get(i)); // Aï¿½adimos el valor comparado a la lista en la posiciï¿½n
 																// correspondiente
-					// esto nos crea un nuevo elemento que deberemos eliminar en la posición i +2 e
+					// esto nos crea un nuevo elemento que deberemos eliminar en la posiciï¿½n i +2 e
 					// i ya que son las posiciones que se cambian
-					listaCromos.remove(i + 2); // y así evitamos que se creen múltiples elementos iguales
+					listaCromos.remove(i + 2); // y asï¿½ evitamos que se creen mï¿½ltiples elementos iguales
 					listaCromos.remove(i);
 
 					listaCromos.add(i, auxiliar);

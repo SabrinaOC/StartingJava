@@ -4,7 +4,7 @@ public class Principal {
 
 	public static void main(String[] args) {
 		
-		
+		intro();
 		
 		CampoDeBatalla campo = new CampoDeBatalla(); // Creamos campoBatalla
 
@@ -148,5 +148,6 @@ public class Principal {
 				+ "             '=='='=='\r\n"
 				+ "            ____||||___\r\n"
 				+ "          (_\"\"_/ \\_\"\"_)");
+		System.out.println("");
 	}
 }

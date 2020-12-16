@@ -1,4 +1,4 @@
-package capitulo4.bloque01_PrimerosObjetos.Examen_Poker;
+package capitulo4.bloque01_PrimerosObjetos.examenPoker;
 
 public class Poker {
 
