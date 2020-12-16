@@ -1,6 +1,6 @@
 package capitulo4.bloque01_PrimerosObjetos.examenMarcianos;
 
-public class Humanos extends Personaje{
+public class Humanos extends Personaje {
 
 	/**
 	 * 
@@ -21,16 +21,10 @@ public class Humanos extends Personaje{
 	/**
 	 * @Override
 	 */
-	
+
 	public String toString() {
-		return "\nHumanos [getPuntosVida()=" + getPuntosVida() + ", getNombre()=" + getNombre() + ", isVivo()=" + isVivo()
-				+ "]";
+		return "\n" + getNombre() + " Vida =" + getPuntosVida() + ", Vivo =" + isVivo() + ", Disparos recibidos = "
+				+ getDisparosRecibidos();
 	}
-	
-	
-
-	
-
-	
 
 }

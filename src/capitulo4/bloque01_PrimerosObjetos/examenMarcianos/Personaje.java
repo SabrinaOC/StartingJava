@@ -1,20 +1,18 @@
 package capitulo4.bloque01_PrimerosObjetos.examenMarcianos;
 
 public class Personaje {
-	
-	private int puntosVida;
+
+	private int puntosVida, disparosRecibidos; // Útil para apartado g
 	private String nombre;
 	private boolean vivo = true;
-	
-	
-	
+
 	/**
 	 * Constructor sin propiedades
 	 */
 	public Personaje() {
 		super();
 		establecerVida();
-		
+
 	}
 
 	/**
@@ -26,6 +24,13 @@ public class Personaje {
 		super();
 		establecerVida();
 		this.nombre = nombre;
+	}
+
+	/**
+	 * Método para establecer vida inicial
+	 */
+	public void establecerVida() {
+		this.puntosVida = utils.Utils.obtenerNumeroAzar(50, 100);
 	}
 
 	/**
@@ -69,22 +74,19 @@ public class Personaje {
 	public void setVivo(boolean vivo) {
 		this.vivo = vivo;
 	}
-	
+
 	/**
-	 * Método para establecer vida inicial
+	 * @return the disparosRecibidos
 	 */
-	public void establecerVida () {
-		this.puntosVida = utils.Utils.obtenerNumeroAzar(50, 100);
+	public int getDisparosRecibidos() {
+		return disparosRecibidos;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	/**
+	 * @param disparosRecibidos the disparosRecibidos to set
+	 */
+	public void setDisparosRecibidos(int disparosRecibidos) {
+		this.disparosRecibidos = disparosRecibidos;
+	}
 
 }

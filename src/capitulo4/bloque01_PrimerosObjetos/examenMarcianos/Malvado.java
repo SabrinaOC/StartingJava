@@ -1,13 +1,13 @@
 package capitulo4.bloque01_PrimerosObjetos.examenMarcianos;
 
-public class Malvado extends Personaje{
+public class Malvado extends Personaje {
 
 	/**
 	 * 
 	 */
 	public Malvado() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	/**
@@ -22,14 +22,10 @@ public class Malvado extends Personaje{
 	/**
 	 * @Override
 	 */
-	
-	public String toString() {
-		return "\nMalvado [getPuntosVida()=" + getPuntosVida() + ", getNombre()=" + getNombre() + ", isVivo()=" + isVivo()
-				+ "]";
-	}
-	
-	
 
-	
+	public String toString() {
+		return "\n" + getNombre() + " Vida = " + getPuntosVida() + ", Vivo = " + isVivo() + " Disparos Recibidos "
+				+ getDisparosRecibidos();
+	}
 
 }

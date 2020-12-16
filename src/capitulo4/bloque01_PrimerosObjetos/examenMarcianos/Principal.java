@@ -3,20 +3,12 @@ package capitulo4.bloque01_PrimerosObjetos.examenMarcianos;
 public class Principal {
 
 	public static void main(String[] args) {
+		
+		
+		
 		CampoDeBatalla campo = new CampoDeBatalla(); // Creamos campoBatalla
 
-		for (int i = 0; i < campo.getArrayHumanos().length; i++) { // Recorremos array humanos para crear humanos
-			campo.getArrayHumanos()[i] = new Humanos("Humano" + i); // Creamos humano
-
-			if (campo.getArrayHumanos()[i] == campo.getArrayHumanos()[19]) { // Duplicamos vida en última posición
-				campo.vidaDobleUltimoPersonaje();
-			}
-
-			campo.getArrayMalvados()[i] = new Malvado("Marciano" + i);
-			if (campo.getArrayMalvados()[i] == campo.getArrayMalvados()[19]) { // Duplicamos vida en última posición
-				campo.vidaDobleUltimoPersonaje();
-			}
-		}
+		iniciarYPonerVidaAUltimo(campo); //Método para iniciar personajes y poner vida doble
 
 		// Mezclamos array humanos y malvados
 		campo.desordenarHumanos();
@@ -24,50 +16,41 @@ public class Principal {
 
 		//System.out.println(campo.toString());
 
-		// Comenzamos bucle partida
-		int posH;
-		int posM;// Creamos variables para primeras posiciones
-		int damage;
-		int vida;
-		do {
+		diparos(campo);
 
-			posH = primerPersonajeVivo(campo.getArrayHumanos()); // Guardamos la posición del primer humano vivo
-			posM = primerPersonajeVivo(campo.getArrayMalvados()); // Hacemos lo mismo con el marciano
-
-			damage = utils.Utils.obtenerNumeroAzar(5, 25); // Establecemos daño causado al disparar
-
-			vida = campo.getArrayMalvados()[posM].getPuntosVida(); // Guardamos vida
-			campo.getArrayMalvados()[posM].setPuntosVida(vida-damage); //Restamos daño a vida
-			//campo.cambiarAMuerto();//Revisamos si hay algún personaje sin pts de vida
-			
-			//Ahora hacemos lo mismo, pero al contrario, el marciano dispara
-			posH = primerPersonajeVivo(campo.getArrayHumanos()); // Guardamos la posición del primer humano vivo
-			posM = primerPersonajeVivo(campo.getArrayMalvados()); // Hacemos lo mismo con el marciano
-			
-			damage = utils.Utils.obtenerNumeroAzar(5, 25);
-			vida = campo.getArrayHumanos()[posH].getPuntosVida();
-			campo.getArrayHumanos()[posH].setPuntosVida(vida-damage);
-			
-			//Pasamos a cambiar estados tras disparar
-			campo.cambiarAMuerto();
-			
-			
-
-		} while ((humanoVivo(campo.getArrayHumanos())) && marcianoVivo(campo.getArrayMalvados()));
-		// Repetimos bucle hasta que no haya marcianos o humanos vivos
-		
-		
-		
+		// Mostramos ganador
 		if (humanoVivo(campo.getArrayHumanos())) {
-			System.out.println("¡HAN GANADO LOS HUMANOS!");
-			System.out.println("\n" + campo.toString());
+			System.out.println("¡HAN GANADO LOS HUMANOS!" /*+ campo.toString()*/);
+
 		}
 		if (marcianoVivo(campo.getArrayMalvados())) {
-			System.out.println("HAN GANADO LOS MARCIANOS");
-			System.out.println("\n" + campo.toString());
+			System.out.println("¡HAN GANADO LOS MARCIANOS!" /*+ campo.toString()*/);
+
 		}
+		
+		//Mostramos en pantalla información con personajes con más disparos y menos
+		System.out.println(" ");
+		campo.ordenarPorDisparoHum();
+		System.out.println("");
+		campo.ordenarPorDisparoMal();
+
 	}
 
+	public static void iniciarYPonerVidaAUltimo (CampoDeBatalla campo) {
+		for (int i = 0; i < campo.getArrayHumanos().length; i++) { // Recorremos array humanos para crear humanos
+			campo.getArrayHumanos()[i] = new Humanos("Humano" + i); // Creamos humano
+
+			if (campo.getArrayHumanos()[i] == campo.getArrayHumanos()[campo.getArrayHumanos().length-1]) { // Duplicamos vida en última posición
+				campo.vidaDobleUltimoHumano();
+			}
+
+			campo.getArrayMalvados()[i] = new Malvado("Marciano" + i);
+			if (campo.getArrayMalvados()[i] == campo.getArrayMalvados()[campo.getArrayMalvados().length-1]) { // Duplicamos vida en última posición
+				campo.vidaDobleUltimoMarciano();
+			}
+		}
+	}
+	
 	/**
 	 * Método para establecer primer personaje vivo
 	 * 
@@ -114,5 +97,56 @@ public class Principal {
 			}
 		}
 		return false;
+	}
+
+	public static void diparos(CampoDeBatalla campo) {
+		// Comenzamos bucle partida
+		int posH;
+		int posM;// Creamos variables para primeras posiciones
+		int damage; // Variable daño
+
+		do {
+
+			posH = primerPersonajeVivo(campo.getArrayHumanos()); // Guardamos la posición del primer humano vivo
+			posM = primerPersonajeVivo(campo.getArrayMalvados()); // Hacemos lo mismo con el marciano
+
+			damage = utils.Utils.obtenerNumeroAzar(5, 25); // Establecemos daño causado al disparar
+
+			//Restamos daño a vida
+			campo.getArrayMalvados()[posM].setPuntosVida(campo.getArrayMalvados()[posM].getPuntosVida() - damage); 
+			campo.getArrayMalvados()[posM].setDisparosRecibidos(campo.getArrayHumanos()[posM].getDisparosRecibidos() + 1);
+
+			// campo.cambiarAMuerto();//Revisamos si hay algún personaje sin pts de vida
+
+			// Ahora hacemos lo mismo, pero al contrario, el marciano dispara
+			posH = primerPersonajeVivo(campo.getArrayHumanos()); // Guardamos la posición del primer humano vivo
+			posM = primerPersonajeVivo(campo.getArrayMalvados()); // Hacemos lo mismo con el marciano
+
+			damage = utils.Utils.obtenerNumeroAzar(5, 25);
+			campo.getArrayHumanos()[posH].setPuntosVida(campo.getArrayHumanos()[posH].getPuntosVida() - damage);
+			campo.getArrayHumanos()[posH].setDisparosRecibidos(campo.getArrayHumanos()[posH].getDisparosRecibidos() + 1);
+
+			// Pasamos a cambiar estados tras disparar
+			campo.cambiarAMuerto();
+
+		} while ((humanoVivo(campo.getArrayHumanos())) && marcianoVivo(campo.getArrayMalvados()));
+		// Repetimos bucle hasta que no haya marcianos o humanos vivos
+	}
+
+	
+	public static void intro () {
+		System.out.println("  ___\r\n"
+				+ "           /]_/\r\n"
+				+ "          |\\/|.--/'-.\r\n"
+				+ "          \\|/:o /  /\\    ._,\r\n"
+				+ "             \\_/_.'0/    _|_\r\n"
+				+ "              \\____]] (>[___]=]]]===\r\n"
+				+ "              /    \\___/P{]\r\n"
+				+ "           __//    /----\\/\r\n"
+				+ "          (_[-'\\__/_\r\n"
+				+ "              / | | \\\r\n"
+				+ "             '=='='=='\r\n"
+				+ "            ____||||___\r\n"
+				+ "          (_\"\"_/ \\_\"\"_)");
 	}
 }
