@@ -31,7 +31,7 @@ public class PreguntaVF extends Pregunta{
 
 	@Override
 	public void mostrarEnPantalla() {
-		System.out.println(this.enunciado + "\nIntroduzca V o F:");
+		System.out.println("\n" + this.enunciado + "\nIntroduzca V o F:");
 		
 		//Recogemos respuesta usuario
 		Scanner sc = new Scanner(System.in);
@@ -44,7 +44,7 @@ public class PreguntaVF extends Pregunta{
 	 */
 	@Override
 	public boolean esCorrecta() {
-		if (this.respuestaUsuario.equals(respuestaCorrecta)) {
+		if (this.respuestaUsuario.equalsIgnoreCase(respuestaCorrecta)) {
 			return true;
 		}
 		return false;

@@ -46,7 +46,7 @@ public class Cuestionario {
 		PreguntaVF napoleon = new PreguntaVF("Napoleón Bonaparte murió envenenado", "F");
 		cuestionario.add(napoleon);
 			
-		
+	
 		
 		//recorremos la lista (el cuestionario) para mostrar las preguntas en pantalla
 		int acierto = 0;//Creamos variable para llevar la cuenta de los aciertos del usuario
@@ -62,7 +62,7 @@ public class Cuestionario {
 			}
 		}
 		//Mostramos en pantalla el porcentaje de aciertos
-		System.out.println("Ha acertado un " + (acierto / cuestionario.size()*100 +"%"));
+		System.out.println("Ha acertado un " + (acierto/(int)cuestionario.size())*100 +"% \n" + acierto);
 		//System.out.println(cuestionario.size());
 		
 	}

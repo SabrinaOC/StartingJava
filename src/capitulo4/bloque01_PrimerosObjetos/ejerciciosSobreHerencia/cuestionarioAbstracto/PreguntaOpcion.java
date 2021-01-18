@@ -31,7 +31,7 @@ public class PreguntaOpcion extends Pregunta{
 	 */
 	@Override
 	public void mostrarEnPantalla() {
-		System.out.println(this.enunciado);
+		System.out.println("\n" + this.enunciado);
 		
 		//Tras mostrar el enunciado recorremos el array de respuestas 
 		//y las mostramos en pantalla
