@@ -31,11 +31,15 @@ public class PreguntaVF extends Pregunta{
 
 	@Override
 	public void mostrarEnPantalla() {
-		System.out.println("\n" + this.enunciado + "\nIntroduzca V o F:");
+		
+		System.out.println("\n" + this.enunciado);
+		do {
+		System.out.println("\nIntroduzca V o F:");
 		
 		//Recogemos respuesta usuario
 		Scanner sc = new Scanner(System.in);
 		this.respuestaUsuario = sc.nextLine();
+		} while (!(this.respuestaUsuario.equalsIgnoreCase("v")) && !(this.respuestaUsuario.equalsIgnoreCase("f")));
 		
 	}
 
@@ -49,5 +53,17 @@ public class PreguntaVF extends Pregunta{
 		}
 		return false;
 	}
+
+	/**
+	 * Método para mostrar en pantalla respues correcta
+	 */
+	@Override
+	public String toString() {
+		return "¡Ohhhh! Respuesta incorrecta. \nLa respuesta correcta era: " + respuestaCorrecta + ".";
+	}
+
+	
+	
+	
 
 }

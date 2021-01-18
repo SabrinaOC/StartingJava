@@ -58,12 +58,13 @@ public class Cuestionario {
 				System.out.println("¡Correcto!");
 				acierto ++;
 			} else {
-				System.out.println("¡Ohhhh! Respuesta incorrecta");
+				//Mostramos la opción correcta en pantalla
+				System.out.println(cuestionario.get(i).toString());				
 			}
 		}
 		//Mostramos en pantalla el porcentaje de aciertos
-		System.out.println("Ha acertado un " + (acierto/(int)cuestionario.size())*100 +"% \n" + acierto);
-		//System.out.println(cuestionario.size());
+		System.out.println("Ha acertado un " + ((float)acierto/cuestionario.size())*100 +"% (" + acierto + " aciertos).");
+		
 		
 	}
 
