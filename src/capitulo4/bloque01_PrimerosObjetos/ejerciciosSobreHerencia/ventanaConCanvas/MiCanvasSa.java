@@ -18,9 +18,6 @@ public class MiCanvasSa extends Canvas{
 	@Override
 	public void paint(Graphics g) {
 		
-		/*g.setColor(getForeground());
-		g.setFont(getFont().deriveFont(20f));
-		g.drawString("Esto es una prueba", 70, 70);*/
 		
 		
 		//Pintamos círculo

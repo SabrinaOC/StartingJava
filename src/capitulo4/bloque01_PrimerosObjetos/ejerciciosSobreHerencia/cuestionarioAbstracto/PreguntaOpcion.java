@@ -44,7 +44,7 @@ public class PreguntaOpcion extends Pregunta{
 		//recogemos la respuesta del usuario en la variable creada para ello
 		
 		do {
-		System.out.println("Introdizca el número que corresponda con su respuesta:");
+		System.out.println("Introduzca el número que corresponda con su respuesta:");
 		Scanner sc = new Scanner(System.in);
 		this.respuestaUsuario = sc.nextLine();
 		} while (Integer.parseInt(this.respuestaUsuario) != 0 && Integer.parseInt(this.respuestaUsuario) != 1
