@@ -29,8 +29,14 @@ public class Player extends Actor{
 	public void paint(Graphics g) {
 		g.setColor(Color.WHITE);
 		
-		g.fillRoundRect(180, 500, ancho, alto, 10, 10);
+		g.fillRoundRect(this.x, this.y, ancho, alto, 10, 10);
 		
 	}
 
+
+	@Override
+	public void actua() {
+		// TODO Auto-generated method stub
+		
+	}
 }

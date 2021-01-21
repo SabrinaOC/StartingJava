@@ -3,7 +3,6 @@ package capitulo4.bloque01_PrimerosObjetos.romperLadrillos;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.util.ArrayList;
 import java.util.List;
 
 public class JLadrillosCanvas extends Canvas {

@@ -1,7 +1,6 @@
 package capitulo4.bloque01_PrimerosObjetos.romperLadrillos;
 
-import java.awt.Canvas;
-import java.awt.Color;
+
 import java.awt.Graphics;
 
 public class Ladrillo extends Actor{
@@ -35,7 +34,11 @@ public class Ladrillo extends Actor{
 		
 	}	
 		
-	
+	@Override
+	public void actua() {
+		// TODO Auto-generated method stub
+		
+	}
 
 	/**
 	 * @return the ancho
@@ -64,13 +67,6 @@ public class Ladrillo extends Actor{
 	public static void setAlto(int alto) {
 		Ladrillo.alto = alto;
 	}
-
-	
-
-	
-	
-	
-	
 	
 	
 }

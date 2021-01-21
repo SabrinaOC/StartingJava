@@ -25,6 +25,8 @@ public abstract class Actor {
 	}
 	
 	public abstract void paint(Graphics g);
+	
+	public abstract void actua();
 
 	/**
 	 * @return the x
