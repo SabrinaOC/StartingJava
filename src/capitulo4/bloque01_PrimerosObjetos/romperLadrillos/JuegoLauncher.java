@@ -13,8 +13,19 @@ public class JuegoLauncher {
 	public static void main(String[] args) {
 		//Creamos lista de actores que pasaremos a canvas
 		List<Actor> actores = new ArrayList<Actor>();
-		for (int i = 0; i < 48; i++) {
-		actores.add(new Ladrillo());
+	
+		//Creamos variables x e y para crear actores en posición adecuada
+		int y = 0; 
+		int x = 0;
+		
+		for (int j = 0; j < 6; j++) {
+		for (int i = 0; i < 8; i++) {
+			actores.add(new Ladrillo (x, y));
+			x += 53;//Cada vuelta del bucle cambia x para no superponer ladrillos
+			}
+			y += 22;//Cada vez que demos una vuelta al primer bucle
+					//añadimos 22 al y (eje vertical) para que no se superpongan los ladrillos
+			x = 0; //Volvemos x a 0 para comenzar segunda fila
 		}
 		actores.add(new Player());
 		actores.add(new Bola());
@@ -33,6 +44,8 @@ public class JuegoLauncher {
 		ventana.getContentPane().add(canvas, BorderLayout.CENTER); 
 		//hacemo ventana visible
 		ventana.setVisible(true);
+		
+		
 
 		//Programamos que deje de ejecutarse al cerrar ventana
 		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
