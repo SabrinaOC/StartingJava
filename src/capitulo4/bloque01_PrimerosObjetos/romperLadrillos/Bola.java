@@ -45,13 +45,13 @@ public class Bola extends Actor{
 		this.x += this.velocidadX;
 		//Para que no se nos salga de la ventana, cambiaremos dirección si su valor excede
 		//las dimensiones de la ventana
-		if (this.x < 0 || this.x > (440-ancho)) {
+		if (this.x < 0 || this.x > (Arkanoid.getInstance().getCanvas().getWidth()-ancho)) {
 			this.velocidadX = -this.velocidadX;
 		}
 		
 		//Hacemos lo mismo para el eje y
 		this.y += this.velocidadY;
-		if (this.y < 0 || this.y > (600-alto)) {
+		if (this.y < 0 || this.y > (Arkanoid.getInstance().getCanvas().getHeight()-alto)) {
 			this.velocidadY = -this.velocidadY;
 		}
 		

@@ -5,7 +5,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.util.List;
 
-public class JLadrillosCanvas extends Canvas {
+public class ArkanoidCanvas extends Canvas {
 
 	// Creamos lista de actores que pintaremos
 	List<Actor> actores = null;
@@ -15,7 +15,7 @@ public class JLadrillosCanvas extends Canvas {
 	 * 
 	 * @param actores
 	 */
-	public JLadrillosCanvas(List<Actor> actores) {
+	public ArkanoidCanvas(List<Actor> actores) {
 		super();
 		this.actores = actores;
 	}
@@ -64,5 +64,7 @@ public class JLadrillosCanvas extends Canvas {
 		this.actores.get(this.actores.size() - 2).paint(g);// el player siempre sera penúltimo de la lista
 		this.actores.get(this.actores.size() - 1).paint(g);// la bola siempre será el último actor de la lista
 	}
+	
+	
 
 }

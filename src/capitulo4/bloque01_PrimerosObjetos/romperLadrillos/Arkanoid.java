@@ -2,6 +2,8 @@ package capitulo4.bloque01_PrimerosObjetos.romperLadrillos;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -11,15 +13,35 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-public class JuegoLauncher {
+public class Arkanoid {
 	
 
 	private static int FPS = 60; //Variable fotogramas/seg
 	private static List<Actor> actores = new ArrayList<Actor>(); //Creamos lista de actores que pasaremos a canvas
-	private static JLadrillosCanvas canvas = null; //La creamos como variable estática para que todos los métodos tengan acceso
+	private static ArkanoidCanvas canvas = null; //La creamos como variable estática para que todos los métodos tengan acceso
 	private static JFrame ventana = null; //Hacemos lo mismo con la ventana
+	private static Player jugador = null;
 	
-	public static void main(String[] args) {
+	//Propiedad estática necesaria para crear patrón singleton
+	private static Arkanoid instance = null;
+	
+	/**
+	 * Método que permite la creación de solo un objeto de la clase
+	 * @return
+	 */
+	public static Arkanoid getInstance () {
+		if (instance == null) { //Si no hay instancia se crea,
+			instance = new Arkanoid();
+			return instance;
+		} else { //de lo contrario, se devuelve la existente
+			return instance;
+		}
+	}
+	
+	/**
+	 * Constructor Arkanoid
+	 */
+	public Arkanoid() {
 		
 		//Creamos ventana
 		ventana = new JFrame("Rompeladrillos Sa");
@@ -30,7 +52,19 @@ public class JuegoLauncher {
 		actores = crearActores();
 		
 		//Creamos canvas para colocar en ventana
-		canvas = new JLadrillosCanvas(actores);
+		canvas = new ArkanoidCanvas(actores);
+		
+		//Enviamos eventos movimiento ratón
+		
+		canvas.addMouseMotionListener(new MouseAdapter () {
+
+			@Override
+			public void mouseMoved(MouseEvent e) { //Usamos adaptador
+				super.mouseMoved(e);
+				jugador.mover(e.getX(), e.getY());
+			} 
+			
+		});
 		
 		//Colocamos canvas en ventana en posición central
 		ventana.getContentPane().add(canvas, BorderLayout.CENTER); 
@@ -46,19 +80,23 @@ public class JuegoLauncher {
 				}
 		});
 		
-		//Lanzamos juego
-		jugar();
-		
-			
-
-		
+				
+	}
+	
+	/**
+	 * Método principal
+	 * @param args
+	 */
+	public static void main(String[] args) {
+	//Lanzamos juego, bucle infinito que terminará cuando el jugador cierre la ventana
+		Arkanoid.getInstance().jugar();
 	}
 	
 	/**
 	 * Método para crear objetos de tipo actor en lista
 	 * @return
 	 */
-	public static List<Actor> crearActores() {
+	public List<Actor> crearActores() {
 		List<Actor> actores = new ArrayList<Actor>();
 		//Creamos variables x e y para crear actores en posición adecuada
 		int y = 0; 
@@ -73,16 +111,18 @@ public class JuegoLauncher {
 					//añadimos 22 al y (eje vertical) para que no se superpongan los ladrillos
 			x = 0; //Volvemos x a 0 para comenzar segunda fila
 		}
-			actores.add(new Player(180, 500));
-			actores.add(new Bola());
-			return actores;
+		
+		jugador = new Player();
+		actores.add(jugador);
+		actores.add(new Bola());
+		return actores;
 	}
 	
 
 	/**
 	 * Método para lanzar y correr juego
 	 */
-	public static void jugar () {
+	public void jugar () {
 		int millisPorFrame = 1000/FPS;
 		//Comenzamos bucle infinito, empieza el juego
 		do {
@@ -93,7 +133,9 @@ public class JuegoLauncher {
 			
 			//A continuación, hacemos que los diferentes actores realicen su movimiento
 			for (Actor a: actores) {
-				a.actua();
+
+					a.actua();
+
 			}
 			
 			//Volvemos a calcular milis para luego hacer una resta y calcular tiempo de ejecución
@@ -115,13 +157,22 @@ public class JuegoLauncher {
 		} while (true);
 	}
 	
-	public static void cierreJuego() {
+	public void cierreJuego() {
 		String opciones [] = {"Aceptar", "Cancelar"};//Creamos opciones que aparecerán en ventana
-		int choice = JOptionPane.showOptionDialog(ventana, "¿Quiere abandonar el juego?", "Salir", 
+		int choice = JOptionPane.showOptionDialog(ventana, "¿Quiere abandonar el juego?", "Abandonar aplicación", 
 				JOptionPane.YES_NO_OPTION,
 				JOptionPane.QUESTION_MESSAGE, null, opciones, "Aceptar");
 				if (choice == JOptionPane.YES_OPTION) {
 					System.exit(0);
 				}
 	}
+
+	/**
+	 * @return the canvas
+	 */
+	public ArkanoidCanvas getCanvas() {
+		return canvas;
+	}
+	
+	
 }
