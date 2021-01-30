@@ -2,6 +2,8 @@ package capitulo4.bloque01_PrimerosObjetos.romperLadrillos;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
@@ -61,15 +63,40 @@ public class Arkanoid {
 			@Override
 			public void mouseMoved(MouseEvent e) { //Usamos adaptador
 				super.mouseMoved(e);
-				jugador.mover(e.getX(), e.getY());
+				jugador.mover(e.getX());
 			} 
+			
+		});
+		
+		//Detectamos movimiento por teclado
+		
+		canvas.addKeyListener(new KeyAdapter() {
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				super.keyPressed(e);
+				jugador.keyPressed(e);
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				super.keyReleased(e);
+				jugador.keyReleased(e);
+			}
 			
 		});
 		
 		//Colocamos canvas en ventana en posición central
 		ventana.getContentPane().add(canvas, BorderLayout.CENTER); 
+		
+		//Para que la ventana no se redibuje por los eventos de windows
+		ventana.setIgnoreRepaint(true);
 		//hacemo ventana visible
 		ventana.setVisible(true);
+		
+		// Tras mostrar la ventana, consigo que el foco de la ventana vaya al
+		// Canvas, para que pueda escuchar los eventos del teclado
+		canvas.requestFocus();
 		
 		// Control del evento de cierre de ventana
 		ventana.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
