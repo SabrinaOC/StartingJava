@@ -1,7 +1,6 @@
 package capitulo4.bloque01_PrimerosObjetos.romperLadrillos;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;

@@ -28,8 +28,6 @@ public class Ladrillo extends Actor{
 		
 	@Override
 	public void paint(Graphics g) {
-		//g.setColor(Color.CYAN);
-		//g.fill(this.x, this.y, ancho, alto);
 		g.fillRoundRect(this.x, this.y, ancho, alto, 15, 15);
 		
 	}	
