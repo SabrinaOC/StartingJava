@@ -8,7 +8,7 @@ import java.awt.event.KeyEvent;
 
 public class Player extends Actor{
 
-	static int ancho = 71, alto = 13;
+	//static int ancho = 71, alto = 13;
 	private static int VELOCIDAD = 7;
 	private boolean derecha = false, izquierda = false;
 	private static int ALTURA = 520; //Estará siempre a la misma altura
@@ -22,6 +22,8 @@ public class Player extends Actor{
 		super();
 		this.y = ALTURA;
 		this.x = 180;//Definimos que se cree en mitad de la pantalla
+		this.ancho = 71;
+		this.alto = 13;
 		
 	}
 
@@ -29,11 +31,14 @@ public class Player extends Actor{
 	 * @param x
 	 * @param y
 	 */
-	public Player(int x, int y) {
-		super(x, y);
+	public Player(int x, int y, int ancho, int alto) {
+		super(x, y, ancho, alto);
 		this.y = ALTURA;
+		ancho = 71;
+		alto = 13;
 		
 	}
+	
 
 	@Override
 	public void paint(Graphics g) {
@@ -52,7 +57,7 @@ public class Player extends Actor{
 		
 		mover(this.x); //Movemos jugador
 	}
-	
+
 	public void mover (int x) {
 		this.x = x;
 		
@@ -98,5 +103,11 @@ public class Player extends Actor{
 		case KeyEvent.VK_LEFT:
 			izquierda = false;
 		}
+	}
+	
+	@Override
+	public void colisionaCon(Actor a) {
+		super.colisionaCon(a);
+		
 	}
 }

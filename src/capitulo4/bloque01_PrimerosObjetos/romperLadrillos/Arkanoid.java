@@ -1,6 +1,7 @@
 package capitulo4.bloque01_PrimerosObjetos.romperLadrillos;
 
 import java.awt.BorderLayout;
+import java.awt.Rectangle;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -14,14 +15,17 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
+
 public class Arkanoid {
 	
 
 	private static int FPS = 60; //Variable fotogramas/seg
-	private static List<Actor> actores = new ArrayList<Actor>(); //Creamos lista de actores que pasaremos a canvas
-	private static ArkanoidCanvas canvas = null; //La creamos como variable estática para que todos los métodos tengan acceso
-	private static JFrame ventana = null; //Hacemos lo mismo con la ventana
-	private static Player jugador = null;
+	private  List<Actor> actores = new ArrayList<Actor>(); //Creamos lista de actores que pasaremos a canvas
+	private ArkanoidCanvas canvas = null; //La creamos como variable estática para que todos los métodos tengan acceso
+	private JFrame ventana = null; //Hacemos lo mismo con la ventana
+	private Player jugador = null;
+	//private static List<Actor> actoresIncorporar = new ArrayList<Actor>();
+	private List<Actor> actoresEliminar = new ArrayList<Actor>();
 	
 	//Propiedad estática necesaria para crear patrón singleton
 	private static Arkanoid instance = null;
@@ -130,7 +134,7 @@ public class Arkanoid {
 				
 		for (int j = 0; j < 6; j++) {
 		for (int i = 0; i < 8; i++) {
-			actores.add(new Ladrillo (x, y));
+			actores.add(new Ladrillo(x, y, 51, 20));
 			x += 53;//Cada vuelta del bucle cambia x para no superponer ladrillos
 			}
 			y += 22;//Cada vez que demos una vuelta al primer bucle
@@ -140,7 +144,7 @@ public class Arkanoid {
 		
 		jugador = new Player();
 		actores.add(jugador);
-		actores.add(new Bola());
+		actores.add(new Bola(200, 500, 15, 15));
 		return actores;
 	}
 	
@@ -155,7 +159,7 @@ public class Arkanoid {
 			//Volvemos a pintar tantas veces como frames por segundo tengamos
 			//para lograrlo, tenemos que calcular cuantos milisegundos tarda canvas en repintarse
 			long millisIniciales = new Date().getTime();
-			canvas.repaint();
+			canvas.pintaEscena();
 			
 			//A continuación, hacemos que los diferentes actores realicen su movimiento
 			for (Actor a: actores) {
@@ -163,7 +167,10 @@ public class Arkanoid {
 					a.actua();
 
 			}
+			//Tras pintar actores en pantalla, detectamos colisiones y actualizamos la lista de actores
+			//detectaColisiones();
 			
+			//actualizaActores();
 			//Volvemos a calcular milis para luego hacer una resta y calcular tiempo de ejecución
 			long millisFinales = new Date(). getTime();
 			int millisEjecucion = (int) (millisFinales - millisIniciales);
@@ -191,6 +198,45 @@ public class Arkanoid {
 				if (choice == JOptionPane.YES_OPTION) {
 					System.exit(0);
 				}
+	}
+	
+	private void detectaColisiones() {
+		for (Actor actor1 : this.actores) {
+			// Creamos un rectángulo para este actor tomando sus medidas y posición como base
+			Rectangle rect1 = new Rectangle(actor1.getX(), actor1.getY(), actor1.getAncho(), actor1.getAlto());
+			// Comprobamos posición de este con cualquier otro actor
+			for (Actor actor2 : this.actores) {
+				// Evitamos comparar un actor consigo mismo, ya que eso siempre provocaría una colisión y no tiene sentido
+				if (!actor1.equals(actor2)) {
+					// Creamos un rectángulo para el actor 2, igual que hicimos con el 1
+					Rectangle rect2 = new Rectangle(actor2.getX(), actor2.getY(), actor2.getAncho(), actor2.getAlto());
+					// Si los dos rectángulos tienen alguna intersección, notificamos una colisión en los dos actores
+					if (rect1.intersects(rect2)) {
+						actor1.colisionaCon(actor2); // El actor 1 colisiona con el actor 2
+						actor2.colisionaCon(actor1); // El actor 2 colisiona con el actor 1
+					}
+				}
+			}
+		}
+	}
+	
+	/**
+	 * Método para actualizar listas de objetos que se muestran en pantalla
+	 */
+	private void actualizaActores() {
+	// Elimino los actores que se deben eliminar
+		for (Actor a : this.actoresEliminar) {
+			this.actores.remove(a);
+		}
+		this.actoresEliminar.clear(); // Limpio la lista de actores a eliminar, ya los he eliminado
+	}
+	
+	/**
+	 * Método llamado para eliminar actores del juego
+	 * @param a
+	 */
+	public void eliminaActor (Actor a) {
+		this.actoresEliminar.add(a);
 	}
 
 	/**

@@ -5,7 +5,7 @@ import java.awt.Graphics;
 
 public class Bola extends Actor{
 
-	static int ancho = 15, alto = 15;
+	//static int ancho = 15, alto = 15;
 	private int velocidadX = -3, velocidadY = -3;
 	
 	
@@ -15,7 +15,8 @@ public class Bola extends Actor{
 	 */
 	public Bola() {
 		super();
-		// TODO Auto-generated constructor stub
+		ancho = 15;
+		alto = 15;
 	}
 
 
@@ -24,9 +25,19 @@ public class Bola extends Actor{
 	 * @param x
 	 * @param y
 	 */
+	public Bola(int x, int y, int ancho, int alto) {
+		super(x, y, ancho, alto);
+		//ancho = 15;
+		//alto = 15;
+	}
+	
+	/**
+	 * @param x
+	 * @param y
+	 */
 	public Bola(int x, int y) {
-		super(x, y);
-		// TODO Auto-generated constructor stub
+		ancho = 15;
+		alto = 15;
 	}
 
 
@@ -55,6 +66,15 @@ public class Bola extends Actor{
 			this.velocidadY = -this.velocidadY;
 		}
 		
+	}
+	
+	@Override
+	public void colisionaCon(Actor a) {
+		super.colisionaCon(a);
+		if (a instanceof Player) {
+			this.y = -this.y;
+			//this.x += velocidadX;
+		}
 	}
 	
 }
