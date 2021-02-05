@@ -24,7 +24,7 @@ public class Arkanoid {
 	private ArkanoidCanvas canvas = null; //La creamos como variable estática para que todos los métodos tengan acceso
 	private JFrame ventana = null; //Hacemos lo mismo con la ventana
 	private Player jugador = null;
-	//private static List<Actor> actoresIncorporar = new ArrayList<Actor>();
+	private static List<Actor> actoresParaIncorporar = new ArrayList<Actor>();
 	private List<Actor> actoresEliminar = new ArrayList<Actor>();
 	
 	//Propiedad estática necesaria para crear patrón singleton
@@ -118,6 +118,10 @@ public class Arkanoid {
 	 * @param args
 	 */
 	public static void main(String[] args) {
+		
+	// Realizamos la carga de los recursos en memoria
+		ResourcesCache.getInstance().cargarRecursosEnMemoria();
+		
 	//Lanzamos juego, bucle infinito que terminará cuando el jugador cierre la ventana
 		Arkanoid.getInstance().jugar();
 	}
@@ -168,9 +172,9 @@ public class Arkanoid {
 
 			}
 			//Tras pintar actores en pantalla, detectamos colisiones y actualizamos la lista de actores
-			//detectaColisiones();
+			detectaColisiones();
 			
-			//actualizaActores();
+			actualizaActores();
 			//Volvemos a calcular milis para luego hacer una resta y calcular tiempo de ejecución
 			long millisFinales = new Date(). getTime();
 			int millisEjecucion = (int) (millisFinales - millisIniciales);
@@ -221,9 +225,23 @@ public class Arkanoid {
 	}
 	
 	/**
+	 * Método llamado para incorporar nuevos actores
+	 * @param a
+	 */
+	public void incorporaNuevoActor (Actor a) {
+		this.actoresParaIncorporar.add(a);
+	}
+	
+	/**
 	 * Método para actualizar listas de objetos que se muestran en pantalla
 	 */
 	private void actualizaActores() {
+	// Incorporo los nuevos actores
+		for (Actor a : this.actoresParaIncorporar) {
+			this.actores.add(a);
+		}
+		this.actoresParaIncorporar.clear(); // Limpio la lista de actores a incorporar, ya están incorporados
+		
 	// Elimino los actores que se deben eliminar
 		for (Actor a : this.actoresEliminar) {
 			this.actores.remove(a);
@@ -245,6 +263,22 @@ public class Arkanoid {
 	public ArkanoidCanvas getCanvas() {
 		return canvas;
 	}
+
+	/**
+	 * @return the actores
+	 */
+	public List<Actor> getActores() {
+		return actores;
+	}
+
+	/**
+	 * @param actores the actores to set
+	 */
+	public void setActores(List<Actor> actores) {
+		this.actores = actores;
+	}
+	
+	
 	
 	
 }

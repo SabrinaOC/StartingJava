@@ -4,6 +4,8 @@ package capitulo4.bloque01_PrimerosObjetos.romperLadrillos;
 import java.awt.Color;
 import java.awt.Graphics;
 
+
+
 public class Ladrillo extends Actor{
 
 	//Dado que todos los ladrillos tendrán el mismo tamaño, serán propiedades estáticas
@@ -42,26 +44,32 @@ public class Ladrillo extends Actor{
 		
 	@Override
 	public void paint(Graphics g) {
-		g.fillRoundRect(this.x, this.y, ancho, alto, 15, 15);
+		//g.fillRoundRect(this.x, this.y, ancho, alto, 15, 15);
 		
 		switch (this.y) {//Cambiaremos el color basandonos en el valor de y
 		case 0:
 			g.setColor(Color.BLUE);
+			g.fillRoundRect(this.x, this.y, ancho, alto, 15, 15);
 			break;
 		case 22:
 			g.setColor(Color.YELLOW);
+			g.fillRoundRect(this.x, this.y, ancho, alto, 15, 15);
 			break;
 		case 44:
 			g.setColor(Color.RED);
+			g.fillRoundRect(this.x, this.y, ancho, alto, 15, 15);
 			break;
 		case 66:
 			g.setColor(Color.GREEN);
+			g.fillRoundRect(this.x, this.y, ancho, alto, 15, 15);
 			break;
 		case 88:
 			g.setColor(Color.ORANGE);
+			g.fillRoundRect(this.x, this.y, ancho, alto, 15, 15);
 			break;
 		case 110:
 			g.setColor(Color.MAGENTA);
+			g.fillRoundRect(this.x, this.y, ancho, alto, 15, 15);
 		}
 		
 	}	
@@ -78,6 +86,8 @@ public class Ladrillo extends Actor{
 		//si un ladrillo choca con una bola, desaparece
 		if (a instanceof Bola) {
 			Arkanoid.getInstance().eliminaActor(this);
+			ResourcesCache.getInstance().playSonido("explosion.wav");
+			Arkanoid.getInstance().incorporaNuevoActor(new Explosion(this.x, this.y));
 		}
 	}
 

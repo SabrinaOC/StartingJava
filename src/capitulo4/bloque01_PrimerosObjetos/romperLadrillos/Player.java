@@ -24,6 +24,7 @@ public class Player extends Actor{
 		this.x = 180;//Definimos que se cree en mitad de la pantalla
 		this.ancho = 71;
 		this.alto = 13;
+		this.setSpriteActual(ResourcesCache.getInstance().getImagen(ResourcesCache.IMAGEN_NAVE));
 		
 	}
 
@@ -36,17 +37,18 @@ public class Player extends Actor{
 		this.y = ALTURA;
 		ancho = 71;
 		alto = 13;
+		this.setSpriteActual(ResourcesCache.getInstance().getImagen(ResourcesCache.IMAGEN_NAVE));
 		
 	}
 	
 
-	@Override
+	/*@Override
 	public void paint(Graphics g) {
 		g.setColor(Color.WHITE);
 		
 		g.fillRoundRect(this.x, this.y, ancho, alto, 10, 10);
 		
-	}
+	}*/
 
 
 	@Override
@@ -108,6 +110,7 @@ public class Player extends Actor{
 	@Override
 	public void colisionaCon(Actor a) {
 		super.colisionaCon(a);
+		
 		
 	}
 }
