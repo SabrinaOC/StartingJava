@@ -86,38 +86,10 @@ public class Ladrillo extends Actor{
 		//si un ladrillo choca con una bola, desaparece
 		if (a instanceof Bola) {
 			Arkanoid.getInstance().eliminaActor(this);
-			ResourcesCache.getInstance().playSonido("explosion.wav");
+			ResourcesCache.getInstance().playSonido("Arkanoid-SFX-01.wav");
 			Arkanoid.getInstance().incorporaNuevoActor(new Explosion(this.x, this.y));
 		}
 	}
 
-//	/**
-//	 * @return the ancho
-//	 */
-//	public static int getAncho() {
-//		return ancho;
-//	}
-//
-//	/**
-//	 * @param ancho the ancho to set
-//	 */
-//	public static void setAncho(int ancho) {
-//		Ladrillo.ancho = ancho;
-//	}
-//
-//	/**
-//	 * @return the alto
-//	 */
-//	public static int getAlto() {
-//		return alto;
-//	}
-//
-//	/**
-//	 * @param alto the alto to set
-//	 */
-//	public static void setAlto(int alto) {
-//		Ladrillo.alto = alto;
-//	}
-//	
 	
 }

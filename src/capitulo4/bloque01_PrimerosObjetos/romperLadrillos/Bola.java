@@ -6,7 +6,7 @@ import java.awt.Graphics;
 public class Bola extends Actor{
 
 	//static int ancho = 15, alto = 15;
-	private int velocidadX = -5, velocidadY = -5;
+	private int velocidadX = 5, velocidadY = 5, velocidadNegativa = -velocidadX;
 	
 	
 
@@ -17,6 +17,7 @@ public class Bola extends Actor{
 		super();
 		ancho = 15;
 		alto = 15;
+		
 	}
 
 
@@ -27,8 +28,9 @@ public class Bola extends Actor{
 	 */
 	public Bola(int x, int y, int ancho, int alto) {
 		super(x, y, ancho, alto);
-		//ancho = 15;
-		//alto = 15;
+		ancho = 15;
+		alto = 15;
+		
 	}
 	
 	/**
@@ -38,10 +40,11 @@ public class Bola extends Actor{
 	public Bola(int x, int y) {
 		ancho = 15;
 		alto = 15;
+		
 	}
 
 
-
+	
 	@Override
 	public void paint(Graphics g) {
 		g.setColor(Color.ORANGE);
@@ -71,14 +74,13 @@ public class Bola extends Actor{
 	@Override
 	public void colisionaCon(Actor a) {
 		super.colisionaCon(a);
-		/*if (a instanceof Player) {
-			this.y = Arkanoid.getInstance().getActores().
-			//this.velocidadY = ;
+		if (a instanceof Player) {
+			this.velocidadY = velocidadNegativa;
 		}
 		
 		if (a instanceof Ladrillo) {
-			this.velocidadY = -this.velocidadY;
-		}*/
+			this.velocidadY = -velocidadNegativa;
+		}
 	}
 	
 }

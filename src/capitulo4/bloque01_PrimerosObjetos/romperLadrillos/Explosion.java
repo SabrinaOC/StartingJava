@@ -30,7 +30,6 @@ public class Explosion extends Actor {
 		// Velocidad de cambio de sprite
 		this.velocidadDeCambioDeSprite = 5;
 	}
-	
 
 	/**
 	 * M�todo que se llamar� para cada actor, en cada refresco de pantalla del juego
@@ -38,16 +37,10 @@ public class Explosion extends Actor {
 	@Override
 	public void actua() {
 		super.actua();
-		if (this.spriteActual.equals(this.spritesDeAnimacion.get(this.spritesDeAnimacion.size()-1))) {
+		if (this.spriteActual.equals(this.spritesDeAnimacion.get(this.spritesDeAnimacion.size() - 1))) {
 			Arkanoid.getInstance().eliminaActor(this);
 		}
 	}
 
-
-	@Override
-	public void paint(Graphics g) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }
