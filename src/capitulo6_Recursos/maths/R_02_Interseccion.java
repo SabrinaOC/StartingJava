@@ -1,4 +1,4 @@
-package capitulo6_Recursos;
+package capitulo6_Recursos.maths;
 
 /**
  * Averiguar, con una precisión inferior a 0.001, en qué punto (x, y) se cortan las gráficas de las siguientes funciones:

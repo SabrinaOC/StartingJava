@@ -1,4 +1,4 @@
-package capitulo6_Recursos;
+package capitulo6_Recursos.maths;
 
 /**
  * Aproximar, con una precisión de 0.00001 décimas, el número PI. Para esto

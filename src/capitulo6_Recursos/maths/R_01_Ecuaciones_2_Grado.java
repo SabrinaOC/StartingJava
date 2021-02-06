@@ -1,4 +1,4 @@
-package capitulo6_Recursos;
+package capitulo6_Recursos.maths;
 
 import utils.Utils;
 

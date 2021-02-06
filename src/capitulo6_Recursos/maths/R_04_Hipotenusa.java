@@ -1,4 +1,4 @@
-package capitulo6_Recursos;
+package capitulo6_Recursos.maths;
 
 /**
  * Dado un triángulo rectángulo cuyos catetos miden 4 cm y 5 cm respectivamente, hallar cuanto mide la hipotenusa
