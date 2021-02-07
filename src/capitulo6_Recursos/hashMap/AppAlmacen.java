@@ -89,11 +89,22 @@ public class AppAlmacen {
 			artAlmacen.put(cod, art);
 			break;
 		case 2:
+			// Primero comprobamos si hay artículos en la hashmap
+			if (vacio() == true) {// Si no hay mostramos mensaje y salimos de opción localizar artículo
+				System.out.println("\nNo hay artículos en el almacén.");
+				break;
+			}
 			// Pedimos artículo que queremos eliminar
 			System.out.println("\nIntroduzca el código de barras del artículo que quiere eliminar:");
 			int eliminar = utils.Utils.obtenerEnteroPorScanner(); // Localizamos el artículo para eliminar
-
-			artAlmacen.remove(eliminar);// eliminamos artículo
+			
+			if (existe(eliminar)) {
+				System.out.println("Artículo " + artAlmacen.get(eliminar).getNombre() + " con código de barras " 
+				+ artAlmacen.get(eliminar).getCodBarras() + " eliminado.");
+				artAlmacen.remove(eliminar);// eliminamos artículo
+			} else {
+				System.out.println("\nNo existe ningún artículo con ese código de barras.");
+			}
 
 			break;
 		case 3:
@@ -109,8 +120,8 @@ public class AppAlmacen {
 
 				// Cambiamos la localización
 				artAlmacen.get(loc).setEstante(newEst);
-				;// le cambiamos la localización
-					// Mostramos datos en pantalla
+				// le cambiamos la localización
+				// Mostramos datos en pantalla
 				System.out.println("\nLa nueva localización del artículo " + artAlmacen.get(loc).getNombre()
 						+ " es estante " + artAlmacen.get(loc).getEstante());
 			} else {
