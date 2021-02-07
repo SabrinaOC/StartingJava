@@ -90,7 +90,7 @@ public class AppAlmacen {
 			break;
 		case 2:
 			// Primero comprobamos si hay artículos en la hashmap
-			if (vacio() == true) {// Si no hay mostramos mensaje y salimos de opción localizar artículo
+			if (vacio()) {// Si no hay mostramos mensaje y salimos de opción localizar artículo
 				System.out.println("\nNo hay artículos en el almacén.");
 				break;
 			}
@@ -123,7 +123,7 @@ public class AppAlmacen {
 				// le cambiamos la localización
 				// Mostramos datos en pantalla
 				System.out.println("\nLa nueva localización del artículo " + artAlmacen.get(loc).getNombre()
-						+ " es estante " + artAlmacen.get(loc).getEstante());
+						+ " es estante " + artAlmacen.get(loc).getEstante() + ".");
 			} else {
 				System.out.println("\nNo existe ningún artículo con ese código de barras.");
 			}
@@ -131,7 +131,7 @@ public class AppAlmacen {
 			break;
 		case 4:
 			// Primero comprobamos si hay artículos en la hashmap
-			if (vacio() == true) {// Si no hay mostramos mensaje y salimos de opción localizar artículo
+			if (vacio()) {// Si no hay mostramos mensaje y salimos de opción localizar artículo
 				System.out.println("\nNo hay artículos en el almacén.");
 				break;
 			}
@@ -141,8 +141,8 @@ public class AppAlmacen {
 
 			if (existe(find)) {
 				// Mostramos información en pantalla
-				System.out.println("\nEl artículo" + artAlmacen.get(find).getNombre() + " se encuentra en el estante "
-						+ artAlmacen.get(find).getEstante() + "\n");
+				System.out.println("\nEl artículo " + artAlmacen.get(find).getNombre() + " se encuentra en el estante "
+						+ artAlmacen.get(find).getEstante() + ".");
 			} else {
 				System.out.println("\nNo se ha encontrado ningún artículo con ese código.");
 			}
