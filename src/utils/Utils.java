@@ -70,4 +70,14 @@ public class Utils {
 	public static int obtenerEntero() {
 		return obtenerEnteroPorJOptionPane();
 	}
+	
+	/**
+	 * Método para pedir información al usuario String
+	 * 
+	 * @return
+	 */
+	public static String obtenerStringPorScanner() {
+		Scanner sc = new Scanner(System.in);
+		return sc.nextLine();
+	}
 }
