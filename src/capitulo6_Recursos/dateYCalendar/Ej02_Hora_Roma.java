@@ -26,9 +26,18 @@ public class Ej02_Hora_Roma {
 		System.out.println("Hora actual en Roma " + roma.get(Calendar.HOUR_OF_DAY));
 		
 		//Creamos calendar para hora de Sydney
-		Calendar syd = Calendar.getInstance(TimeZone.getTimeZone("Asutralia/Sydney"));
+		Calendar syd = Calendar.getInstance(TimeZone.getTimeZone("Australia/Sydney"));
 		//Mostramos en pantalla
 		System.out.println("Hora actual en Sydney " + syd.get(Calendar.HOUR_OF_DAY));
+		
+		//Para saber la diferencia horaria cogemos los milisegundos de las dos zonas horarias
+		//los restamos
+		short horasDiferencia = (short) Math.abs(syd.get(Calendar.HOUR_OF_DAY)-roma.get(Calendar.HOUR_OF_DAY));
+		
+		
+		System.out.println("Diferencia horaria: " + horasDiferencia);
+		
+		
 		
 		
 		
