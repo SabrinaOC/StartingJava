@@ -43,6 +43,38 @@ public class CuadroDeJuego {
 		g.drawRect(this.coordXTop, this.coordYTop, this.ancho, this.alto);
 	}
 	
+	/**
+	 * Método para saber dónde se hace clic
+	 * @param coordX
+	 * @param coordY
+	 */
+	public void clic () {
+		System.out.println("clic x " + this.posicionX + " y " + this.posicionY);
+		
+		TresEnRaya.getInstance().getMatriz()[this.posicionX][this.posicionY] = 1;
+	}
+	
+	
+	/**
+	 * 
+	 * @param x
+	 * @param y
+	 * @return
+	 */
+	public boolean clicSobreMi (int x, int y) {
+		if (x > this.coordXTop && x < (this.coordXTop + ancho) &&
+				y > this.coordYTop && y < (this.coordYTop + alto)) {
+			return true;
+		}
+		return false;
+	}
+	
+	
+	public void identificarEnMatriz() {
+		//recorremos matriz
+		
+	}
+	
 	//GETTERS Y SETTERS
 
 	/**

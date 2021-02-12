@@ -3,6 +3,8 @@ package capitulo4.bloque01_PrimerosObjetos.tresEnRaya;
 import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Graphics;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
@@ -11,17 +13,23 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import capitulo4.bloque01_PrimerosObjetos.romperLadrillos.Actor;
 
-public class TresEnRaya extends Canvas{
-	
+public class TresEnRaya extends Canvas {
+
 	private static JFrame ventana = null;
-	private List<CuadroDeJuego> cuadros = new ArrayList<CuadroDeJuego>(); // Creamos lista de actores que pasaremos a canva
+	// Creamos lista de actores que pasaremos a canvas
+	private List<CuadroDeJuego> cuadros = new ArrayList<CuadroDeJuego>();
+	//Creamos matriz que usaremos para seguir jugadas 
+	public int matriz [][] = new int [][] {{0, 0, 0}, 
+										   {0, 0, 0}, 
+										   {0, 0, 0}}; 
 	
+	//pasarle a clic para saber qué pintar y colocar en la matriz									  
+	public int turno;
+
 	// Propiedad estática necesaria para crear patrón singleton
 	private static TresEnRaya instance = null;
-	
-	
+
 	/**
 	 * Método que permite la creación de solo un objeto de la clase
 	 * 
@@ -35,14 +43,14 @@ public class TresEnRaya extends Canvas{
 			return instance;
 		}
 	}
-	
+
 	public TresEnRaya() {
-		//Creamos ventana
+		// Creamos ventana
 		JFrame ventana = new JFrame("Tres en Raya Sabrina");
-		ventana.setBounds(0, 0, 600, 600);
+		ventana.setBounds(0, 0, 600, 602);
 		ventana.setResizable(false);// Bloqueamos la modificación del tamaño de ventana
 		ventana.getContentPane().setLayout(new BorderLayout());// elegimos diseño ventana
-		
+
 		// Colocamos canvas en ventana en posición central
 		ventana.getContentPane().add(this, BorderLayout.CENTER);
 
@@ -51,9 +59,27 @@ public class TresEnRaya extends Canvas{
 		// hacemo ventana visible
 		ventana.setVisible(true);
 
-		
+		// Llamamos al método para crear cuadros en la lista
 		cuadros = crearCuadros();
 
+		// Enviamos eventos movimiento ratón
+		
+		this.addMouseListener(new MouseAdapter() {
+			
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				super.mouseClicked(e);
+				
+				for (CuadroDeJuego c: cuadros) {
+					if (c.clicSobreMi(e.getX(), e.getY())) {
+						c.clic();
+					}
+				}
+			}
+			
+		});
+		
+		
 
 		// Tras mostrar la ventana, consigo que el foco de la ventana vaya al
 		// Canvas, para que pueda escuchar los eventos del teclado
@@ -68,16 +94,12 @@ public class TresEnRaya extends Canvas{
 			}
 		});
 	}
-	
-	
-	
-	
-	
+
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
-		
-		System.out.println("cuadros: " + this.cuadros.size());
+
+		// System.out.println("cuadros: " + this.cuadros.size());
 		for (CuadroDeJuego c : this.cuadros) {
 			c.paint(g);
 		}
@@ -85,36 +107,42 @@ public class TresEnRaya extends Canvas{
 
 	/**
 	 * Método principal
+	 * 
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		TresEnRaya.getInstance();
 
 	}
-	
+
 	/**
 	 * Método para crear cuadros
+	 * 
 	 * @return
 	 */
 	public List<CuadroDeJuego> crearCuadros() {
 		List<CuadroDeJuego> cuadros = new ArrayList<CuadroDeJuego>();
-		//Sacamos ancho y alto del canvas y lo dividimos entre 3 para tener tamaño de cada cuadro
-		int ancho = this.getWidth()/3;
-		int alto = this.getHeight()/3;
+		// Sacamos ancho y alto del canvas y lo dividimos entre 3 para tener tamaño de
+		// cada cuadro
+		int ancho = this.getWidth() / 3;
+		int alto = this.getHeight() / 3;
 		int coordX = 0;
 		int coordY = 0;
-		for (int i = 0; i < 3; i++) { //La i la usaremos como eje x en matriz
-			for (int j = 0; j < 3; j++) { //La j será el eje y en la matriz
-				//x. y, coordX, coordY, ancho, alto
-				cuadros.add(new CuadroDeJuego(i, j, coordX, coordY, ancho, alto));
+		for (int i = 0; i < 3; i++) { // La i la usaremos como eje y en matriz
+			for (int j = 0; j < 3; j++) { // La j será el eje x en la matriz
+				// x. y, coordX, coordY, ancho, alto
+				cuadros.add(new CuadroDeJuego(j, i, coordX, coordY, ancho, alto));
 				coordX += ancho;
 			}
 			coordY += alto;
-			
+			coordX = 0;// volvemos la x a valor 0 para pintar segunda fila
+
 		}
 		return cuadros;
+		
+		
 	}
-	
+
 	/**
 	 * Método para cerrar juego
 	 */
@@ -126,5 +154,24 @@ public class TresEnRaya extends Canvas{
 			System.exit(0);
 		}
 	}
+
+	/**
+	 * @return the matriz
+	 */
+	public int[][] getMatriz() {
+		return matriz;
+	}
+
+
+	/**
+	 * @param matriz the matriz to set
+	 */
+	public void setMatriz(int[][] matriz) {
+		this.matriz = matriz;
+	}
+
+	
+	
+	
 
 }
