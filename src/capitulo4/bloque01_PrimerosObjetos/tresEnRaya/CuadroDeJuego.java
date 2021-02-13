@@ -4,10 +4,14 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
+import javax.swing.JOptionPane;
+
 public class CuadroDeJuego {
 
 	//Creamos propiedades de los cuadros del tablero
 	private int posicionX, posicionY, coordXTop, coordYTop, ancho, alto;
+	//Creamos boolean para controlar clic sobre cuadro
+	boolean clicked = false;
 
 	/**
 	 * Método constructor sin propiedades
@@ -41,6 +45,12 @@ public class CuadroDeJuego {
 		g.setColor(Color.BLACK);
 		// Pinto el ladrillo como un rect�ngulo con v�rtices redondeados
 		g.drawRect(this.coordXTop, this.coordYTop, this.ancho, this.alto);
+		
+		
+		//Si se ha hecho clic sobre ese cuadro se llamará al método para pintar ficha
+		if (this.clicked) {
+			pintarFichaEnTablero(g);
+		}
 	}
 	
 	/**
@@ -49,9 +59,20 @@ public class CuadroDeJuego {
 	 * @param coordY
 	 */
 	public void clic () {
-		System.out.println("clic x " + this.posicionX + " y " + this.posicionY);
+		//Comprobamos si es una casilla válida
+		if (!comprobarCasilla()) {
+			//cambiamos estado de clicked para marcar esa casilla como ocupada
+			this.clicked = true;
+			
+			//y repintamos
+			TresEnRaya.getInstance().repaint();
+			TresEnRaya.getInstance().revalidate();
+		}
 		
-		TresEnRaya.getInstance().getMatriz()[this.posicionX][this.posicionY] = 1;
+		
+		
+		//System.out.println("se ha hecho clic en x " + this.posicionX + " y " + this.posicionY);
+
 	}
 	
 	
@@ -64,11 +85,42 @@ public class CuadroDeJuego {
 	public boolean clicSobreMi (int x, int y) {
 		if (x > this.coordXTop && x < (this.coordXTop + ancho) &&
 				y > this.coordYTop && y < (this.coordYTop + alto)) {
+			
 			return true;
 		}
 		return false;
 	}
 	
+	/**
+	 * Método para pintar ficha en tablero
+	 * @param g
+	 */
+	public void pintarFichaEnTablero(Graphics g) {
+		
+		//Dependiendo del turno, pintaremos una cosa u otra
+		//aprovecharemos también para cambiar el turno
+		if (TresEnRaya.getInstance().getTurno() == 1) {
+			g.setColor(Color.RED);
+			g.drawOval(this.coordXTop + 20, this.coordYTop + 20 , this.ancho - 40, this.alto - 40);
+			TresEnRaya.getInstance().setTurno(2);
+		} else {
+			g.setColor(Color.GREEN);
+			g.drawRect(this.coordXTop + 20, this.coordYTop + 20, this.ancho - 40, this.alto - 40);
+			//g.drawLine(coordXTop, coordYTop + this.alto, 10, this.alto);
+			TresEnRaya.getInstance().setTurno(1);
+			
+		}
+		
+	}
+	
+	public boolean comprobarCasilla() {
+		if (this.clicked) {
+			System.out.println("Casilla ocupada");
+			return true;
+		}
+		
+		return false;
+	}
 	
 	public void identificarEnMatriz() {
 		//recorremos matriz

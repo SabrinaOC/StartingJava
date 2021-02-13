@@ -2,6 +2,7 @@ package capitulo4.bloque01_PrimerosObjetos.tresEnRaya;
 
 import java.awt.BorderLayout;
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -25,7 +26,7 @@ public class TresEnRaya extends Canvas {
 										   {0, 0, 0}}; 
 	
 	//pasarle a clic para saber qué pintar y colocar en la matriz									  
-	public int turno;
+	public int turno = 1; //empieza el jugador 1
 
 	// Propiedad estática necesaria para crear patrón singleton
 	private static TresEnRaya instance = null;
@@ -80,6 +81,8 @@ public class TresEnRaya extends Canvas {
 		});
 		
 		
+		
+		
 
 		// Tras mostrar la ventana, consigo que el foco de la ventana vaya al
 		// Canvas, para que pueda escuchar los eventos del teclado
@@ -98,6 +101,7 @@ public class TresEnRaya extends Canvas {
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
+		setBackground(Color.WHITE);
 
 		// System.out.println("cuadros: " + this.cuadros.size());
 		for (CuadroDeJuego c : this.cuadros) {
@@ -168,6 +172,20 @@ public class TresEnRaya extends Canvas {
 	 */
 	public void setMatriz(int[][] matriz) {
 		this.matriz = matriz;
+	}
+
+	/**
+	 * @return the turno
+	 */
+	public int getTurno() {
+		return turno;
+	}
+
+	/**
+	 * @param turno the turno to set
+	 */
+	public void setTurno(int turno) {
+		this.turno = turno;
 	}
 
 	
