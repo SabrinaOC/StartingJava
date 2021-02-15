@@ -3,15 +3,16 @@ package capitulo4.bloque01_PrimerosObjetos.tresEnRaya;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.util.jar.JarOutputStream;
 
 import javax.swing.JOptionPane;
+
+
 
 public class CuadroDeJuego {
 
 	//Creamos propiedades de los cuadros del tablero
 	private int posicionX, posicionY, coordXTop, coordYTop, ancho, alto;
-	//Creamos boolean para controlar clic sobre cuadro
-	boolean clicked = false;
 
 	/**
 	 * Método constructor sin propiedades
@@ -47,10 +48,7 @@ public class CuadroDeJuego {
 		g.drawRect(this.coordXTop, this.coordYTop, this.ancho, this.alto);
 		
 		
-		//Si se ha hecho clic sobre ese cuadro se llamará al método para pintar ficha
-		if (this.clicked) {
-			pintarFichaEnTablero(g);
-		}
+		pintarFichaEnTablero(g);
 	}
 	
 	/**
@@ -59,10 +57,14 @@ public class CuadroDeJuego {
 	 * @param coordY
 	 */
 	public void clic () {
+		int turno = TresEnRaya.getInstance().getTurno();
+		
 		//Comprobamos si es una casilla válida
-		if (!comprobarCasilla()) {
-			//cambiamos estado de clicked para marcar esa casilla como ocupada
-			this.clicked = true;
+		if (!estaEstaCasillaOcupada()) {
+			//aprovechamos para modificar matriz
+			TresEnRaya.getInstance().getMatriz()[this.posicionX][this.posicionY] = turno;
+			
+			TresEnRaya.getInstance().cambiaTurno();
 			
 			//y repintamos
 			TresEnRaya.getInstance().repaint();
@@ -99,23 +101,21 @@ public class CuadroDeJuego {
 		
 		//Dependiendo del turno, pintaremos una cosa u otra
 		//aprovecharemos también para cambiar el turno
-		if (TresEnRaya.getInstance().getTurno() == 1) {
+		if (TresEnRaya.getInstance().getMatriz()[this.posicionX][this.posicionY] == 1) {
 			g.setColor(Color.RED);
 			g.drawOval(this.coordXTop + 20, this.coordYTop + 20 , this.ancho - 40, this.alto - 40);
-			TresEnRaya.getInstance().setTurno(2);
-		} else {
+		} else 
+			if (TresEnRaya.getInstance().getMatriz()[this.posicionX][this.posicionY] == 2) {
 			g.setColor(Color.GREEN);
 			g.drawRect(this.coordXTop + 20, this.coordYTop + 20, this.ancho - 40, this.alto - 40);
-			//g.drawLine(coordXTop, coordYTop + this.alto, 10, this.alto);
-			TresEnRaya.getInstance().setTurno(1);
 			
 		}
 		
 	}
 	
-	public boolean comprobarCasilla() {
-		if (this.clicked) {
-			System.out.println("Casilla ocupada");
+	public boolean estaEstaCasillaOcupada() {
+		if (TresEnRaya.getInstance().getMatriz()[this.posicionX][this.posicionY] != 0) {
+			JOptionPane.showMessageDialog(null, "Casilla ocupada");
 			return true;
 		}
 		

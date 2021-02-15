@@ -14,19 +14,17 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-
 public class TresEnRaya extends Canvas {
 
 	private static JFrame ventana = null;
 	// Creamos lista de actores que pasaremos a canvas
 	private List<CuadroDeJuego> cuadros = new ArrayList<CuadroDeJuego>();
-	//Creamos matriz que usaremos para seguir jugadas 
-	public int matriz [][] = new int [][] {{0, 0, 0}, 
-										   {0, 0, 0}, 
-										   {0, 0, 0}}; 
-	
-	//pasarle a clic para saber qué pintar y colocar en la matriz									  
-	public int turno = 1; //empieza el jugador 1
+	// Creamos matriz que usaremos para seguir jugadas
+	public int matriz[][] = new int[][] { { 0, 0, 0 }, { 0, 0, 0 }, { 0, 0, 0 } };
+
+	// pasarle a clic para saber qué pintar y colocar en la matriz
+	public int turno = 1; // empieza el jugador 1
+	public int ganador;
 
 	// Propiedad estática necesaria para crear patrón singleton
 	private static TresEnRaya instance = null;
@@ -64,25 +62,39 @@ public class TresEnRaya extends Canvas {
 		cuadros = crearCuadros();
 
 		// Enviamos eventos movimiento ratón
-		
+
 		this.addMouseListener(new MouseAdapter() {
-			
+
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				super.mouseClicked(e);
-				
-				for (CuadroDeJuego c: cuadros) {
+
+				for (CuadroDeJuego c : cuadros) {
 					if (c.clicSobreMi(e.getX(), e.getY())) {
 						c.clic();
+						utils.UtilsMatrices.mostrarMatrizPantalla(matriz);
+						System.out.println("");
+						
+						ganador = comprobarGanador();
+						
+						if (ganador == 1 || ganador == 2) {
+							JOptionPane.showMessageDialog(null, "Ha ganado el jugador " + ganador);
+						} 
+						
+						if (ganador == -1) {
+							JOptionPane.showMessageDialog(null, "¡Empate! No quedan casillas vacías");
+						}
 					}
+					
 				}
 			}
-			
+
 		});
 		
 		
 		
 		
+		//comprobarGanador();
 
 		// Tras mostrar la ventana, consigo que el foco de la ventana vaya al
 		// Canvas, para que pueda escuchar los eventos del teclado
@@ -143,8 +155,7 @@ public class TresEnRaya extends Canvas {
 
 		}
 		return cuadros;
-		
-		
+
 	}
 
 	/**
@@ -159,13 +170,68 @@ public class TresEnRaya extends Canvas {
 		}
 	}
 
+	public int comprobarGanador() {
+		// Busco si existe un ganador mirando las filas
+		for (int i = 0; i < matriz.length; i++) {
+			if (matriz[i][0] == matriz[i][1] && matriz[i][1] == matriz[i][2]) {
+				return matriz[i][0]; // Si todos los valores de una fila son iguales, devuelvo cualquiera de los
+										// elementos de esa fila
+			}
+		}
+		// Busco si existe un ganador en las columnas
+		for (int i = 0; i < matriz[0].length; i++) {
+			if (matriz[0][i] == matriz[1][i] && matriz[1][i] == matriz[2][i]) {
+				return matriz[0][i]; // Si todos los valores de una columna son iguales, devuelvo cualquiera de los
+										// elementos de esa columna
+			}
+		}
+		// Busco un ganador en la diagonal principal
+		if (matriz[0][0] == matriz[1][1] && matriz[1][1] == matriz[2][2]) {
+			return matriz[0][0]; // Devuelvo cualquier elemento de la diagonal principal
+		}
+		// Busco un ganador en la diagonal secundaria
+		if (matriz[0][2] == matriz[1][1] && matriz[1][1] == matriz[2][0]) {
+			return matriz[0][2]; // Devuelvo cualquier elemento de la diagonal secundaria
+		}
+
+		
+		// Si llegó hasta aquí no hay ganador, pero aún quedan dos posibilidades: puede
+		// que queden casillas vacías o puede que no
+		// Voy a suponer que no hay casillas vacías y voy a recorrer el tablero buscando
+		// alguna casilla vacía
+		boolean hayCasillasVacias = false;
+		for (int i = 0; i < matriz.length; i++) {
+			for (int j = 0; j < matriz[0].length; j++) {
+				if (matriz[i][j] == 0) {
+					hayCasillasVacias = true;
+				}
+			}
+		}
+
+		// Devuelvo valores diferentes dependiendo de si existen casillas vacías o no
+		if (hayCasillasVacias == true) {
+			return 0; // Indica que el juego continúa.
+		} else {
+			return -1; // Indica que no quedan casillas vacías, hay empate
+		}
+		
+	}
+	
+	/**
+	 * 
+	 */
+	public void cambiaTurno () {
+		if (this.turno == 1) turno = 2;
+		else turno = 1;
+	}
+	
+
 	/**
 	 * @return the matriz
 	 */
 	public int[][] getMatriz() {
 		return matriz;
 	}
-
 
 	/**
 	 * @param matriz the matriz to set
@@ -187,9 +253,5 @@ public class TresEnRaya extends Canvas {
 	public void setTurno(int turno) {
 		this.turno = turno;
 	}
-
-	
-	
-	
 
 }

@@ -19,13 +19,13 @@ public class Ej01_tiposPrimitivos_max_min {
 
 	public static void main(String[] args) {
 		
-		//Valores byte
+		//Valores integer
 		System.out.println("Valor máximo entero " + Integer.MAX_VALUE);
 		System.out.println("Valor mínimo entero " + Integer.MIN_VALUE);
 		System.out.println("Bytes entero " + Integer.BYTES);
 		
 		
-		//Valores integer
+		//Valores byte
 		System.out.println("\nValor máximo byte " + Byte.MAX_VALUE);
 		System.out.println("Valor mínimo byte " + Byte.MIN_VALUE);
 		System.out.println("Bytes byte " + Byte.BYTES);
