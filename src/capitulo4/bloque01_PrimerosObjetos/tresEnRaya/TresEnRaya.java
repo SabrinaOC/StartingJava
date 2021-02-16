@@ -72,8 +72,8 @@ public class TresEnRaya extends Canvas {
 				for (CuadroDeJuego c : cuadros) {
 					if (c.clicSobreMi(e.getX(), e.getY())) {
 						c.clic();
-						utils.UtilsMatrices.mostrarMatrizPantalla(matriz);
-						System.out.println("");
+						//utils.UtilsMatrices.mostrarMatrizPantalla(matriz);
+						//System.out.println("");
 						
 						ganador = comprobarGanador();
 						

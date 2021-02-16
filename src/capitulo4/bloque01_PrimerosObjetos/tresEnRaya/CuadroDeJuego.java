@@ -1,5 +1,6 @@
 package capitulo4.bloque01_PrimerosObjetos.tresEnRaya;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -99,6 +100,9 @@ public class CuadroDeJuego {
 	 */
 	public void pintarFichaEnTablero(Graphics g) {
 		
+		Graphics2D g2d = (Graphics2D) g;
+//		g2d.setStroke(new BasicStroke(1.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 10.0f, new float[] {10.0f}, 0.0f));
+		//g2d.setStroke(new BasicStroke(8.0f));
 		//Dependiendo del turno, pintaremos una cosa u otra
 		//aprovecharemos también para cambiar el turno
 		if (TresEnRaya.getInstance().getMatriz()[this.posicionX][this.posicionY] == 1) {
