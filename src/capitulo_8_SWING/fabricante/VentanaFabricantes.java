@@ -1,15 +1,11 @@
 package capitulo_8_SWING.fabricante;
-
 import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
-
-
-
 import java.awt.Insets;
 import javax.swing.JPanel;
 import java.awt.FlowLayout;
@@ -51,6 +47,9 @@ public class VentanaFabricantes {
 		mostrarFabricanteEnPantalla();
 	}
 
+	/**
+	 * Método para mostrar fabricante actual en pantalla BBDD --> App
+	 */
 	public void mostrarFabricanteEnPantalla() {
 		//si el Fabricante actual es distinto de nulo
 		if (this.actual != null) {
@@ -59,6 +58,15 @@ public class VentanaFabricantes {
 			this.jtfCid.setText(this.actual.getCif());
 			this.jtfNombre.setText(this.actual.getNombre());
 		}
+	}
+	
+	/**
+	 * Método para mostrar fabricante desde pantalla App -->BBDD
+	 */
+	private void cargarActualDesdePantalla() {
+		this.actual.setId(Integer.parseInt(jtfId.getText()));
+		this.actual.setCif(jtfCid.getText());
+		this.actual.setNombre(jtfNombre.getText());
 	}
 	
 	
@@ -174,6 +182,86 @@ public class VentanaFabricantes {
 			}
 		});
 		panel.add(btnUltimo);
+		
+		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				guardar();
+			}
+		});
+		panel.add(btnGuardar);
+		
+		JButton btnNuevo = new JButton("Nuevo");
+		btnNuevo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//llamamos primero al método vaciar campos para limpiar formulasio y luego lo guardamos
+				vaciarCampos();
+				
+			}
+		});
+		panel.add(btnNuevo);
+		
+		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				eliminar();
+				
+			}
+		});
+		panel.add(btnEliminar);
 	}
+	
+	private void guardar() {
+		//primero cargamos en nuestra variable "actual" los valores del fabricante que se muestran en pantalla
+		cargarActualDesdePantalla();
+		//Para comprobar si se trata de un registro nuevo o uno existente que se va a modificar usamos un if
+		
+		if (this.actual.getId() != 0) {
+		//a continuación llamamos al método modificar (controladorFabricante)
+			int regAfect = ControladorFabricante.getInstance().modificar(this.actual);
+			if (regAfect > 0) {
+				//si el valor de la variable regAfect es mayor que 0, significa que se ha modificado correctamente
+				JOptionPane.showMessageDialog(null, "Registro modificado correctamente");
+			}
+		}
+		//si el id es 0, significa que se está guardando un nuevo fabricante, por tanto, el procedimiento es distinto
+		else {
+			//creamos variable para recoger id del nuevo fabricante y llamamos al método nuevo de ControladorFabricante
+			int idNuevoReg = ControladorFabricante.getInstance().nuevo(this.actual);
+			if (idNuevoReg > 0) {
+				//actualizamos el id del registro que insertamos
+				this.jtfId.setText("" + idNuevoReg);
+				JOptionPane.showMessageDialog(null, "Registro guardado con éxito");
+			}
+		}
+		
+	}
+	
+	public void vaciarCampos() {
+		//lo ponemos a 0 para usarlo como bandera a la hora de guardar, sabremos si se trata de una modificación o una inserción
+		jtfId.setText("0");
+		jtfCid.setText("");
+		jtfNombre.setText("");
+		
+	}
+	
+	public void eliminar() {
+		//preguntamos al usuario si está seguro de seguir adelante
+		String posiblesRespuestas[] = {"Sí","No"};
+		// En esta opci�n se utiliza un showOptionDialog en el que personalizo el icono mostrado
+		int opcionElegida = JOptionPane.showOptionDialog(null, "¿Desea eliminar?", "Gestión venta de coches", 
+		        JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, posiblesRespuestas, posiblesRespuestas[1]);
+		
+		if (opcionElegida == 0) {
+			int regAfect = ControladorFabricante.getInstance().eliminar(this.actual.getId());
+		
+			if (regAfect > 0) {
+				//llamamos al método vaciar vampos para que visualmente se observe que se ha realizado la acción deseada
+				vaciarCampos();
+				JOptionPane.showMessageDialog(null, "Registro eliminado");
+		}
+		}
+	}
+	
 
 }
