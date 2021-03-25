@@ -1,4 +1,4 @@
-package capitulo_8_SWING.fabricante;
+package tutorialJava.capitulo8_AWT_SWING.gestionVentaDeCoches;
 
 public class Fabricante {
 
@@ -6,11 +6,21 @@ public class Fabricante {
 	private String cif;
 	private String nombre;
 	
-	
 	public Fabricante() {
-		
+		// TODO Auto-generated constructor stub
 	}
 
+	public Fabricante(int id, String cif, String nombre) {
+		super();
+		this.id = id;
+		this.cif = cif;
+		this.nombre = nombre;
+	}
+
+	@Override
+	public String toString() {
+		return "Fabricante [id=" + id + ", cif=" + cif + ", nombre=" + nombre + "]";
+	}
 
 	/**
 	 * @return the id
@@ -19,14 +29,12 @@ public class Fabricante {
 		return id;
 	}
 
-
 	/**
 	 * @param id the id to set
 	 */
 	public void setId(int id) {
 		this.id = id;
 	}
-
 
 	/**
 	 * @return the cif
@@ -35,14 +43,12 @@ public class Fabricante {
 		return cif;
 	}
 
-
 	/**
 	 * @param cif the cif to set
 	 */
 	public void setCif(String cif) {
 		this.cif = cif;
 	}
-
 
 	/**
 	 * @return the nombre
@@ -51,13 +57,12 @@ public class Fabricante {
 		return nombre;
 	}
 
-
 	/**
 	 * @param nombre the nombre to set
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
+
 	
 }

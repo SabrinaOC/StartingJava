@@ -1,9 +1,12 @@
-package capitulo_8_SWING.fabricante;
+package tutorialJava.capitulo8_AWT_SWING.gestionVentaDeCoches;
+
 import java.awt.EventQueue;
+
 import javax.swing.JFrame;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+
 import java.awt.GridBagConstraints;
 import javax.swing.JTextField;
 import java.awt.Insets;
@@ -19,8 +22,18 @@ public class VentanaFabricantes {
 	
 	private JFrame frame;
 	private JTextField jtfId;
-	private JTextField jtfCid;
+	private JLabel lblNewLabel_1;
+	private JTextField jtfCif;
+	private JLabel lblNewLabel_2;
 	private JTextField jtfNombre;
+	private JPanel panel;
+	private JButton btnPrimero;
+	private JButton btnAnterior;
+	private JButton btnSiguiente;
+	private JButton btnUltimo;
+	private JButton btnGuardar;
+	private JButton btnNuevo;
+	private JButton btnBorrar;
 
 	/**
 	 * Launch the application.
@@ -44,31 +57,28 @@ public class VentanaFabricantes {
 	public VentanaFabricantes() {
 		initialize();
 		this.actual = ControladorFabricante.getInstance().findPrimero();
-		mostrarFabricanteEnPantalla();
+		cargarActualEnPantalla();
 	}
 
 	/**
-	 * Método para mostrar fabricante actual en pantalla BBDD --> App
+	 * 
 	 */
-	public void mostrarFabricanteEnPantalla() {
-		//si el Fabricante actual es distinto de nulo
+	private void cargarActualEnPantalla() {
 		if (this.actual != null) {
-			//vamos rellenando sus distintas propiedades
-			this.jtfId.setText(" " + this.actual.getId());
-			this.jtfCid.setText(this.actual.getCif());
+			this.jtfId.setText("" + this.actual.getId());
+			this.jtfCif.setText(this.actual.getCif());
 			this.jtfNombre.setText(this.actual.getNombre());
 		}
 	}
 	
 	/**
-	 * Método para mostrar fabricante desde pantalla App -->BBDD
+	 * 
 	 */
 	private void cargarActualDesdePantalla() {
 		this.actual.setId(Integer.parseInt(jtfId.getText()));
-		this.actual.setCif(jtfCid.getText());
+		this.actual.setCif(jtfCif.getText());
 		this.actual.setNombre(jtfNombre.getText());
 	}
-	
 	
 	/**
 	 * Initialize the contents of the frame.
@@ -102,30 +112,31 @@ public class VentanaFabricantes {
 		frame.getContentPane().add(jtfId, gbc_jtfId);
 		jtfId.setColumns(10);
 		
-		JLabel jlbCif = new JLabel("CIF:");
-		GridBagConstraints gbc_jlbCif = new GridBagConstraints();
-		gbc_jlbCif.anchor = GridBagConstraints.EAST;
-		gbc_jlbCif.insets = new Insets(0, 0, 5, 5);
-		gbc_jlbCif.gridx = 0;
-		gbc_jlbCif.gridy = 1;
-		frame.getContentPane().add(jlbCif, gbc_jlbCif);
-		
-		jtfCid = new JTextField();
-		GridBagConstraints gbc_jtfCid = new GridBagConstraints();
-		gbc_jtfCid.insets = new Insets(0, 0, 5, 0);
-		gbc_jtfCid.fill = GridBagConstraints.HORIZONTAL;
-		gbc_jtfCid.gridx = 1;
-		gbc_jtfCid.gridy = 1;
-		frame.getContentPane().add(jtfCid, gbc_jtfCid);
-		jtfCid.setColumns(10);
-		
-		JLabel lblNewLabel_1 = new JLabel("Nombre:");
+		lblNewLabel_1 = new JLabel("CIF:");
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.anchor = GridBagConstraints.EAST;
+		gbc_lblNewLabel_1.fill = GridBagConstraints.VERTICAL;
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_1.gridx = 0;
-		gbc_lblNewLabel_1.gridy = 2;
+		gbc_lblNewLabel_1.gridy = 1;
 		frame.getContentPane().add(lblNewLabel_1, gbc_lblNewLabel_1);
+		
+		jtfCif = new JTextField();
+		GridBagConstraints gbc_jtfCif = new GridBagConstraints();
+		gbc_jtfCif.insets = new Insets(0, 0, 5, 0);
+		gbc_jtfCif.fill = GridBagConstraints.HORIZONTAL;
+		gbc_jtfCif.gridx = 1;
+		gbc_jtfCif.gridy = 1;
+		frame.getContentPane().add(jtfCif, gbc_jtfCif);
+		jtfCif.setColumns(10);
+		
+		lblNewLabel_2 = new JLabel("Nombre:");
+		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
+		gbc_lblNewLabel_2.anchor = GridBagConstraints.SOUTHEAST;
+		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_2.gridx = 0;
+		gbc_lblNewLabel_2.gridy = 2;
+		frame.getContentPane().add(lblNewLabel_2, gbc_lblNewLabel_2);
 		
 		jtfNombre = new JTextField();
 		GridBagConstraints gbc_jtfNombre = new GridBagConstraints();
@@ -136,7 +147,7 @@ public class VentanaFabricantes {
 		frame.getContentPane().add(jtfNombre, gbc_jtfNombre);
 		jtfNombre.setColumns(10);
 		
-		JPanel panel = new JPanel();
+		panel = new JPanel();
 		GridBagConstraints gbc_panel = new GridBagConstraints();
 		gbc_panel.gridwidth = 2;
 		gbc_panel.insets = new Insets(0, 0, 0, 5);
@@ -146,122 +157,111 @@ public class VentanaFabricantes {
 		frame.getContentPane().add(panel, gbc_panel);
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		JButton btnPrimero = new JButton("<<");
+		btnPrimero = new JButton("<<");
 		btnPrimero.addActionListener(new ActionListener() {
-			//evento al pulsar botón primero
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				actual = ControladorFabricante.getInstance().findPrimero();
-				mostrarFabricanteEnPantalla();
+				cargarActualEnPantalla();
 			}
 		});
 		panel.add(btnPrimero);
 		
-		JButton btnAnterior = new JButton("<");
+		btnAnterior = new JButton("<");
 		btnAnterior.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				actual = ControladorFabricante.getInstance().findAnterior(actual.getId());
-				mostrarFabricanteEnPantalla();
+				cargarActualEnPantalla();
 			}
 		});
 		panel.add(btnAnterior);
 		
-		JButton btnSiguiente = new JButton(">");
+		btnSiguiente = new JButton(">");
 		btnSiguiente.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				actual = ControladorFabricante.getInstance().findSiguiente(actual.getId());
-				mostrarFabricanteEnPantalla();
+				cargarActualEnPantalla();
 			}
 		});
 		panel.add(btnSiguiente);
 		
-		JButton btnUltimo = new JButton(">>");
+		btnUltimo = new JButton(">>");
 		btnUltimo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				actual = ControladorFabricante.getInstance().findUltimo();
-				mostrarFabricanteEnPantalla();
+				cargarActualEnPantalla();
 			}
 		});
 		panel.add(btnUltimo);
 		
-		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar = new JButton("Guardar");
 		btnGuardar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
 				guardar();
 			}
 		});
 		panel.add(btnGuardar);
 		
-		JButton btnNuevo = new JButton("Nuevo");
+		btnNuevo = new JButton("Nuevo");
 		btnNuevo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				//llamamos primero al método vaciar campos para limpiar formulasio y luego lo guardamos
+			public void actionPerformed(ActionEvent e) {
 				vaciarCampos();
-				
 			}
 		});
 		panel.add(btnNuevo);
 		
-		JButton btnEliminar = new JButton("Eliminar");
-		btnEliminar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				eliminar();
-				
+		btnBorrar = new JButton("Borrar");
+		btnBorrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				borrar();
 			}
 		});
-		panel.add(btnEliminar);
+		panel.add(btnBorrar);
 	}
-	
-	private void guardar() {
-		//primero cargamos en nuestra variable "actual" los valores del fabricante que se muestran en pantalla
+
+	/**
+	 * 
+	 */
+	private void guardar () {
 		cargarActualDesdePantalla();
-		//Para comprobar si se trata de un registro nuevo o uno existente que se va a modificar usamos un if
-		
-		if (this.actual.getId() != 0) {
-		//a continuación llamamos al método modificar (controladorFabricante)
-			int regAfect = ControladorFabricante.getInstance().modificar(this.actual);
-			if (regAfect > 0) {
-				//si el valor de la variable regAfect es mayor que 0, significa que se ha modificado correctamente
+		// Decido si se trata de guardar un registro existente o nuevo
+		if (this.actual.getId() != 0) { // Modificación
+			int regsAfec = ControladorFabricante.getInstance().modificar(this.actual);
+			if (regsAfec > 0) {
 				JOptionPane.showMessageDialog(null, "Registro modificado correctamente");
 			}
 		}
-		//si el id es 0, significa que se está guardando un nuevo fabricante, por tanto, el procedimiento es distinto
-		else {
-			//creamos variable para recoger id del nuevo fabricante y llamamos al método nuevo de ControladorFabricante
+		else { // Alta -  nuevo
 			int idNuevoReg = ControladorFabricante.getInstance().nuevo(this.actual);
 			if (idNuevoReg > 0) {
-				//actualizamos el id del registro que insertamos
 				this.jtfId.setText("" + idNuevoReg);
-				JOptionPane.showMessageDialog(null, "Registro guardado con éxito");
+				JOptionPane.showMessageDialog(null, "Registro insertado correctamente");
 			}
 		}
-		
 	}
 	
-	public void vaciarCampos() {
-		//lo ponemos a 0 para usarlo como bandera a la hora de guardar, sabremos si se trata de una modificación o una inserción
-		jtfId.setText("0");
-		jtfCid.setText("");
-		jtfNombre.setText("");
-		
+	/**
+	 * 
+	 */
+	private void vaciarCampos() {
+		this.jtfId.setText("0");
+		this.jtfCif.setText("");
+		this.jtfNombre.setText("");
 	}
 	
-	public void eliminar() {
-		//preguntamos al usuario si está seguro de seguir adelante
+	/**
+	 * 
+	 */
+	private void borrar() {
 		String posiblesRespuestas[] = {"Sí","No"};
 		// En esta opci�n se utiliza un showOptionDialog en el que personalizo el icono mostrado
 		int opcionElegida = JOptionPane.showOptionDialog(null, "¿Desea eliminar?", "Gestión venta de coches", 
 		        JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, posiblesRespuestas, posiblesRespuestas[1]);
-		
-		if (opcionElegida == 0) {
-			int regAfect = ControladorFabricante.getInstance().eliminar(this.actual.getId());
-		
-			if (regAfect > 0) {
-				//llamamos al método vaciar vampos para que visualmente se observe que se ha realizado la acción deseada
-				vaciarCampos();
-				JOptionPane.showMessageDialog(null, "Registro eliminado");
-		}
-		}
+	    if(opcionElegida == 0) {
+	    	int regsAfectados = ControladorFabricante.getInstance().borrar(this.actual.getId());
+	    	if (regsAfectados > 0) {
+	    		vaciarCampos();
+	    		JOptionPane.showMessageDialog(null, "Eliminado correctamente");
+	    	}
+	    }
 	}
-	
-
 }
