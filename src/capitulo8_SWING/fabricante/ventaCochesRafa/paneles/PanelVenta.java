@@ -37,11 +37,15 @@ public class PanelVenta extends JPanel {
 	private JComboBox <Coche> jcbIdCoche;
 
 	public PanelVenta() {
+		//cargamos la primera venta
 		actual = ControladorVenta.getInstance().findPrimero();
+		//lanzamos panel
 		iniciar();
+		//cargamos los jcombobox
 		cargarDatosClientes();
 		cargarDatosCoches();
 		cargarDatosConcesionarios();
+		//mostramos información en pantalla
 		cargarActualEnPantalla();
 	}
 	
@@ -225,19 +229,11 @@ public class PanelVenta extends JPanel {
 		});
 		panel.add(btnEliminar);
 		
-		
-//		cargarDatosClientes();
-//		cargarDatosCoches();
-//		cargarDatosConcesionarios();
-//		
-//		actual = ControladorVenta.getInstance().findPrimero();
-//		
-//		cargarActualEnPantalla();
 
 	}
 	
 	/**
-	 * 
+	 * Método para cargar datos de los clientes jcb
 	 */
 	private void cargarDatosClientes() {
 		List<Cliente> clientes = ControladorCliente.getInstance().findAll();
@@ -248,7 +244,7 @@ public class PanelVenta extends JPanel {
 	}
 	
 	/**
-	 * 
+	 * Método para cargar datos de los concesionario jcb
 	 */
 	private void cargarDatosConcesionarios() {
 		List<Concesionario> concesionarios = ControladorConcesionario.getInstance().findAll();
@@ -259,7 +255,7 @@ public class PanelVenta extends JPanel {
 	}
 	
 	/**
-	 * 
+	 * Método para cargar datos de los coches jcb
 	 */
 	private void cargarDatosCoches() {
 		List<Coche> coches = ControladorCoche.getInstance().findAll();
@@ -279,13 +275,14 @@ public class PanelVenta extends JPanel {
 			this.jtfPrecio.setText("" + this.actual.getPrecio());
 		}
 
-		// Carga del fabricante adecuado comparando el id de fabricante del coche actual
-		// con el id del fabricante del combobox
+		// Carga del cliente adecuado comparando el id de cliente de la venta actual
+		// con el id del cliente del combobox
 		for (int i = 0; i < this.jcbIdCliente.getItemCount(); i++) {
 			if (this.actual.getIdCliente() == (this.jcbIdCliente.getItemAt(i)).getId()) {
 				this.jcbIdCliente.setSelectedIndex(i);
 			}
 		}
+		//hacemos lo mismo para los concesionarios y los coches
 		for (int i = 0; i < this.jcbIdConcesionario.getItemCount(); i++) {
 			if (this.actual.getIdConcesionario() == (this.jcbIdConcesionario.getItemAt(i)).getId()) {
 				this.jcbIdConcesionario.setSelectedIndex(i);
@@ -299,7 +296,7 @@ public class PanelVenta extends JPanel {
 	}
 	
 	/**
-	 * 
+	 * Método para guardar los datos de la pantalla en la BBDD
 	 */
 	private void cargarActualDesdePantalla() {
 		this.actual.setId(Integer.parseInt(jtfId.getText()));
@@ -316,20 +313,18 @@ public class PanelVenta extends JPanel {
 	}
 	
 	/**
-	 * 
+	 * Método para vaciar campos
 	 */
 	private void vaciarCampos() {
 		this.jtfId.setText("0");
 		this.jtfId.setText("");
-//		this.jtfIdCon.setText("");
-//		this.jtfIdCoche.setText("");
 		this.jtfFecha.setText("");
 		this.jtfPrecio.setText("");
 	
 	}
 	
 	/**
-	 * 
+	 * Método para guardar información en BBDD
 	 */
 	private void guardar() {
 		cargarActualDesdePantalla();
@@ -350,7 +345,7 @@ public class PanelVenta extends JPanel {
 	}
 	
 	/**
-	 * 
+	 * Método para eliminar ventas de la BBDD
 	 */
 	private void eliminar() {
 		String posiblesRespuestas[] = {"Sí","No"};
