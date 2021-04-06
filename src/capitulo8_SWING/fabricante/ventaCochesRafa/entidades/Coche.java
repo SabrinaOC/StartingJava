@@ -76,6 +76,11 @@ public class Coche {
 	public void setColor(String color) {
 		this.color = color;
 	}
+
+	@Override
+	public String toString() {
+		return modelo;
+	}
 	
 	
 	

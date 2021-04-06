@@ -197,15 +197,15 @@ public class ControladorCoche {
 	 * @param f
 	 * @return
 	 */
-	public int nuevo (Fabricante f) {
+	public int nuevo (Coche c) {
 		int registrosAfectados = 0;
 		int idNuevoRegistro = 0;
 		try {
 			Statement s = (Statement) this.conn.createStatement(); 
 
 			idNuevoRegistro = nextId();
-			registrosAfectados = s.executeUpdate ("insert into fabricante values(" + idNuevoRegistro + ", " +
-			"'" + f.getCif() + "', '" + f.getNombre() + "');");
+			registrosAfectados = s.executeUpdate ("insert into tutorialjavacoches.coche values(" + idNuevoRegistro + ", "
+			+ c.getIdFab() + ", '" + c.getBastidor() + "', '" + c.getModelo() + "', '" + c.getColor() + "');");
 		   	
 			// Cierre de los elementos
 			s.close();
@@ -225,7 +225,7 @@ public class ControladorCoche {
 	private int nextId () throws SQLException {
 		Statement s = (Statement) this.conn.createStatement();
 
-		String sql = "select max(id) from tutorialjavacoches.fabricante";
+		String sql = "select max(id) from tutorialjavacoches.coche";
 		ResultSet rs = s.executeQuery(sql);
 		int max = 1; 
 		if (rs.next() ) {
@@ -242,12 +242,12 @@ public class ControladorCoche {
 	 * @param id
 	 * @return
 	 */
-	public int borrar(int id) {
+	public int eliminar(int id) {
 		int registrosAfectados = 0;
 		try {
 			Statement s = (Statement) this.conn.createStatement(); 
 
-			registrosAfectados = s.executeUpdate ("delete from fabricante where id=" + id + ";");
+			registrosAfectados = s.executeUpdate ("delete from coche where id=" + id + ";");
 			
 			// Cierre de los elementos
 			s.close();

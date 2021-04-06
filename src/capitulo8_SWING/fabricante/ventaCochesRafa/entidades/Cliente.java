@@ -1,12 +1,9 @@
 package capitulo8_SWING.fabricante.ventaCochesRafa.entidades;
 
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
 import java.util.Date;
 
-import javax.swing.JOptionPane;
+
 
 public class Cliente {
 	
@@ -85,24 +82,7 @@ public class Cliente {
 		this.fechaNac = fechaNac;
 	}
 	
-	/*
-	public void setFechaNac(String fechaNac) {
-		SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
-		Date fechaPars = null;
-		
-		try {
-			fechaPars = (Date) formato.parse(fechaNac);
-		} catch (ParseException e) {
-			JOptionPane.showMessageDialog(null, "Error en el formato de la fecha (dd/MM/yyyy)");
-		}
-		 java.sql.Date this.fechaNac = java.sql.Date.valueOf(formato.format(getFechaNac()));
-		
-		//this.fechaNac = fechaNac;
-		
-	}*/
 	
-
-
 	public boolean isActivo() {
 		return activo;
 	}
@@ -110,6 +90,11 @@ public class Cliente {
 
 	public void setActivo(boolean activo) {
 		this.activo = activo;
+	}
+
+	@Override
+	public String toString() {
+		return nombre;
 	}
 	
 	

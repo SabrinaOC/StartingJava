@@ -12,12 +12,10 @@ import javax.swing.JTextField;
 import capitulo8_SWING.fabricante.ventaCochesRafa.controladores.ControladorCliente;
 import capitulo8_SWING.fabricante.ventaCochesRafa.controladores.ControladorCoche;
 import capitulo8_SWING.fabricante.ventaCochesRafa.controladores.ControladorConcesionario;
-import capitulo8_SWING.fabricante.ventaCochesRafa.controladores.ControladorFabricante;
 import capitulo8_SWING.fabricante.ventaCochesRafa.controladores.ControladorVenta;
 import capitulo8_SWING.fabricante.ventaCochesRafa.entidades.Cliente;
 import capitulo8_SWING.fabricante.ventaCochesRafa.entidades.Coche;
 import capitulo8_SWING.fabricante.ventaCochesRafa.entidades.Concesionario;
-import capitulo8_SWING.fabricante.ventaCochesRafa.entidades.Fabricante;
 import capitulo8_SWING.fabricante.ventaCochesRafa.entidades.Venta;
 
 import java.awt.FlowLayout;
@@ -41,6 +39,9 @@ public class PanelVenta extends JPanel {
 	public PanelVenta() {
 		actual = ControladorVenta.getInstance().findPrimero();
 		iniciar();
+		cargarDatosClientes();
+		cargarDatosCoches();
+		cargarDatosConcesionarios();
 		cargarActualEnPantalla();
 	}
 	
@@ -223,6 +224,15 @@ public class PanelVenta extends JPanel {
 			}
 		});
 		panel.add(btnEliminar);
+		
+		
+//		cargarDatosClientes();
+//		cargarDatosCoches();
+//		cargarDatosConcesionarios();
+//		
+//		actual = ControladorVenta.getInstance().findPrimero();
+//		
+//		cargarActualEnPantalla();
 
 	}
 	

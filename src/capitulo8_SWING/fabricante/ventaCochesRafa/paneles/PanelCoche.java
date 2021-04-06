@@ -3,12 +3,15 @@ package capitulo8_SWING.fabricante.ventaCochesRafa.paneles;
 import javax.swing.JPanel;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JTextField;
 
 import capitulo8_SWING.fabricante.ventaCochesRafa.controladores.ControladorCoche;
 import capitulo8_SWING.fabricante.ventaCochesRafa.controladores.ControladorFabricante;
+import capitulo8_SWING.fabricante.ventaCochesRafa.controladores.ControladorVenta;
 import capitulo8_SWING.fabricante.ventaCochesRafa.entidades.Coche;
 import capitulo8_SWING.fabricante.ventaCochesRafa.entidades.Fabricante;
 
@@ -172,12 +175,27 @@ public class PanelCoche extends JPanel {
 		panel.add(btnUltimo);
 		
 		JButton btnGuardar = new JButton("Guardar");
+		btnGuardar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				guardar();
+			}
+		});
 		panel.add(btnGuardar);
 		
 		JButton btnNuevo = new JButton("Nuevo");
+		btnNuevo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				vaciarCampos();
+			}
+		});
 		panel.add(btnNuevo);
 		
 		JButton btnEliminar = new JButton("Eliminar");
+		btnEliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				eliminar();
+			}
+		});
 		panel.add(btnEliminar);
 		
 		//cargamos todos los datos de los fabricantes
@@ -231,26 +249,54 @@ public class PanelCoche extends JPanel {
 	}
 	
 		
+	/**
+	 * 
+	 */
+	private void guardar () {
+		cargarActualDesdePantalla();
+		// Decido si se trata de guardar un registro existente o nuevo
+		if (this.actual.getId() != 0) { // Modificación
+			int regsAfec = ControladorCoche.getInstance().modificar(this.actual);
+			if (regsAfec > 0) {
+				JOptionPane.showMessageDialog(null, "Registro modificado correctamente");
+			}
+		}
+		else { // Alta -  nuevo
+			int idNuevoReg = ControladorCoche.getInstance().nuevo(this.actual);
+			if (idNuevoReg > 0) {
+				this.jtfIdCoche.setText("" + idNuevoReg);
+				JOptionPane.showMessageDialog(null, "Registro insertado correctamente");
+			}
+		}
+	}
+	
+
+	/**
+	 * 
+	 */
+	private void vaciarCampos() {
+		this.jtfIdCoche.setText("0");
+		this.jtfBastidor.setText("");
+		this.jtfModelo.setText("");
+		this.jtfColor.setText("");
+	
+	}
 	
 	/**
 	 * 
 	 */
-//	private void guardar () {
-//		cargarActualDesdePantalla();
-//		// Decido si se trata de guardar un registro existente o nuevo
-//		if (this.actual.getId() != 0) { // Modificación
-//			int regsAfec = ControladorFabricante.getInstance().modificar(this.actual);
-//			if (regsAfec > 0) {
-//				JOptionPane.showMessageDialog(null, "Registro modificado correctamente");
-//			}
-//		}
-//		else { // Alta -  nuevo
-//			int idNuevoReg = ControladorFabricante.getInstance().nuevo(this.actual);
-//			if (idNuevoReg > 0) {
-//				this.jtfId.setText("" + idNuevoReg);
-//				JOptionPane.showMessageDialog(null, "Registro insertado correctamente");
-//			}
-//		}
-//	}
+	private void eliminar() {
+		String posiblesRespuestas[] = {"Sí","No"};
+		// En esta opci�n se utiliza un showOptionDialog en el que personalizo el icono mostrado
+		int opcionElegida = JOptionPane.showOptionDialog(null, "¿Desea eliminar?", "Gestión venta de coches", 
+		        JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, posiblesRespuestas, posiblesRespuestas[1]);
+	    if(opcionElegida == 0) {
+	    	int regsAfectados = ControladorCoche.getInstance().eliminar(this.actual.getId());
+	    	if (regsAfectados > 0) {
+	    		vaciarCampos();
+	    		JOptionPane.showMessageDialog(null, "Eliminado correctamente");
+	    	}
+	    }
+	}
 
 }

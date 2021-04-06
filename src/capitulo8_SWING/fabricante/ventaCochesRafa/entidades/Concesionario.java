@@ -53,6 +53,11 @@ public class Concesionario {
 	public void setLocalidad(String localidad) {
 		this.localidad = localidad;
 	}
+
+	@Override
+	public String toString() {
+		return nombre;
+	}
 	
 	
 }
