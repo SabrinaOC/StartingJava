@@ -177,7 +177,7 @@ public class ControladorVenta {
 
 			idNuevoRegistro = nextId();
 			registrosAfectados = s.executeUpdate ("insert into venta values(" + idNuevoRegistro + ", " +
-			v.getIdCliente() + ", " + v.getIdConcesionario() + ", " + v.getIdCoche() + ", '" + v.getFecha() + "', " + v.getPrecio() + ");");
+			v.getIdCliente() + ", " + v.getIdConcesionario() + ", " + v.getIdCoche() + ", '" + this.formato.format(v.getFecha()) + "', " + v.getPrecio() + ");");
 		   	
 			// Cierre de los elementos
 			s.close();

@@ -6,8 +6,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 import capitulo8_SWING.fabricante.ventaCochesRafa.entidades.Cliente;
+import capitulo8_SWING.fabricante.ventaCochesRafa.entidades.Fabricante;
 
 public class ControladorCliente {
 	
@@ -147,6 +150,34 @@ public class ControladorCliente {
 			ex.printStackTrace();
 		}
 		return c;
+	}
+	
+	/**
+	 * Método que recoge en una lista todos los fabricantes de la BBDD
+	 * @return
+	 */
+	public List<Cliente> findAll () {
+		List<Cliente> clientes = new ArrayList<Cliente>();
+		try {
+			Statement s = this.conn.createStatement();
+			ResultSet rs =  s.executeQuery("select * from tutorialjavacoches.cliente");
+			while (rs.next()) {
+				Cliente c = new Cliente();
+				c.setId(rs.getInt("id"));
+				c.setNombre(rs.getString("nombre"));
+				c.setApellidos(rs.getString("apellidos"));
+				c.setLocalidad(rs.getString("localidad"));
+				c.setDni(rs.getString("dniNie"));
+				c.setFechaNac(rs.getDate("fechaNac"));
+				c.setActivo(rs.getBoolean("activo"));
+				//Agregamos los fabricantes a la lista
+				clientes.add(c);
+			}
+		}
+		catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return clientes;
 	}
 	
 	/**

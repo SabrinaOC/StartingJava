@@ -3,7 +3,6 @@ package capitulo8_SWING.fabricante.ventaCochesRafa.paneles;
 import javax.swing.JPanel;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JTextField;

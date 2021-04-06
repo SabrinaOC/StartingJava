@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import capitulo8_SWING.fabricante.ventaCochesRafa.entidades.Coche;
 import capitulo8_SWING.fabricante.ventaCochesRafa.entidades.Fabricante;
@@ -140,6 +142,32 @@ public class ControladorCoche {
 			ex.printStackTrace();
 		}
 		return c;
+	}
+	
+	/**
+	 * Método que recoge en una lista todos los fabricantes de la BBDD
+	 * @return
+	 */
+	public List<Coche> findAll () {
+		List<Coche> coches = new ArrayList<Coche>();
+		try {
+			Statement s = this.conn.createStatement();
+			ResultSet rs =  s.executeQuery("select * from tutorialjavacoches.coche");
+			while (rs.next()) {
+				Coche c = new Coche();
+				c.setId(rs.getInt("id"));
+				c.setIdFab(rs.getInt("idfabricante"));
+				c.setBastidor(rs.getString("bastidor"));
+				c.setModelo(rs.getString("modelo"));
+				c.setColor(rs.getString("color"));
+				//Agregamos los fabricantes a la lista
+				coches.add(c);
+			}
+		}
+		catch (Exception ex) {
+			ex.printStackTrace();
+		}
+		return coches;
 	}
 	
 	/**
