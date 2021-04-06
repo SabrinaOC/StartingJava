@@ -5,22 +5,24 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.SimpleDateFormat;
 
-import capitulo8_SWING.fabricante.ventaCochesRafa.entidades.Concesionario;
-import capitulo8_SWING.fabricante.ventaCochesRafa.entidades.Fabricante;
+import capitulo8_SWING.fabricante.ventaCochesRafa.entidades.Cliente;
 
-public class ControladorConcesionario {
+public class ControladorCliente {
 	
-	private static ControladorConcesionario instance = null;
+	private SimpleDateFormat formato = new SimpleDateFormat("yyyy/MM/dd");
+	
+	private static ControladorCliente instance = null;
 	public Connection conn = null;
 	
 	/**
 	 * 
 	 * @return
 	 */
-	public static ControladorConcesionario getInstance () {
+	public static ControladorCliente getInstance () {
 		if (instance == null) {
-			instance = new ControladorConcesionario();
+			instance = new ControladorCliente();
 		}
 		return instance;
 	}
@@ -28,7 +30,7 @@ public class ControladorConcesionario {
 	/**
 	 * 
 	 */
-	public ControladorConcesionario() {
+	public ControladorCliente() {
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -39,23 +41,25 @@ public class ControladorConcesionario {
 		}		   
 
 	}
-	
 
 	/**
 	 * 
 	 * @return
 	 */
-	public Concesionario findPrimero () {
-		Concesionario c = null;
+	public Cliente findPrimero () {
+		Cliente c = null;
 		try {
 			Statement s = this.conn.createStatement();
-			ResultSet rs =  s.executeQuery("select * from tutorialjavacoches.concesionario order by id limit 1");
+			ResultSet rs =  s.executeQuery("select * from tutorialjavacoches.cliente order by id limit 1");
 			if (rs.next()) {
-				c = new Concesionario();
+				c = new Cliente();
 				c.setId(rs.getInt("id"));
-				c.setCif(rs.getString("cif"));
 				c.setNombre(rs.getString("nombre"));
+				c.setApellidos(rs.getString("apellidos"));
 				c.setLocalidad(rs.getString("localidad"));
+				c.setDni(rs.getString("dniNie"));
+				c.setFechaNac(rs.getDate("fechaNac"));
+				c.setActivo(rs.getBoolean("activo"));
 			}
 		}
 		catch (Exception ex) {
@@ -69,17 +73,20 @@ public class ControladorConcesionario {
 	 * 
 	 * @return
 	 */
-	public Concesionario findUltimo () {
-		Concesionario c = null;
+	public Cliente findUltimo () {
+		Cliente c = null;
 		try {
 			Statement s = this.conn.createStatement();
-			ResultSet rs =  s.executeQuery("select * from tutorialjavacoches.concesionario order by id desc limit 1");
+			ResultSet rs =  s.executeQuery("select * from tutorialjavacoches.cliente order by id desc limit 1");
 			if (rs.next()) {
-				c = new Concesionario();
+				c = new Cliente();
 				c.setId(rs.getInt("id"));
-				c.setCif(rs.getString("cif"));
 				c.setNombre(rs.getString("nombre"));
+				c.setApellidos(rs.getString("apellidos"));
 				c.setLocalidad(rs.getString("localidad"));
+				c.setDni(rs.getString("dniNie"));
+				c.setFechaNac(rs.getDate("fechaNac"));
+				c.setActivo(rs.getBoolean("activo"));
 			}
 		}
 		catch (Exception ex) {
@@ -92,17 +99,20 @@ public class ControladorConcesionario {
 	 * 
 	 * @return
 	 */
-	public Concesionario findSiguiente (int idActual) {
-		Concesionario c = null;
+	public Cliente findSiguiente (int idActual) {
+		Cliente c = null;
 		try {
 			Statement s = this.conn.createStatement();
-			ResultSet rs =  s.executeQuery("select * from tutorialjavacoches.concesionario where id > " + idActual + " order by id limit 1");
+			ResultSet rs =  s.executeQuery("select * from tutorialjavacoches.cliente where id > " + idActual + " order by id limit 1");
 			if (rs.next()) {
-				c = new Concesionario();
+				c = new Cliente();
 				c.setId(rs.getInt("id"));
-				c.setCif(rs.getString("cif"));
 				c.setNombre(rs.getString("nombre"));
+				c.setApellidos(rs.getString("apellidos"));
 				c.setLocalidad(rs.getString("localidad"));
+				c.setDni(rs.getString("dniNie"));
+				c.setFechaNac(rs.getDate("fechaNac"));
+				c.setActivo(rs.getBoolean("activo"));
 			}
 		}
 		catch (Exception ex) {
@@ -117,17 +127,20 @@ public class ControladorConcesionario {
 	 * 
 	 * @return
 	 */
-	public Concesionario findAnterior (int idActual) {
-		Concesionario c = null;
+	public Cliente findAnterior (int idActual) {
+		Cliente c = null;
 		try {
 			Statement s = this.conn.createStatement();
-			ResultSet rs =  s.executeQuery("select * from tutorialjavacoches.concesionario where id < " + idActual + " order by id desc limit 1");
+			ResultSet rs =  s.executeQuery("select * from tutorialjavacoches.cliente where id < " + idActual + " order by id desc limit 1");
 			if (rs.next()) {
-				c = new Concesionario();
+				c = new Cliente();
 				c.setId(rs.getInt("id"));
-				c.setCif(rs.getString("cif"));
 				c.setNombre(rs.getString("nombre"));
+				c.setApellidos(rs.getString("apellidos"));
 				c.setLocalidad(rs.getString("localidad"));
+				c.setDni(rs.getString("dniNie"));
+				c.setFechaNac(rs.getDate("fechaNac"));
+				c.setActivo(rs.getBoolean("activo"));
 			}
 		}
 		catch (Exception ex) {
@@ -140,14 +153,12 @@ public class ControladorConcesionario {
 	 * 
 	 * @return
 	 */
-	public int modificar (Concesionario c) {
+	public int modificar (Cliente c) {
 		int registrosAfectados = 0;
 		try {
 			Statement s = (Statement) this.conn.createStatement(); 
 
-			registrosAfectados = s.executeUpdate ("update concesionario set cif='" + c.getCif() + "', " +
-					" nombre='" + c.getNombre() + "', localidad='" +c.getLocalidad() + "' where id=" + c.getId() + ";");
-		   	
+			registrosAfectados = s.executeUpdate("update tutorialjavacoches.cliente set nombre='" + c.getNombre() + "', apellidos='" + c.getApellidos() + "', localidad='" + c.getLocalidad() + "', dniNie='" + c.getDni() + "', fechaNac='" + this.formato.format(c.getFechaNac()) + "', activo=" + c.isActivo() + " where id=" + c.getId() + ";");
 			// Cierre de los elementos
 			s.close();
 		}
@@ -163,15 +174,16 @@ public class ControladorConcesionario {
 	 * @param f
 	 * @return
 	 */
-	public int nuevo (Concesionario c) {
+	public int nuevo (Cliente c) {
 		int registrosAfectados = 0;
 		int idNuevoRegistro = 0;
 		try {
 			Statement s = (Statement) this.conn.createStatement(); 
 
 			idNuevoRegistro = nextId();
-			registrosAfectados = s.executeUpdate ("insert into concesionario values(" + idNuevoRegistro + ", " +
-			"'" + c.getCif() + "', '" + c.getNombre() + "', '" + c.getLocalidad() + "');");
+			registrosAfectados = s.executeUpdate("insert into tutorialjavacoches.cliente values(" + idNuevoRegistro + ", '" + c.getNombre() + 
+                    "', '" + c.getApellidos() + "', '" + c.getLocalidad() + "', '" + c.getDni() + 
+                    "', '" + this.formato.format(c.getFechaNac()) + "', " + c.isActivo() + ");");
 		   	
 			// Cierre de los elementos
 			s.close();
@@ -191,7 +203,7 @@ public class ControladorConcesionario {
 	private int nextId () throws SQLException {
 		Statement s = (Statement) this.conn.createStatement();
 
-		String sql = "select max(id) from tutorialjavacoches.concesionario";
+		String sql = "select max(id) from tutorialjavacoches.cliente";
 		ResultSet rs = s.executeQuery(sql);
 		int max = 1; 
 		if (rs.next() ) {
@@ -208,12 +220,12 @@ public class ControladorConcesionario {
 	 * @param id
 	 * @return
 	 */
-	public int borrar(int id) {
+	public int eliminar(int id) {
 		int registrosAfectados = 0;
 		try {
 			Statement s = (Statement) this.conn.createStatement(); 
 
-			registrosAfectados = s.executeUpdate ("delete from concesionario where id=" + id + ";");
+			registrosAfectados = s.executeUpdate ("delete from cliente where id=" + id + ";");
 			
 			// Cierre de los elementos
 			s.close();
@@ -223,6 +235,5 @@ public class ControladorConcesionario {
 		}
 		return registrosAfectados;
 	}
-
-
+	
 }

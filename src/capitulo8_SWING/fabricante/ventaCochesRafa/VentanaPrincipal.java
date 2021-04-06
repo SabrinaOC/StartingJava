@@ -8,8 +8,11 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+import capitulo8_SWING.fabricante.ventaCochesRafa.paneles.PanelCliente;
 import capitulo8_SWING.fabricante.ventaCochesRafa.paneles.PanelCoche;
+import capitulo8_SWING.fabricante.ventaCochesRafa.paneles.PanelConcesionario;
 import capitulo8_SWING.fabricante.ventaCochesRafa.paneles.PanelFabricante;
+import capitulo8_SWING.fabricante.ventaCochesRafa.paneles.PanelVenta;
 
 public class VentanaPrincipal extends JFrame {
 
@@ -50,6 +53,9 @@ public class VentanaPrincipal extends JFrame {
 		
 		jTabbedPane.add("Fabricantes", new PanelFabricante());
 		jTabbedPane.add("Coches", new PanelCoche());
+		jTabbedPane.add("Concesionarios", new PanelConcesionario());
+		jTabbedPane.add("Clientes", new PanelCliente());
+		jTabbedPane.add("Ventas", new PanelVenta());
 		
 		return jTabbedPane;
 	}
