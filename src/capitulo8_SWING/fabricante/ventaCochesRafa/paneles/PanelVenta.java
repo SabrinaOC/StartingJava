@@ -35,6 +35,7 @@ public class PanelVenta extends JPanel {
 	private JComboBox <Cliente> jcbIdCliente;
 	private JComboBox <Concesionario> jcbIdConcesionario;
 	private JComboBox <Coche> jcbIdCoche;
+	private int idEliminado;
 
 	public PanelVenta() {
 		//cargamos la primera venta
@@ -225,6 +226,7 @@ public class PanelVenta extends JPanel {
 		btnEliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				eliminar();
+				
 			}
 		});
 		panel.add(btnEliminar);
@@ -317,7 +319,6 @@ public class PanelVenta extends JPanel {
 	 */
 	private void vaciarCampos() {
 		this.jtfId.setText("0");
-		this.jtfId.setText("");
 		this.jtfFecha.setText("");
 		this.jtfPrecio.setText("");
 	
@@ -342,23 +343,30 @@ public class PanelVenta extends JPanel {
 				JOptionPane.showMessageDialog(null, "Registro insertado correctamente");
 			}
 		}
+		
+		cargarActualDesdePantalla();
 	}
 	
 	/**
 	 * Método para eliminar ventas de la BBDD
 	 */
 	private void eliminar() {
+		
 		String posiblesRespuestas[] = {"Sí","No"};
 		// En esta opci�n se utiliza un showOptionDialog en el que personalizo el icono mostrado
 		int opcionElegida = JOptionPane.showOptionDialog(null, "¿Desea eliminar?", "Gestión venta de coches", 
 		        JOptionPane.DEFAULT_OPTION, JOptionPane.WARNING_MESSAGE, null, posiblesRespuestas, posiblesRespuestas[1]);
 	    if(opcionElegida == 0) {
 	    	int regsAfectados = ControladorVenta.getInstance().eliminar(this.actual.getId());
+	    	idEliminado = regsAfectados;
 	    	if (regsAfectados > 0) {
 	    		vaciarCampos();
 	    		JOptionPane.showMessageDialog(null, "Eliminado correctamente");
 	    	}
 	    }
+	  //para que no se quede vacío después de eliminar un registro, cargamos el último en pantalla
+	    this.actual = ControladorVenta.getInstance().findAnterior(idEliminado);
+	    cargarActualEnPantalla();
 	}
-
+	
 }
